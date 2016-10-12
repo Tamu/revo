@@ -4,7 +4,7 @@ Plugin Revo for AutoCAD
 La première application métier pour l'importation de données Interlis MD.01-MO-VD directement dans AutoCAD.
 
 # Procédure d'installation:
-1. Télécharger l'installateur sur la page https://github.com/platform5/revo/wiki
+1. Télécharger l'installateur sur la page https://github.com/Tamu/revo/wiki
 2. Lancer l'installateur et suivre les étapes décrites
 3. Lancer AutoCAD puis, dans le ruban "REVO"
 
