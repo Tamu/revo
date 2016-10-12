@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<revo>
+ <validate-mutation>
+  <exeption layer="MUT_ADHOC">DELETE</exeption>
+  <exeption layer="MUT_ADHOC_CA">DELETE</exeption>
+  <exeption layer="MUT_SCHEMA">DELETE</exeption>
+  <exeption layer="MUT_ETIQUETTE">DELETE</exeption>
+  <exeption layer="MUT_BIFFER_LIGNES">DELETE</exeption>
+  <exeption layer="MUT_BIFFER_PTS">DELETE</exeption>
+  <exeption layer="MUT_TEXTE">DELETE</exeption>
+  <exeption layer="MUT_TITRE_CA">DELETE</exeption>
+  <exeption layer="MUT_TITRE_TEXTE">DELETE</exeption>
+  <exeption layer="MUT_VALEUR_PTS">DELETE</exeption>
+  <exeption layer="RAD_*">DELETE</exeption>
+ </validate-mutation>
+ <draworder>
+  <ontop layer="RAD_BF">LWPOLYLINE</ontop>
+  <ontop layer="MUT_BF">LWPOLYLINE</ontop>
+  <ontop layer="MO_BF">LWPOLYLINE</ontop>
+  <ontop layer="MO_BF_DDP">LWPOLYLINE</ontop>
+  <ontop layer="MO_NAT_CA">LWPOLYLINE</ontop>
+  <ontop layer="MO_NAT">LWPOLYLINE</ontop>
+  <ontop layer="MO_CAN_CA">LWPOLYLINE</ontop>
+  <ontop layer="MO_CAN">LWPOLYLINE</ontop>
+  <ontop layer="MO_DIS_CA">LWPOLYLINE</ontop>
+  <ontop layer="MO_DIS">LWPOLYLINE</ontop>
+  <ontop layer="MO_COM_CA">LWPOLYLINE</ontop>
+  <ontop layer="MO_COM">LWPOLYLINE</ontop>
+  <ontop layer="MO_RPL_CA">LWPOLYLINE</ontop>
+  <ontop layer="MO_RPL">LWPOLYLINE</ontop>
+  <ontop layer="RPT_BF_NOUVELLE_LIMITE">LWPOLYLINE</ontop>
+  <ontop layer="MO_CS_PTS">INSERT</ontop>
+  <ontop layer="MO_BF_PTS">INSERT</ontop>
+  <ontop layer="MO_COM_PTS">INSERT</ontop>
+  <ontop layer="MUT_BF_PTS">INSERT</ontop>
+  <ontop layer="MUT_BIFFER_LIGNES">LWLINE</ontop>
+  <ontop layer="MUT_BIFFER_PTS">LWLINE</ontop>
+  <ontop layer="MO_PFP1">INSERT</ontop>
+  <ontop layer="MO_PFP2">INSERT</ontop>
+  <ontop layer="MO_PFP3">INSERT</ontop>
+ </draworder>
+ <rotation>
+  <layer>MO_PFA1</layer>
+  <layer>MO_PFA2</layer>
+  <layer>MO_PFA3</layer>
+  <layer>MO_PFP1</layer>
+  <layer>MO_PFP2</layer>
+  <layer>MO_PFP3</layer>
+  <layer>MO_CS_BAT_NUM</layer>
+  <layer>MO_CS_PROJ_BAT_NUM</layer>
+  <layer>MO_CS_PTS</layer>
+  <layer>MO_CS_NOM</layer>
+  <layer>MO_CS_PROJ_NOM</layer>
+  <layer>MO_ODS_BATS_NUM</layer>
+  <layer>MO_ODS_COUV_NUM</layer>
+  <layer>MO_OD_PTS</layer>
+  <layer>MO_ODL_NOM</layer>
+  <layer>MO_NO_LIEU</layer>
+  <layer>MO_NO_LIEU_DIT</layer>
+  <layer>MO_NO_LOCAL</layer>
+  <layer>MO_BF_IMMEUBLE</layer>
+  <layer>MO_BF_PROJ_IMMEUBLE</layer>
+  <layer>MO_BF_DDP_IMMEUBLE</layer>
+  <layer>MO_BF_DDP_PROJ_IMMEUBLE</layer>
+  <layer>MO_BF_PTS</layer>
+  <layer>MO_RPL_PLAN</layer>
+  <layer>MO_RNT_NT</layer>
+  <layer>MO_AD_ID_BATIMENT</layer>
+  <layer>MUT_PFP3</layer>
+  <layer>MUT_CS_BAT_NUM</layer>
+  <layer>MUT_CS_PTS</layer>
+  <layer>MUT_CS_NOM</layer>
+  <layer>MUT_ODS_BATS_NUM</layer>
+  <layer>MUT_ODS_COUV_NUM</layer>
+  <layer>MUT_OD_PTS</layer>
+  <layer>MUT_ODL_NOM</layer>
+  <layer>MUT_NO_LIEU</layer>
+  <layer>MUT_NO_LIEU_DIT</layer>
+  <layer>MUT_NO_LOCAL</layer>
+  <layer>MUT_BF_IMMEUBLE</layer>
+  <layer>MUT_BF_DDP_IMMEUBLE</layer>
+  <layer>MUT_BF_PTS</layer>
+  <layer>MUT_RPL_PLAN</layer>
+  <layer>MUT_RNT_NT</layer>
+  <layer>MUT_AD_ID_BATIMENT</layer>
+  <layer>ENQ_TXT_PROPR</layer>
+  <layer>ENQ_TXT_ALTIT</layer>
+  <layer>ENQ_TXT_LEGENDE</layer>
+  <layer>ENQ_TXT_LIM_PROJ</layer>
+  <layer>ENQ_TXT_PROF_COUPE</layer>
+  <layer>ENQ_TXT_SERV</layer>
+  <layer>ENQ_TXT_AUTRES</layer>
+  <layer>SERV_NOUV_TXT</layer>
+  <layer>SERV_NOUV_OBJ_EC</layer>
+  <layer>SERV_NOUV_OBJ_EU</layer>
+  <layer>SERV_NOUV_OBJ_EAU_POT</layer>
+  <layer>SERV_NOUV_OBJ_BH</layer>
+  <layer>SERV_NOUV_OBJ_AUTRE</layer>
+  <layer>SERV_EXIST_TXT_EC</layer>
+  <layer>SERV_EXIST_TXT_EU</layer>
+  <layer>SERV_EXIST_TXT_AUTRE</layer>
+  <layer>SERV_EXIST_TXT_BH</layer>
+  <layer>SERV_EXIST_TXT_VANNE</layer>
+  <layer>SERV_EXIST_OBJ_EC</layer>
+  <layer>SERV_EXIST_OBJ_EU</layer>
+  <layer>SERV_EXIST_OBJ_EAU_POT</layer>
+  <layer>SERV_EXIST_OBJ_BH</layer>
+  <layer>SERV_EXIST_OBJ_AUTRE</layer>
+  <layer>IMPL_PROJ_PTS</layer>
+  <layer>IMPL_CONT_PTS</layer>
+  <layer>IMPL_TEXTE</layer>
+  <layer>TOPO_PTS</layer>
+  <layer>TOPO_ARBRE</layer>
+  <layer>SOUT_PROJ_EP_PR</layer>
+  <layer>SOUT_PROJ_EP_VA</layer>
+  <layer>SOUT_PROJ_EP_CVA</layer>
+  <layer>SOUT_PROJ_EP_BH</layer>
+  <layer>SOUT_PROJ_EP_PU</layer>
+  <layer>SOUT_PROJ_EP_CO</layer>
+  <layer>SOUT_PROJ_EP_RE</layer>
+  <layer>SOUT_PROJ_EP_CC</layer>
+  <layer>SOUT_PROJ_EP_FO</layer>
+  <layer>SOUT_PROJ_EU_PR</layer>
+  <layer>SOUT_PROJ_EU_CH</layer>
+  <layer>SOUT_PROJ_EU_CE</layer>
+  <layer>SOUT_PROJ_EU_FS</layer>
+  <layer>SOUT_PROJ_EU_SE</layer>
+  <layer>SOUT_PROJ_EU_OS</layer>
+  <layer>SOUT_PROJ_EU_RE</layer>
+  <layer>SOUT_PROJ_EC_PR</layer>
+  <layer>SOUT_PROJ_EC_CH</layer>
+  <layer>SOUT_PROJ_EC_CE</layer>
+  <layer>SOUT_PROJ_EC_GR</layer>
+  <layer>SOUT_PROJ_EC_SE</layer>
+  <layer>SOUT_PROJ_EC_OS</layer>
+  <layer>SOUT_PROJ_EC_RE</layer>
+  <layer>SOUT_PROJ_EC_EX</layer>
+  <layer>SOUT_PROJ_EC_GU</layer>
+  <layer>SOUT_PROJ_EC_DE</layer>
+  <layer>SOUT_PROJ_EC_CU</layer>
+  <layer>SOUT_EP_PR</layer>
+  <layer>SOUT_EP_VA</layer>
+  <layer>SOUT_EP_CVA</layer>
+  <layer>SOUT_EP_BH</layer>
+  <layer>SOUT_EP_PU</layer>
+  <layer>SOUT_EP_CO</layer>
+  <layer>SOUT_EP_RE</layer>
+  <layer>SOUT_EP_CC</layer>
+  <layer>SOUT_EP_FO</layer>
+  <layer>SOUT_EU_PR</layer>
+  <layer>SOUT_EU_CH</layer>
+  <layer>SOUT_EU_CE</layer>
+  <layer>SOUT_EU_FS</layer>
+  <layer>SOUT_EU_SE</layer>
+  <layer>SOUT_EU_OS</layer>
+  <layer>SOUT_EU_RE</layer>
+  <layer>SOUT_EC_PR</layer>
+  <layer>SOUT_EC_CH</layer>
+  <layer>SOUT_EC_CE</layer>
+  <layer>SOUT_EC_GR</layer>
+  <layer>SOUT_EC_SE</layer>
+  <layer>SOUT_EC_OS</layer>
+  <layer>SOUT_EC_RE</layer>
+  <layer>SOUT_EC_EX</layer>
+  <layer>SOUT_EC_GU</layer>
+  <layer>SOUT_EC_DE</layer>
+  <layer>SOUT_EC_CU</layer>
+  <layer>SOUT_EG_PR</layer>
+  <layer>SOUT_EG_CD</layer>
+  <layer>SOUT_EG_CB</layer>
+  <layer>SOUT_EG_CE</layer>
+  <layer>SOUT_EG_CE</layer>
+  <layer>SOUT_EL_PR</layer>
+  <layer>SOUT_EL_CD</layer>
+  <layer>SOUT_EL_POT</layer>
+  <layer>SOUT_GA_PR</layer>
+  <layer>SOUT_GA_VA</layer>
+  <layer>SOUT_GA_MA</layer>
+  <layer>SOUT_GA_RE</layer>
+  <layer>SOUT_TT_PR</layer>
+  <layer>SOUT_TT_DTT</layer>
+  <layer>SOUT_TT_RTT</layer>
+  <layer>SOUT_TT_POT</layer>
+  <layer>SOUT_TV_PR</layer>
+  <layer>SOUT_TV_ART</layer>
+  <layer>SOUT_TV_ATT</layer>
+  <layer>SOUT_TV_CT</layer>
+ </rotation>
+</revo>
+

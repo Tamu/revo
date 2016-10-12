@@ -1,0 +1,762 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<revo>
+ <palettes>
+  <palette name="insertiontxt">
+   <field code="MO">
+    <topic code="02 CS">
+     <object>
+      <name>Numéro de bâtiment (ECA)</name>
+      <layer>MO_CS_BAT_NUM</layer>
+      <symbol>B_CS_BAT</symbol>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="DESIGNATION">
+       <value>batiment_administratif.batiment_de_l_administration</value>
+       <value>batiment_administratif.batiment_scolaire</value>
+       <value>batiment_administratif.batiment_ecclesiastique</value>
+       <value>batiment_administratif.batiment_ecclesiastique</value>
+       <value>batiment_administratif.batiment_public</value>
+       <value>maison_d_habitation.habitation</value>
+       <value>maison_d_habitation.habitation_et_garage</value>
+       <value>maison_d_habitation.habitation_affectation_mixte</value>
+       <value>batiment_agricole.habitation_et_rural</value>
+       <value>batiment_agricole.batiment_agricole</value>
+       <value>batiment_commercial</value>
+       <value>batiment_industriel</value>
+       <value>petit_batiment_dependance.batiment</value>
+       <value>petit_batiment_dependance.garage</value>
+       <value>couvert</value>
+      </type>
+     </object>
+     <object>
+      <name>Numéro de bâtiment projeté (ECA)</name>
+      <layer>MO_CS_PROJ_BAT_NUM</layer>
+      <symbol>B_CS_PROJ_BAT</symbol>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="DESIGNATION">
+       <value>batiment_administratif.batiment_de_l_administration</value>
+       <value>batiment_administratif.batiment_scolaire</value>
+       <value>batiment_administratif.batiment_ecclesiastique</value>
+       <value>batiment_administratif.batiment_ecclesiastique</value>
+       <value>batiment_administratif.batiment_public</value>
+       <value>maison_d_habitation.habitation</value>
+       <value>maison_d_habitation.habitation_et_garage</value>
+       <value>maison_d_habitation.habitation_affectation_mixte</value>
+       <value>batiment_agricole.habitation_et_rural</value>
+       <value>batiment_agricole.batiment_agricole</value>
+       <value>batiment_commercial</value>
+       <value>batiment_industriel</value>
+       <value>petit_batiment_dependance.batiment</value>
+       <value>petit_batiment_dependance.garage</value>
+       <value>couvert</value>
+      </type>
+     </object>
+     <object>
+      <name>Nom d'objet</name>
+      <layer>MO_CS_NOM</layer>
+      <symbol>B_CS_NOM</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Nom d'objet projeté</name>
+      <layer>MO_CS_PROJ_NOM</layer>
+      <symbol>B_CS_PROJ_NOM</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Cours d'eau: sens d'écoulement</name>
+      <layer>MO_CS_EAU_SENS_ECOUL</layer>
+      <symbol>B_CS_SENS</symbol>
+     </object>
+     <object>
+      <name>Cours d'eau projeté: sens d'écoulement</name>
+      <layer>MO_CS_PROJ_EAU_SENS_ECOUL</layer>
+      <symbol>B_CS_PROJ_SENS</symbol>
+     </object>
+    </topic>
+    <topic code="03 OD">
+     <object>
+      <name>Numéro de bâtiment souterrain (ODS)</name>
+      <layer>MO_ODS_BATS_NUM</layer>
+      <symbol>B_ODL_BAT</symbol>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="DESIGNATION">
+       <value>batiment_administratif.batiment_de_l_administration</value>
+       <value>batiment_administratif.batiment_scolaire</value>
+       <value>batiment_administratif.batiment_ecclesiastique</value>
+       <value>batiment_administratif.batiment_ecclesiastique</value>
+       <value>batiment_administratif.batiment_public</value>
+       <value>maison_d_habitation.habitation</value>
+       <value>maison_d_habitation.habitation_et_garage</value>
+       <value>maison_d_habitation.habitation_affectation_mixte</value>
+       <value>batiment_agricole.habitation_et_rural</value>
+       <value>batiment_agricole.batiment_agricole</value>
+       <value>batiment_commercial</value>
+       <value>batiment_industriel</value>
+       <value>petit_batiment_dependance.batiment</value>
+       <value>petit_batiment_dependance.garage</value>
+       <value>couvert</value>
+      </type>
+     </object>
+     <object>
+      <name>Numéro de couvert indépendant (ODS)</name>
+      <layer>MO_ODS_COUV_NUM</layer>
+      <symbol>B_ODL_COUV</symbol>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="DESIGNATION">
+       <value>couvert</value>
+       <value>petit_batiment_dependance.batiment</value>
+       <value>petit_batiment_dependance.garage</value>
+      </type>
+     </object>
+     <object>
+      <name>Nom d'objet (ODL)</name>
+      <layer>MO_ODL_NOM</layer>
+      <symbol>B_ODL_NOM</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NOMOBJET_DE">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Ru: sens d'écoulement</name>
+      <layer>MO_ODP_SENS_ECOUL</layer>
+      <symbol>B_ODL_SENS</symbol>
+     </object>
+     <object>
+      <name>Bac (ODL)</name>
+      <layer>MO_ODP_BAC</layer>
+      <symbol>B_ODL_BAC</symbol>
+     </object>
+    </topic>
+    <topic code="05 NO">
+     <object>
+      <name>Nom de lieu</name>
+      <layer>MO_NO_LIEU</layer>
+      <symbol>B_NO_LIEU</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NOMOBJET_DE">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Lieu-dit</name>
+      <layer>MO_NO_LIEU_DIT</layer>
+      <symbol>B_NO_LIEUDIT</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NOMOBJET_DE">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Nom local</name>
+      <layer>MO_NO_LOCAL</layer>
+      <symbol>B_NO_LOCAL</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NOMOBJET_DE">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="06 BF">
+     <object>
+      <name>Bien-fonds</name>
+      <layer>MO_BF_IMMEUBLE</layer>
+      <symbol>IMMEUBLE_NUM</symbol>
+      <type name="IDENTDN">
+       <value></value>
+      </type>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="NOM_PROP">
+       <value></value>
+      </type>
+      <type name="VALIDITE">
+       <value>en vigueur</value>
+       <value>litigieux</value>
+      </type>
+      <type name="INTEGRALITE">
+       <value>complet</value>
+       <value>incomplet</value>
+      </type>
+      <type name="GENRE">
+       <value>bien_fonds.parcelle_prive</value>
+       <value>bien_fonds.DP_communal</value>
+       <value>bien_fonds.DP_cantonal</value>
+       <value>DDP.superficie</value>
+       <value>DDP.source</value>
+       <value>DDP.concession</value>
+       <value>DDP.autre</value>
+       <value>mine</value>
+      </type>
+      <type name="SUPERFICIE_TOTALE">
+       <value></value>
+      </type>
+      <type name="MAJ_PROP">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Bien-fonds projeté</name>
+      <layer>MO_BF_PROJ_IMMEUBLE</layer>
+      <symbol>IMMEUBLE_NUM_PROJ</symbol>
+      <type name="IDENTDN">
+       <value></value>
+      </type>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="NOM_PROP">
+       <value></value>
+      </type>
+      <type name="VALIDITE">
+       <value>en vigueur</value>
+       <value>litigieux</value>
+      </type>
+      <type name="INTEGRALITE">
+       <value>complet</value>
+       <value>incomplet</value>
+      </type>
+      <type name="SUPERFICIE">
+       <value></value>
+      </type>
+      <type name="SUPERFICIE_RF">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>DDP</name>
+      <layer>MO_BF_DDP_IMMEUBLE</layer>
+      <symbol>IMMEUBLE_NUM_DDP</symbol>
+      <type name="IDENTDN">
+       <value></value>
+      </type>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="NOM_PROP">
+       <value></value>
+      </type>
+      <type name="VALIDITE">
+       <value>en vigueur</value>
+       <value>litigieux</value>
+      </type>
+      <type name="INTEGRALITE">
+       <value>complet</value>
+       <value>incomplet</value>
+      </type>
+      <type name="GENRE">
+       <value>bien_fonds.parcelle_prive</value>
+       <value>bien_fonds.DP_communal</value>
+       <value>bien_fonds.DP_cantonal</value>
+       <value>DDP.superficie</value>
+       <value>DDP.source</value>
+       <value>DDP.concession</value>
+       <value>DDP.autre</value>
+       <value>mine</value>
+      </type>
+      <type name="SUPERFICIE_TOTALE">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>DDP projeté</name>
+      <layer>MO_BF_DDP_PROJ_IMMEUBLE</layer>
+      <symbol>IMMEUBLE_NUM_DDP_PROJ</symbol>
+      <type name="IDENTDN">
+       <value></value>
+      </type>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="NOM_PROP">
+       <value></value>
+      </type>
+      <type name="VALIDITE">
+       <value>en vigueur</value>
+       <value>litigieux</value>
+      </type>
+      <type name="INTEGRALITE">
+       <value>complet</value>
+       <value>incomplet</value>
+      </type>
+      <type name="SUPERFICIE">
+       <value></value>
+      </type>
+      <type name="SUPERFICIE_RF">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="09 COM">
+     <object>
+      <name>Nom de commune</name>
+      <layer>MO_COM_COM</layer>
+      <symbol>NOM_COMMUNE</symbol>
+      <type name="NOOFS">
+       <value></value>
+      </type>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NUMCOM">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Nom de commune projeté</name>
+      <layer>MO_COM_PROJ</layer>
+      <symbol>NOM_COMMUNE_PROJ</symbol>
+      <type name="NOOFS">
+       <value></value>
+      </type>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NUMCOM">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="10 DIS">
+     <object>
+      <name>Nom de district</name>
+      <layer>MO_DIS_NOM</layer>
+      <symbol>Nom_district</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="11 CAN">
+     <object>
+      <name>Nom de canton</name>
+      <layer>MO_CAN_NOM</layer>
+      <symbol>Nom_canton</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="12 NAT">
+     <object>
+      <name>Nom de pays</name>
+      <layer>MO_NAT_NOM</layer>
+      <symbol>Nom_pays</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="13 RPL">
+     <object>
+      <name>Numéro de plan</name>
+      <layer>MO_RPL_PLAN</layer>
+      <symbol>PLAN</symbol>
+      <type name="IDENTDN">
+       <value></value>
+      </type>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="CODEPLAN">
+       <value></value>
+      </type>
+      <type name="DOSSIERTECH">
+       <value></value>
+      </type>
+      <type name="EN_VIGUEUR">
+       <value></value>
+      </type>
+      <type name="APPROBATION">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="14 RNT">
+     <object>
+      <name>Niveau de tolérance</name>
+      <layer>MO_RNT_NT</layer>
+      <symbol>NT</symbol>
+      <type name="IDENTDN">
+       <value></value>
+      </type>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="GENRE">
+       <value>NT1</value>
+       <value>NT2</value>
+       <value>NT3</value>
+       <value>NT4</value>
+       <value>NT5</value>
+      </type>
+      <type name="DATE">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="16 BAT">
+     <object>
+      <name>Adresse de bâtiment (n° de police)</name>
+      <layer>MO_AD_NO_POLICE</layer>
+      <symbol>AD</symbol>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="BATIMENT_DE">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="Habillage">
+     <object>
+      <name>Symbole nord</name>
+      <layer>HAB_NORD</layer>
+      <symbol>NORD</symbol>
+     </object>
+    </topic>
+   </field>
+   <field code="MUT">
+    <topic code="02 CS">
+     <object>
+      <name>Numéro de bâtiment (ECA)</name>
+      <layer>MUT_CS_BAT_NUM</layer>
+      <symbol>MUT_B_CS_BAT</symbol>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="DESIGNATION">
+       <value>batiment_administratif.batiment_de_l_administration</value>
+       <value>batiment_administratif.batiment_scolaire</value>
+       <value>batiment_administratif.batiment_ecclesiastique</value>
+       <value>batiment_administratif.batiment_ecclesiastique</value>
+       <value>batiment_administratif.batiment_public</value>
+       <value>maison_d_habitation.habitation</value>
+       <value>maison_d_habitation.habitation_et_garage</value>
+       <value>maison_d_habitation.habitation_affectation_mixte</value>
+       <value>batiment_agricole.habitation_et_rural</value>
+       <value>batiment_agricole.batiment_agricole</value>
+       <value>batiment_commercial</value>
+       <value>batiment_industriel</value>
+       <value>petit_batiment_dependance.batiment</value>
+       <value>petit_batiment_dependance.garage</value>
+       <value>couvert</value>
+      </type>
+     </object>
+     <object>
+      <name>Nom d'objet</name>
+      <layer>MUT_CS_NOM</layer>
+      <symbol>MUT_B_CS_NOM</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Cours d'eau: sens d'écoulement</name>
+      <layer>MUT_CS_EAU_SENS_ECOUL</layer>
+      <symbol>MUT_B_CS_SENS</symbol>
+     </object>
+    </topic>
+    <topic code="03 OD">
+     <object>
+      <name>Numéro de bâtiment souterrain (ODS)</name>
+      <layer>MUT_ODS_BATS_NUM</layer>
+      <symbol>MUT_B_ODL_BAT</symbol>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="DESIGNATION">
+       <value>batiment_administratif.batiment_de_l_administration</value>
+       <value>batiment_administratif.batiment_scolaire</value>
+       <value>batiment_administratif.batiment_ecclesiastique</value>
+       <value>batiment_administratif.batiment_ecclesiastique</value>
+       <value>batiment_administratif.batiment_public</value>
+       <value>maison_d_habitation.habitation</value>
+       <value>maison_d_habitation.habitation_et_garage</value>
+       <value>maison_d_habitation.habitation_affectation_mixte</value>
+       <value>batiment_agricole.habitation_et_rural</value>
+       <value>batiment_agricole.batiment_agricole</value>
+       <value>batiment_commercial</value>
+       <value>batiment_industriel</value>
+       <value>petit_batiment_dependance.batiment</value>
+       <value>petit_batiment_dependance.garage</value>
+       <value>couvert</value>
+      </type>
+     </object>
+     <object>
+      <name>Numéro de couvert indépendant (ODS)</name>
+      <layer>MUT_ODS_COUV_NUM</layer>
+      <symbol>MUT_B_ODL_COUV</symbol>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="DESIGNATION">
+       <value>couvert</value>
+       <value>petit_batiment_dependance.batiment</value>
+       <value>petit_batiment_dependance.garage</value>
+      </type>
+     </object>
+     <object>
+      <name>Nom d'objet (ODL)</name>
+      <layer>MUT_ODL_NOM</layer>
+      <symbol>MUT_B_ODL_NOM</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NOMOBJET_DE">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Ru: sens d'écoulement</name>
+      <layer>MUT_ODP_SENS_ECOUL</layer>
+      <symbol>MUT_B_ODL_SENS</symbol>
+     </object>
+     <object>
+      <name>Bac (ODL)</name>
+      <layer>MUT_ODP_BAC</layer>
+      <symbol>MUT_B_ODL_BAC</symbol>
+     </object>
+    </topic>
+    <topic code="05 NO">
+     <object>
+      <name>Nom de lieu</name>
+      <layer>MUT_NO_LIEU</layer>
+      <symbol>MUT_B_NO_LIEU</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NOMOBJET_DE">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Lieu-dit</name>
+      <layer>MUT_NO_LIEU_DIT</layer>
+      <symbol>MUT_B_NO_LIEUDIT</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NOMOBJET_DE">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>Nom local</name>
+      <layer>MUT_NO_LOCAL</layer>
+      <symbol>MUT_B_NO_LOCAL</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NOMOBJET_DE">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="06 BF">
+     <object>
+      <name>Bien-fonds</name>
+      <layer>MUT_BF_IMMEUBLE</layer>
+      <symbol>MUT_IMMEUBLE_NUM</symbol>
+      <type name="IDENTDN">
+       <value></value>
+      </type>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="NOM_PROP">
+       <value></value>
+      </type>
+      <type name="VALIDITE">
+       <value>en vigueur</value>
+       <value>litigieux</value>
+      </type>
+      <type name="INTEGRALITE">
+       <value>complet</value>
+       <value>incomplet</value>
+      </type>
+      <type name="GENRE">
+       <value>bien_fonds.parcelle_prive</value>
+       <value>bien_fonds.DP_communal</value>
+       <value>bien_fonds.DP_cantonal</value>
+       <value>DDP.superficie</value>
+       <value>DDP.source</value>
+       <value>DDP.concession</value>
+       <value>DDP.autre</value>
+       <value>mine</value>
+      </type>
+      <type name="SUPERFICIE_TOTALE">
+       <value></value>
+      </type>
+      <type name="MAJ_PROP">
+       <value></value>
+      </type>
+     </object>
+     <object>
+      <name>DDP</name>
+      <layer>MUT_BF_DDP_IMMEUBLE</layer>
+      <symbol>MUT_IMMEUBLE_NUM_DDP</symbol>
+      <type name="IDENTDN">
+       <value></value>
+      </type>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="NOM_PROP">
+       <value></value>
+      </type>
+      <type name="VALIDITE">
+       <value>en vigueur</value>
+       <value>litigieux</value>
+      </type>
+      <type name="INTEGRALITE">
+       <value>complet</value>
+       <value>incomplet</value>
+      </type>
+      <type name="GENRE">
+       <value>bien_fonds.parcelle_prive</value>
+       <value>bien_fonds.DP_communal</value>
+       <value>bien_fonds.DP_cantonal</value>
+       <value>DDP.superficie</value>
+       <value>DDP.source</value>
+       <value>DDP.concession</value>
+       <value>DDP.autre</value>
+       <value>mine</value>
+      </type>
+      <type name="SUPERFICIE_TOTALE">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="09 COM">
+     <object>
+      <name>Nom de commune</name>
+      <layer>MUT_COM_COM</layer>
+      <symbol>MUT_NOM_COMMUNE</symbol>
+      <type name="NOOFS">
+       <value></value>
+      </type>
+      <type name="NOM">
+       <value></value>
+      </type>
+      <type name="NUMCOM">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="10 DIS">
+     <object>
+      <name>Nom de district</name>
+      <layer>MUT_DIS_NOM</layer>
+      <symbol>MUT_Nom_district</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="11 CAN">
+     <object>
+      <name>Nom de canton</name>
+      <layer>MUT_CAN_NOM</layer>
+      <symbol>MUT_Nom_canton</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="12 NAT">
+     <object>
+      <name>Nom de pays</name>
+      <layer>MUT_NAT_NOM</layer>
+      <symbol>MUT_Nom_pays</symbol>
+      <type name="NOM">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="13 RPL">
+     <object>
+      <name>Numéro de plan</name>
+      <layer>MUT_RPL_PLAN</layer>
+      <symbol>MUT_PLAN</symbol>
+      <type name="IDENTDN">
+       <value></value>
+      </type>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="CODEPLAN">
+       <value></value>
+      </type>
+      <type name="DOSSIERTECH">
+       <value></value>
+      </type>
+      <type name="EN_VIGUEUR">
+       <value></value>
+      </type>
+      <type name="APPROBATION">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="14 RNT">
+     <object>
+      <name>Niveau de tolérance</name>
+      <layer>MUT_RNT_NT</layer>
+      <symbol>MUT_NT</symbol>
+      <type name="IDENTDN">
+       <value></value>
+      </type>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="GENRE">
+       <value>NT1</value>
+       <value>NT2</value>
+       <value>NT3</value>
+       <value>NT4</value>
+       <value>NT5</value>
+      </type>
+      <type name="DATE">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+    <topic code="16 BAT">
+     <object>
+      <name>Adresse de bâtiment (n° de police)</name>
+      <layer>MUT_AD_NO_POLICE</layer>
+      <symbol>MUT_AD</symbol>
+      <type name="NUMERO">
+       <value></value>
+      </type>
+      <type name="BATIMENT_DE">
+       <value></value>
+      </type>
+     </object>
+    </topic>
+   </field>
+  </palette>
+ </palettes>
+</revo>

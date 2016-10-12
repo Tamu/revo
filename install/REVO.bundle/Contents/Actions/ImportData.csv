@@ -1,0 +1,11 @@
+
+#Title;Import. dans courant
+#Description;Importation de données dans le dessin courant
+#Groupe;Revo
+
+#Import;;[[Space]];*;
+
+#Zoom;extents
+#Cmd;ANNOAUTOSCALE|4|_CANNOSCALE|1:500|_CANNOSCALE|1:1000|ANNOAUTOSCALE|-4|ANNOALLVISIBLE|1
+#Cmd;regen
+

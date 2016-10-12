@@ -1,0 +1,1206 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Queries>
+    <QueryName>_MO_BF_DDP</QueryName>
+    <SQL>SELECT Biens_fonds_DDP_Geometrie.gid, Biens_fonds_DDP_Geometrie.eseq, Biens_fonds_DDP_Geometrie.etype, Biens_fonds_DDP_Geometrie.seq, Biens_fonds_DDP_Geometrie.x0, Biens_fonds_DDP_Geometrie.y0
+FROM Biens_fonds_DDP_Geometrie
+ORDER BY Biens_fonds_DDP_Geometrie.gid, Biens_fonds_DDP_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_BF_DDP_PROJ</QueryName>
+    <SQL>SELECT Biens_fonds_DDPProj_Geometrie.gid, Biens_fonds_DDPProj_Geometrie.eseq, Biens_fonds_DDPProj_Geometrie.etype, Biens_fonds_DDPProj_Geometrie.seq, Biens_fonds_DDPProj_Geometrie.x0, Biens_fonds_DDPProj_Geometrie.y0
+FROM Biens_fonds_DDPProj_Geometrie
+ORDER BY Biens_fonds_DDPProj_Geometrie.gid, Biens_fonds_DDPProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_BF_DDP+</QueryName>
+    <SQL>SELECT Biens_fonds_Mine_Geometrie.gid, Biens_fonds_Mine_Geometrie.eseq, Biens_fonds_Mine_Geometrie.etype, Biens_fonds_Mine_Geometrie.seq, Biens_fonds_Mine_Geometrie.x0, Biens_fonds_Mine_Geometrie.y0
+FROM Biens_fonds_Mine_Geometrie
+ORDER BY Biens_fonds_Mine_Geometrie.gid, Biens_fonds_Mine_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_BF_INCOMPLET</QueryName>
+    <SQL>SELECT Biens_fonds_Bien_fonds_Geometrie.gid, Biens_fonds_Bien_fonds_Geometrie.eseq, Biens_fonds_Bien_fonds_Geometrie.etype, Biens_fonds_Bien_fonds_Geometrie.seq, Biens_fonds_Bien_fonds_Geometrie.x0, Biens_fonds_Bien_fonds_Geometrie.y0
+FROM Biens_fonds_Bien_fonds_Geometrie
+ORDER BY Biens_fonds_Bien_fonds_Geometrie.gid, Biens_fonds_Bien_fonds_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_BF_NUMERO</QueryName>
+    <SQL>SELECT Biens_fonds_PosImmeuble_Ligne_auxiliaire.gid, Biens_fonds_PosImmeuble_Ligne_auxiliaire.eseq, Biens_fonds_PosImmeuble_Ligne_auxiliaire.etype, Biens_fonds_PosImmeuble_Ligne_auxiliaire.seq, Biens_fonds_PosImmeuble_Ligne_auxiliaire.x0, Biens_fonds_PosImmeuble_Ligne_auxiliaire.y0, Biens_fonds_PosImmeuble_Ligne_auxiliaire.x1, Biens_fonds_PosImmeuble_Ligne_auxiliaire.y1
+FROM Biens_fonds_PosImmeuble INNER JOIN Biens_fonds_PosImmeuble_Ligne_auxiliaire ON Biens_fonds_PosImmeuble.id = Biens_fonds_PosImmeuble_Ligne_auxiliaire.gid
+ORDER BY Biens_fonds_PosImmeuble_Ligne_auxiliaire.gid, Biens_fonds_PosImmeuble_Ligne_auxiliaire.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_BF_PROJ</QueryName>
+    <SQL>SELECT Biens_fonds_Bien_fondsProj_Geometrie.gid, Biens_fonds_Bien_fondsProj_Geometrie.eseq, Biens_fonds_Bien_fondsProj_Geometrie.etype, Biens_fonds_Bien_fondsProj_Geometrie.seq, Biens_fonds_Bien_fondsProj_Geometrie.x0, Biens_fonds_Bien_fondsProj_Geometrie.y0
+FROM Biens_fonds_Bien_fondsProj_Geometrie
+ORDER BY Biens_fonds_Bien_fondsProj_Geometrie.gid, Biens_fonds_Bien_fondsProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_BF_PROJ+</QueryName>
+    <SQL>SELECT Biens_fonds_MineProj_Geometrie.gid, Biens_fonds_MineProj_Geometrie.eseq, Biens_fonds_MineProj_Geometrie.etype, Biens_fonds_MineProj_Geometrie.seq, Biens_fonds_MineProj_Geometrie.x0, Biens_fonds_MineProj_Geometrie.y0
+FROM Biens_fonds_MineProj_Geometrie
+ORDER BY Biens_fonds_MineProj_Geometrie.gid, Biens_fonds_MineProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CAN</QueryName>
+    <SQL>SELECT Limites_canton_Partie_limite_canton_Geometrie.gid, Limites_canton_Partie_limite_canton_Geometrie.eseq, Limites_canton_Partie_limite_canton_Geometrie.etype, Limites_canton_Partie_limite_canton_Geometrie.seq, Limites_canton_Partie_limite_canton_Geometrie.x0, Limites_canton_Partie_limite_canton_Geometrie.y0
+FROM Limites_canton_Partie_limite_canton_Geometrie
+ORDER BY Limites_canton_Partie_limite_canton_Geometrie.gid, Limites_canton_Partie_limite_canton_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_COM_INCOMPLET</QueryName>
+    <SQL>SELECT Limites_commune_Limite_commune_Geometrie.gid, Limites_commune_Limite_commune_Geometrie.eseq, Limites_commune_Limite_commune_Geometrie.etype, Limites_commune_Limite_commune_Geometrie.seq, Limites_commune_Limite_commune_Geometrie.x0, Limites_commune_Limite_commune_Geometrie.y0
+FROM Limites_commune_Limite_commune_Geometrie
+ORDER BY Limites_commune_Limite_commune_Geometrie.gid, Limites_commune_Limite_commune_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_COM_PROJ</QueryName>
+    <SQL>SELECT Limites_commune_Limite_communeProj_Geometrie.gid, Limites_commune_Limite_communeProj_Geometrie.eseq, Limites_commune_Limite_communeProj_Geometrie.etype, Limites_commune_Limite_communeProj_Geometrie.seq, Limites_commune_Limite_communeProj_Geometrie.x0, Limites_commune_Limite_communeProj_Geometrie.y0
+FROM Limites_commune_Limite_communeProj_Geometrie
+ORDER BY Limites_commune_Limite_communeProj_Geometrie.gid, Limites_commune_Limite_communeProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_INCOMPLET</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS_Geometrie.gid, Couverture_du_sol_SurfaceCS_Geometrie.eseq, Couverture_du_sol_SurfaceCS_Geometrie.etype, Couverture_du_sol_SurfaceCS_Geometrie.seq, Couverture_du_sol_SurfaceCS_Geometrie.x0, Couverture_du_sol_SurfaceCS_Geometrie.y0
+FROM Couverture_du_sol_SurfaceCS_Geometrie
+ORDER BY Couverture_du_sol_SurfaceCS_Geometrie.gid, Couverture_du_sol_SurfaceCS_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_BAT</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=0))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_EAU_COURS</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=16))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_EAU_ROSELIERE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=17))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_EAU_STAGNANTE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=15))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_RD_AUTRE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=8))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_RD_AVIATION</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=5))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_RD_BASSIN</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=6))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_RD_CHFER</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=4))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_RD_ILOT</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=3))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_RD_PLACE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=7))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_RD_ROUTE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=1))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_RD_TROTTOIR</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=2))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SB_AUTRE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj_Geometrie INNER JOIN Couverture_du_sol_SurfaceCSProj ON Couverture_du_sol_SurfaceCSProj_Geometrie.gid = Couverture_du_sol_SurfaceCSProj.id
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=21))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SB_FORET</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=18))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SB_PAT_DENSE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=19))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SB_PAT_OUVERT</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=20))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SSV_AUTRE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=27))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SSV_DIVERS</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=26))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SSV_EBOULIS</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=24))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SSV_GLACIER</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=23))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SSV_GRAVIERE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=25))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SSV_ROCHER</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=22))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SV_AUTRE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=14))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SV_CHAMP</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=9))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SV_CI_AUTRE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=11))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SV_CI_VIGNE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=10))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SV_JARDIN</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=12))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_CS_PROJ_SV_TOURB</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.eseq, Couverture_du_sol_SurfaceCSProj_Geometrie.etype, Couverture_du_sol_SurfaceCSProj_Geometrie.seq, Couverture_du_sol_SurfaceCSProj_Geometrie.x0, Couverture_du_sol_SurfaceCSProj_Geometrie.y0, Couverture_du_sol_SurfaceCSProj_Geometrie.x1, Couverture_du_sol_SurfaceCSProj_Geometrie.y1
+FROM Couverture_du_sol_SurfaceCSProj INNER JOIN Couverture_du_sol_SurfaceCSProj_Geometrie ON Couverture_du_sol_SurfaceCSProj.id = Couverture_du_sol_SurfaceCSProj_Geometrie.gid
+WHERE (((Couverture_du_sol_SurfaceCSProj.Genre)=13))
+ORDER BY Couverture_du_sol_SurfaceCSProj_Geometrie.gid, Couverture_du_sol_SurfaceCSProj_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_DIS</QueryName>
+    <SQL>SELECT Limites_district_Partie_limite_district_Geometrie.gid, Limites_district_Partie_limite_district_Geometrie.eseq, Limites_district_Partie_limite_district_Geometrie.etype, Limites_district_Partie_limite_district_Geometrie.seq, Limites_district_Partie_limite_district_Geometrie.x0, Limites_district_Partie_limite_district_Geometrie.y0
+FROM Limites_district_Partie_limite_district_Geometrie
+ORDER BY Limites_district_Partie_limite_district_Geometrie.gid, Limites_district_Partie_limite_district_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_NAT</QueryName>
+    <SQL>SELECT Limites_nationales_Partie_limite_nationale_Geometrie.gid, Limites_nationales_Partie_limite_nationale_Geometrie.eseq, Limites_nationales_Partie_limite_nationale_Geometrie.etype, Limites_nationales_Partie_limite_nationale_Geometrie.seq, Limites_nationales_Partie_limite_nationale_Geometrie.x0, Limites_nationales_Partie_limite_nationale_Geometrie.y0
+FROM Limites_nationales_Partie_limite_nationale_Geometrie
+ORDER BY Limites_nationales_Partie_limite_nationale_Geometrie.gid, Limites_nationales_Partie_limite_nationale_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_NO_LIEU</QueryName>
+    <SQL>SELECT Nomenclature_Nom_de_lieu_Geometrie.gid, Nomenclature_Nom_de_lieu_Geometrie.eseq, Nomenclature_Nom_de_lieu_Geometrie.etype, Nomenclature_Nom_de_lieu_Geometrie.seq, Nomenclature_Nom_de_lieu_Geometrie.x0, Nomenclature_Nom_de_lieu_Geometrie.y0
+FROM Nomenclature_Nom_de_lieu_Geometrie
+ORDER BY Nomenclature_Nom_de_lieu_Geometrie.gid, Nomenclature_Nom_de_lieu_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_NO_LOC</QueryName>
+    <SQL>SELECT Nomenclature_Nom_local_Geometrie.gid, Nomenclature_Nom_local_Geometrie.eseq, Nomenclature_Nom_local_Geometrie.etype, Nomenclature_Nom_local_Geometrie.seq, Nomenclature_Nom_local_Geometrie.x0, Nomenclature_Nom_local_Geometrie.y0
+FROM Nomenclature_Nom_local_Geometrie
+ORDER BY Nomenclature_Nom_local_Geometrie.gid, Nomenclature_Nom_local_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODL_ARBRE_ISOLE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Element_lineaire_Geometrie INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Element_lineaire_Geometrie.gid = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Objet_divers ON Objets_divers_Element_lineaire.id = Objets_divers_Objet_divers.id WHERE Objets_divers_Objet_divers.Genre=39 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_AUTRE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Element_lineaire INNER JOIN Objets_divers_Objet_divers ON Objets_divers_Element_lineaire.Element_lineaire_de = Objets_divers_Objet_divers.id INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=45 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_AXE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=38 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODL_BAC</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=36 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_BARRAGE_AV</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=54 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_BAT_AUTRE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=4 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_BAT_DETAIL</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=2 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_BAT_MITOY</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=3 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_BERME_AV</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=51 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_BLOC</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=25 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_CHAUSSEE_AV</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=50 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_CHEMINEE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=15 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_CONDUITE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=15 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_CORDON_BOISE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq,  Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq,  Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0,  Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id =  Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON  Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=26 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_COUVERT</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=13 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_DEBARCADERE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=24 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_DIVERS_AV</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=55 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_EAU_AV</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=47 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_EAU_CANSOUT</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=5 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_ESCALIER</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=6 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_FONTAINE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=10 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_GROTTE</QueryName>
+    <SQL>
+      SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=37 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+    </SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_LIGNEHT</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Element_lineaire_Geometrie INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Element_lineaire_Geometrie.gid = Objets_divers_Element_lineaire.id INNER JOIN Objets_divers_Objet_divers ON Objets_divers_Element_lineaire.Element_lineaire_de = Objets_divers_Objet_divers.id WHERE Objets_divers_Objet_divers.Genre=29 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_MAT</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=17 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_MONUMENT</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=16 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_MUR</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=0 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_PARAVALANCHE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=21 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_PERRE_AV</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=53 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_PILIER</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=12 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_PISCINE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=43 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_PISCINE_SUPERFICIE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_surfacique_Geometrie.gid, Objets_divers_Element_surfacique_Geometrie.eseq, Objets_divers_Element_surfacique_Geometrie.etype, Objets_divers_Element_surfacique_Geometrie.seq, Objets_divers_Element_surfacique_Geometrie.x0, Objets_divers_Element_surfacique_Geometrie.y0, Objets_divers_Element_surfacique_Geometrie.x1, Objets_divers_Element_surfacique_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_surfacique ON Objets_divers_Objet_divers.id = Objets_divers_Element_surfacique.Element_surfacique_de INNER JOIN Objets_divers_Element_surfacique_Geometrie ON Objets_divers_Element_surfacique.id = Objets_divers_Element_surfacique_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=43 ORDER BY Objets_divers_Element_surfacique_Geometrie.gid, Objets_divers_Element_surfacique_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_PISCINE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_surfacique_Geometrie.gid, Objets_divers_Element_surfacique_Geometrie.eseq, Objets_divers_Element_surfacique_Geometrie.etype, Objets_divers_Element_surfacique_Geometrie.seq, Objets_divers_Element_surfacique_Geometrie.x0, Objets_divers_Element_surfacique_Geometrie.y0, Objets_divers_Element_surfacique_Geometrie.x1, Objets_divers_Element_surfacique_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_surfacique ON Objets_divers_Objet_divers.id = Objets_divers_Element_surfacique.Element_surfacique_de INNER JOIN Objets_divers_Element_surfacique_Geometrie ON Objets_divers_Element_surfacique.id = Objets_divers_Element_surfacique_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=43 ORDER BY Objets_divers_Element_surfacique_Geometrie.gid, Objets_divers_Element_surfacique_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_PONT</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=8 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_PROTRIVE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=19 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_PT_REFERENCE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=42 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_QUAI</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=9 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_QUAI_AV</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=46 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_RESERVOIR</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=11 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_ROCHER_AV</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=52 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_RU</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=27 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_RUINE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=23 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_SENTIER</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=28 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_SENTIER_AV</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=48 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_SEUIL</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=20 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_SILO</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=14 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_SKILIFT</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=35 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_SOCLE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=22 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_SOURCE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=41 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_STATUE</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1 FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid WHERE Objets_divers_Objet_divers.Genre=40 ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_ODL_TELECABINE</QueryName>
+    <SQL>SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1
+FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid
+WHERE Objets_divers_Objet_divers.Genre=33
+ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODL_TELECHANTIER</QueryName>
+    <SQL>SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1
+FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid
+WHERE Objets_divers_Objet_divers.Genre=34
+ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODL_TELEPHERIQUE</QueryName>
+    <SQL>SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1
+FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid
+WHERE Objets_divers_Objet_divers.Genre=32
+ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODL_TERRAINSPORT</QueryName>
+    <SQL>SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1
+FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid
+WHERE Objets_divers_Objet_divers.Genre=44
+ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODL_TOUR</QueryName>
+    <SQL>SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1
+FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid
+WHERE Objets_divers_Objet_divers.Genre=18
+ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODL_TROTTOIR_AV</QueryName>
+    <SQL>SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1
+FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid
+WHERE Objets_divers_Objet_divers.Genre=49
+ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODL_TUNNEL</QueryName>
+    <SQL>SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1
+FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid
+WHERE Objets_divers_Objet_divers.Genre=7
+ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODL_VOIEFERREE</QueryName>
+    <SQL>SELECT Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.eseq, Objets_divers_Element_lineaire_Geometrie.etype, Objets_divers_Element_lineaire_Geometrie.seq, Objets_divers_Element_lineaire_Geometrie.x0, Objets_divers_Element_lineaire_Geometrie.y0, Objets_divers_Element_lineaire_Geometrie.x1, Objets_divers_Element_lineaire_Geometrie.y1
+FROM Objets_divers_Objet_divers INNER JOIN Objets_divers_Element_lineaire ON Objets_divers_Objet_divers.id = Objets_divers_Element_lineaire.Element_lineaire_de INNER JOIN Objets_divers_Element_lineaire_Geometrie ON Objets_divers_Element_lineaire.id = Objets_divers_Element_lineaire_Geometrie.gid
+WHERE Objets_divers_Objet_divers.Genre=31
+ORDER BY Objets_divers_Element_lineaire_Geometrie.gid, Objets_divers_Element_lineaire_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODS_BATSOUT</QueryName>
+    <SQL>SELECT Objets_divers_Element_surfacique_Geometrie.gid, Objets_divers_Element_surfacique_Geometrie.eseq, Objets_divers_Element_surfacique_Geometrie.etype, Objets_divers_Element_surfacique_Geometrie.seq, Objets_divers_Element_surfacique_Geometrie.x0, Objets_divers_Element_surfacique_Geometrie.y0, Objets_divers_Element_surfacique_Geometrie.x1, Objets_divers_Element_surfacique_Geometrie.y1, Objets_divers_Numero_Objet.Numero AS NUMERO, [_Designation_Batiment].Nom AS DESIGNATION
+FROM Objets_divers_Element_surfacique_Geometrie INNER JOIN Objets_divers_Element_surfacique ON Objets_divers_Element_surfacique_Geometrie.id = Objets_divers_Element_surfacique.id INNER JOIN Objets_divers_Objet_divers ON Objets_divers_Element_surfacique.Element_surfacique_de = Objets_divers_Objet_divers.id LEFT JOIN Objets_divers_Numero_Objet ON Objets_divers_Objet_divers.id = Objets_divers_Numero_Objet.Numero_Objet_de LEFT JOIN _Designation_Batiment ON Objets_divers_Numero_Objet.Designation = [_Designation_Batiment].ID
+WHERE [_Designation_Batiment].Nom Is Not Null AND Objets_divers_Objet_divers.Genre=1
+ORDER BY Objets_divers_Element_surfacique_Geometrie.gid, Objets_divers_Element_surfacique_Geometrie.seq;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>_MO_ODS_COUVINDEP</QueryName>
+    <SQL>
+		SELECT Objets_divers_Element_surfacique_Geometrie.gid, Objets_divers_Element_surfacique_Geometrie.eseq, Objets_divers_Element_surfacique_Geometrie.etype, Objets_divers_Element_surfacique_Geometrie.seq, Objets_divers_Element_surfacique_Geometrie.x0, Objets_divers_Element_surfacique_Geometrie.y0, Objets_divers_Element_surfacique_Geometrie.x1, Objets_divers_Element_surfacique_Geometrie.y1, Objets_divers_Numero_Objet.Numero AS NUMERO, [_Designation_Batiment].Nom AS DESIGNATION FROM Objets_divers_Element_surfacique_Geometrie INNER JOIN Objets_divers_Element_surfacique ON Objets_divers_Element_surfacique_Geometrie.id = Objets_divers_Element_surfacique.id INNER JOIN Objets_divers_Objet_divers ON Objets_divers_Element_surfacique.Element_surfacique_de = Objets_divers_Objet_divers.id INNER JOIN Objets_divers_Numero_Objet ON Objets_divers_Objet_divers.id = Objets_divers_Numero_Objet.Numero_Objet_de LEFT JOIN _Designation_Batiment ON Objets_divers_Numero_Objet.Designation =  _Designation_Batiment.ID WHERE Objets_divers_Objet_divers.Genre=13 AND [_Designation_Batiment].Nom Is Not Null ORDER BY Objets_divers_Element_surfacique_Geometrie.gid, Objets_divers_Element_surfacique_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_RNT_INCOMPLET</QueryName>
+	<SQL>
+		SELECT RepartitionNT_Niveau_tolerance_Geometrie.gid, RepartitionNT_Niveau_tolerance_Geometrie.eseq, RepartitionNT_Niveau_tolerance_Geometrie.etype, RepartitionNT_Niveau_tolerance_Geometrie.seq, RepartitionNT_Niveau_tolerance_Geometrie.x0, RepartitionNT_Niveau_tolerance_Geometrie.y0
+		FROM RepartitionNT_Niveau_tolerance_Geometrie
+		ORDER BY RepartitionNT_Niveau_tolerance_Geometrie.gid, RepartitionNT_Niveau_tolerance_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>_MO_RPL_INCOMPLET</QueryName>
+	<SQL>SELECT Repartitions_plans_Geometrie_plan_Geometrie.gid, Repartitions_plans_Geometrie_plan_Geometrie.eseq, Repartitions_plans_Geometrie_plan_Geometrie.etype, Repartitions_plans_Geometrie_plan_Geometrie.seq, Repartitions_plans_Geometrie_plan_Geometrie.x0, Repartitions_plans_Geometrie_plan_Geometrie.y0
+		FROM Repartitions_plans_Geometrie_plan_Geometrie
+		ORDER BY Repartitions_plans_Geometrie_plan_Geometrie.gid, Repartitions_plans_Geometrie_plan_Geometrie.seq;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>+MO_BF</QueryName>
+    <SQL>SELECT Biens_fonds_Bien_fonds.Geometrie_re, Biens_fonds_Bien_fonds.Geometrie_ho, Biens_fonds_Bien_fonds.UFID, Biens_fonds_Immeuble.IdentDN, Biens_fonds_Immeuble.Numero
+FROM Biens_fonds_Bien_fonds LEFT JOIN Biens_fonds_Immeuble ON Biens_fonds_Bien_fonds.Bien_fonds_de = Biens_fonds_Immeuble.id;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_COM</QueryName>
+    <SQL>SELECT Limites_commune_Limite_commune.Geometrie_re, Limites_commune_Limite_commune.Geometrie_ho, Limites_commune_Limite_commune.UFID
+FROM Limites_commune_Limite_commune;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_BAT</QueryName>
+	  <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID, Couverture_du_sol_SurfaceCS.id, B_CS_BAT.NUMERO, B_CS_BAT.DESIGNATION
+		  FROM Couverture_du_sol_SurfaceCS LEFT JOIN B_CS_BAT ON Couverture_du_sol_SurfaceCS.id = B_CS_BAT.Numero_de_batiment_de
+		  WHERE Couverture_du_sol_SurfaceCS.Genre=0;
+		  <!--SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID, Couverture_du_sol_SurfaceCS.id,Couverture_du_sol_Numero_de_batiment.Numero,[_Designation_Batiment].Nom FROM Couverture_du_sol_SurfaceCS LEFT JOIN Couverture_du_sol_PosNumero_de_batiment ON Couverture_du_sol_SurfaceCS.id = Couverture_du_sol_Numero_de_batiment.Numero_de_batiment_de INNER JOIN Couverture_du_sol_Numero_de_batiment ON Couverture_du_sol_PosNumero_de_batiment.PosNumero_de_batiment_de = Couverture_du_sol_Numero_de_batiment.id LEFT JOIN _Designation_Batiment ON Couverture_du_sol_Numero_de_batiment.RegBL_EGID = _Designation_Batiment.ID WHERE [_Designation_Batiment].Nom Is Not Null and Couverture_du_sol_SurfaceCS.Genre=0;-->
+	  </SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_EAU_COURS</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=16;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_EAU_ROSELIERE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=17;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_EAU_STAGNANTE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=15;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_RD_AUTRE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=8;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_RD_AVIATION</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=5;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_RD_BASSIN</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=6;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_RD_CHFER</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=4;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_RD_ILOT</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=3;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_RD_PLACE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre =7;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_RD_ROUTE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=1;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_RD_TROTTOIR</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=2;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SB_AUTRE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=21;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SB_FORET</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=18;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SB_PAT_DENSE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=19;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SB_PAT_OUVERT</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=20;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SSV_AUTRE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=27;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SSV_DIVERS</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=26;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SSV_EBOULIS</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=24;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SSV_GLACIER</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=23;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SSV_GRAVIERE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=25;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SSV_ROCHER</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=22;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SV_AUTRE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=14;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SV_CHAMP</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=9;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SV_CI_AUTRE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=11;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SV_CI_VIGNE</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=10;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SV_JARDIN</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=12;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_CS_SV_TOURB</QueryName>
+    <SQL>SELECT Couverture_du_sol_SurfaceCS.Geometrie_re, Couverture_du_sol_SurfaceCS.Geometrie_ho, Couverture_du_sol_SurfaceCS.UFID
+FROM Couverture_du_sol_SurfaceCS
+WHERE Couverture_du_sol_SurfaceCS.Genre=13;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_RNT</QueryName>
+    <SQL>SELECT RepartitionNT_Niveau_tolerance.Geometrie_re, RepartitionNT_Niveau_tolerance.Geometrie_ho, RepartitionNT_Niveau_tolerance.UFID
+FROM RepartitionNT_Niveau_tolerance;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>+MO_RPL</QueryName>
+    <SQL>SELECT Repartitions_plans_Geometrie_plan.Geometrie_re, Repartitions_plans_Geometrie_plan.Geometrie_ho, Repartitions_plans_Geometrie_plan.UFID
+FROM Repartitions_plans_Geometrie_plan;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>AD</QueryName>
+    <SQL>SELECT Adresses_des_batiments_PosNumero_maison.Pos_re AS X, Adresses_des_batiments_PosNumero_maison.Pos_ho AS Y, Adresses_des_batiments_PosNumero_maison.Ori AS ORI, Adresses_des_batiments_Entree_batiment.Numero_maison AS NUMERO, Adresses_des_batiments_Entree_batiment.Entree_batiment_de AS BATIMENT_DE, Adresses_des_batiments_Entree_batiment.UFID FROM Adresses_des_batiments_PosNumero_maison INNER JOIN Adresses_des_batiments_Entree_batiment ON Adresses_des_batiments_PosNumero_maison.PosNumero_batiment_de = Adresses_des_batiments_Entree_batiment.id;
+</SQL>
+  </Queries>
+<Queries>
+    <QueryName>AD_LOCALISATION</QueryName>
+    <SQL>SELECT Adresses_des_batiments_PosNom_localisation.Pos_re AS X, Adresses_des_batiments_PosNom_localisation.Pos_ho AS Y, Adresses_des_batiments_PosNom_localisation.Ori AS ORI, Adresses_des_batiments_Nom_localisation.Texte AS TEXTE, Adresses_des_batiments_Nom_localisation.Nom_localisation_de AS NOM_DE, Adresses_des_batiments_Nom_localisation.UFID
+FROM Adresses_des_batiments_PosNom_localisation INNER JOIN Adresses_des_batiments_Nom_localisation ON Adresses_des_batiments_PosNom_localisation.PosNom_localisation_de = Adresses_des_batiments_Nom_localisation.id;
+</SQL>
+</Queries>
+<Queries>
+    <QueryName>B_CS_BAT</QueryName>
+    <SQL>SELECT Couverture_du_sol_PosNumero_de_batiment.Pos_re AS X, Couverture_du_sol_PosNumero_de_batiment.Pos_ho AS Y, Couverture_du_sol_PosNumero_de_batiment.Ori AS ORI, Couverture_du_sol_Numero_de_batiment.Numero AS NUMERO, _Designation_Batiment.Nom AS DESIGNATION, Couverture_du_sol_Numero_de_batiment.UFID AS UFID, Couverture_du_sol_Numero_de_batiment.Numero_de_batiment_de AS Numero_de_batiment_de FROM Couverture_du_sol_Numero_de_batiment INNER JOIN Couverture_du_sol_PosNumero_de_batiment ON Couverture_du_sol_Numero_de_batiment.id = Couverture_du_sol_PosNumero_de_batiment.PosNumero_de_batiment_de INNER JOIN Couverture_du_sol_Numero_de_batiment as Couverture_du_sol_Numero_de_batiment_1 ON Couverture_du_sol_Numero_de_batiment.Numero_de_batiment_de = Couverture_du_sol_Numero_de_batiment_1.Numero_de_batiment_de LEFT JOIN _Designation_Batiment ON Couverture_du_sol_Numero_de_batiment_1.Designation = _Designation_Batiment.ID WHERE _Designation_Batiment.Nom Is Not Null
+</SQL>
+</Queries>
+<Queries>
+    <QueryName>B_CS_NOM</QueryName>
+    <SQL>SELECT Couverture_du_sol_PosNom_objet.Pos_re AS X, Couverture_du_sol_PosNom_objet.Pos_ho AS Y, Couverture_du_sol_PosNom_objet.Ori AS ORI, Couverture_du_sol_Nom_objet.Nom AS NOM, Couverture_du_sol_Nom_objet.Nom_objet_de AS NOM_DE, Couverture_du_sol_Nom_objet.UFID
+FROM Couverture_du_sol_PosNom_objet INNER JOIN Couverture_du_sol_Nom_objet ON Couverture_du_sol_PosNom_objet.PosNom_objet_de = Couverture_du_sol_Nom_objet.id;
+</SQL>
+  </Queries>
+<Queries>
+    <QueryName>B_CS_PROJ_BAT</QueryName>
+    <SQL>
+		SELECT Couverture_du_sol_PosNumeroBatimentProj.Pos_re AS X, Couverture_du_sol_PosNumeroBatimentProj.Pos_ho AS Y, Couverture_du_sol_PosNumeroBatimentProj.Ori AS ORI, Couverture_du_sol_NumeroBatimentProj.Numero AS NUMERO, [_Designation_Batiment].Nom AS DESIGNATION, Couverture_du_sol_NumeroBatimentProj.UFID FROM Couverture_du_sol_PosNumeroBatimentProj INNER JOIN Couverture_du_sol_NumeroBatimentProj ON Couverture_du_sol_PosNumeroBatimentProj.PosNumeroBatimentProj_de = Couverture_du_sol_NumeroBatimentProj.id LEFT JOIN _Designation_Batiment ON Couverture_du_sol_NumeroBatimentProj.Designation = _Designation_Batiment.ID WHERE [_Designation_Batiment].Nom Is Not Null;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>B_CS_PROJ_NOM</QueryName>
+    <SQL>SELECT Couverture_du_sol_PosNomObjetProj.Pos_re AS X, Couverture_du_sol_PosNomObjetProj.Pos_ho AS Y, Couverture_du_sol_PosNomObjetProj.Ori AS ORI, Couverture_du_sol_NomObjetProj.Nom AS NOM, Couverture_du_sol_NomObjetProj.NomObjetProj_de AS NOM_DE, Couverture_du_sol_NomObjetProj.UFID
+FROM Couverture_du_sol_PosNomObjetProj INNER JOIN Couverture_du_sol_NomObjetProj ON Couverture_du_sol_PosNomObjetProj.PosNomObjetProj_de = Couverture_du_sol_NomObjetProj.id;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>B_CS_PROJ_SENS</QueryName>
+    <SQL>SELECT Couverture_du_sol_SymboleSurfaceCSProj.Pos_re AS X, Couverture_du_sol_SymboleSurfaceCSProj.Pos_ho AS Y, Couverture_du_sol_SymboleSurfaceCSProj.Ori AS ORI, Couverture_du_sol_SymboleSurfaceCSProj.UFID
+FROM Couverture_du_sol_SymboleSurfaceCSProj;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>B_CS_SENS</QueryName>
+    <SQL>SELECT Couverture_du_sol_SymboleSurfaceCS.Pos_re AS X, Couverture_du_sol_SymboleSurfaceCS.Pos_ho AS Y, Couverture_du_sol_SymboleSurfaceCS.Ori AS ORI, Couverture_du_sol_SymboleSurfaceCS.UFID
+FROM Couverture_du_sol_SymboleSurfaceCS;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>B_NO_LIEU</QueryName>
+    <SQL>SELECT Nomenclature_PosNom_de_lieu.Pos_re AS X, Nomenclature_PosNom_de_lieu.Pos_ho AS Y, Nomenclature_PosNom_de_lieu.Ori AS ORI, Nomenclature_Nom_de_lieu.Nom AS NOM, Nomenclature_Nom_de_lieu.Origine AS NOMOBJET_DE, Nomenclature_Nom_de_lieu.UFID
+FROM Nomenclature_PosNom_de_lieu INNER JOIN Nomenclature_Nom_de_lieu ON Nomenclature_PosNom_de_lieu.PosNom_de_lieu_de = Nomenclature_Nom_de_lieu.id;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>B_NO_LIEUDIT</QueryName>
+    <SQL>SELECT Nomenclature_PosLieudit.Pos_re AS X, Nomenclature_PosLieudit.Pos_ho AS Y, Nomenclature_PosLieudit.Ori AS ORI, Nomenclature_Lieudit.Nom AS NOM, Nomenclature_Lieudit.Origine AS NOMOBJET_DE, Nomenclature_Lieudit.UFID
+FROM Nomenclature_PosLieudit INNER JOIN Nomenclature_Lieudit ON Nomenclature_PosLieudit.PosLieudit_de = Nomenclature_Lieudit.id;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>B_NO_LOCAL</QueryName>
+    <SQL>SELECT Nomenclature_PosNom_local.Pos_re AS X, Nomenclature_PosNom_local.Pos_ho AS Y, Nomenclature_PosNom_local.Ori AS ORI, Nomenclature_Nom_local.Nom AS NOM, Nomenclature_Nom_local.Origine AS NOMOBJET_DE, Nomenclature_Nom_local.UFID
+FROM Nomenclature_PosNom_local INNER JOIN Nomenclature_Nom_local ON Nomenclature_PosNom_local.PosNom_local_de = Nomenclature_Nom_local.id;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>B_ODL_BAC</QueryName>
+    <SQL>SELECT Objets_divers_SymboleElement_lineaire.Pos_re AS X, Objets_divers_SymboleElement_lineaire.Pos_ho AS Y, Objets_divers_SymboleElement_lineaire.Ori AS ORI, Objets_divers_SymboleElement_lineaire.UFID
+FROM Objets_divers_SymboleElement_lineaire;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>B_ODL_BAT</QueryName>
+    <SQL>SELECT Objets_divers_PosNumero_Objet.Pos_re AS X, Objets_divers_PosNumero_Objet.Pos_ho AS Y, Objets_divers_PosNumero_Objet.Ori AS ORI, Objets_divers_Numero_Objet.Numero AS NUMERO, _Designation_Batiment.Nom AS DESIGNATION, Objets_divers_Numero_Objet.UFID FROM Objets_divers_PosNumero_Objet INNER JOIN Objets_divers_Numero_Objet ON Objets_divers_PosNumero_Objet.PosNumero_Objet_de =  Objets_divers_Numero_Objet.id INNER JOIN Objets_divers_Objet_divers ON Objets_divers_Numero_Objet.Numero_Objet_de = Objets_divers_Objet_divers.id INNER JOIN Objets_divers_Numero_Objet AS Objets_divers_Numero_Objet_1 ON Objets_divers_Numero_Objet.Numero_Objet_de = Objets_divers_Numero_Objet_1.Numero_Objet_de LEFT JOIN _Designation_Batiment ON Objets_divers_Numero_Objet_1.Designation = _Designation_Batiment.ID WHERE _Designation_Batiment.Nom Is Not Null AND Objets_divers_Objet_divers.Genre=1;
+    </SQL>
+</Queries>
+<Queries>
+    <QueryName>B_ODL_COUV</QueryName>
+    <SQL>SELECT Objets_divers_PosNumero_Objet.Pos_re AS X, Objets_divers_PosNumero_Objet.Pos_ho AS Y, Objets_divers_PosNumero_Objet.Ori AS ORI, Objets_divers_Numero_Objet.Numero AS NUMERO, _Designation_Batiment.Nom AS DESIGNATION, Objets_divers_Numero_Objet.UFID FROM Objets_divers_PosNumero_Objet INNER JOIN Objets_divers_Numero_Objet ON Objets_divers_PosNumero_Objet.PosNumero_Objet_de = Objets_divers_Numero_Objet.id INNER JOIN Objets_divers_Objet_divers ON Objets_divers_Numero_Objet.Numero_Objet_de = Objets_divers_Objet_divers.id INNER JOIN Objets_divers_Numero_Objet AS Objets_divers_Numero_Objet_1 ON Objets_divers_Numero_Objet.Numero_Objet_de = Objets_divers_Numero_Objet_1.Numero_Objet_de LEFT JOIN _Designation_Batiment ON Objets_divers_Numero_Objet_1.Designation = _Designation_Batiment.ID WHERE _Designation_Batiment.Nom Is Not Null AND Objets_divers_Objet_divers.Genre=13;
+    </SQL>
+</Queries>
+<Queries>
+    <QueryName>B_ODL_NOM</QueryName>
+    <SQL>SELECT Objets_divers_PosNom_Objet.Pos_re AS X, Objets_divers_PosNom_Objet.Pos_ho AS Y, Objets_divers_PosNom_Objet.Ori AS ORI, Objets_divers_Nom_Objet.Nom AS NOM, Objets_divers_Nom_Objet.Nom_Objet_de AS NOMOBJET_DE, Objets_divers_Nom_Objet.UFID
+FROM Objets_divers_PosNom_Objet INNER JOIN Objets_divers_Nom_Objet ON Objets_divers_PosNom_Objet.PosNom_Objet_de = Objets_divers_Nom_Objet.id;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>B_ODL_SENS</QueryName>
+    <SQL>SELECT Objets_divers_SymboleElement_surf.Pos_re AS X, Objets_divers_SymboleElement_surf.Pos_ho AS Y, Objets_divers_SymboleElement_surf.Ori AS ORI, Objets_divers_SymboleElement_surf.UFID
+FROM Objets_divers_SymboleElement_surf;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>IMMEUBLE_NUM</QueryName>
+    <SQL>SELECT Biens_fonds_PosImmeuble.Pos_re AS X, Biens_fonds_PosImmeuble.Pos_ho AS Y, Biens_fonds_PosImmeuble.Ori AS ORI, Biens_fonds_Immeuble.IdentDN AS IDENTDN, Biens_fonds_Immeuble.Numero AS NUMERO, [_Validite].Nom AS VALIDITE, [_Integralite].Nom AS INTEGRALITE, [_Genre_Immeuble].Nom AS GENRE, Biens_fonds_Immeuble.Superficie_totale AS SUPERFICIE_TOTALE, Biens_fonds_Immeuble.UFID FROM Biens_fonds_PosImmeuble INNER JOIN Biens_fonds_Immeuble ON Biens_fonds_PosImmeuble.PosImmeuble_de = Biens_fonds_Immeuble.id LEFT JOIN Biens_fonds_Bien_fonds ON Biens_fonds_Immeuble.id = Biens_fonds_Bien_fonds.id LEFT JOIN _Validite ON Biens_fonds_Immeuble.Validite = _Validite.ID LEFT JOIN _Integralite ON Biens_fonds_Immeuble.Integralite = _Integralite.ID LEFT JOIN _Genre_Immeuble ON Biens_fonds_Immeuble.Genre = _Genre_Immeuble.ID WHERE Biens_fonds_Immeuble.Genre=0 Or Biens_fonds_Immeuble.Genre=1 Or Biens_fonds_Immeuble.Genre=2;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>IMMEUBLE_NUM_DDP</QueryName>
+    <SQL>
+		SELECT Biens_fonds_PosImmeuble.Pos_re AS X, Biens_fonds_PosImmeuble.Pos_ho AS Y, Biens_fonds_PosImmeuble.Ori AS ORI, Biens_fonds_Immeuble.IdentDN AS IDENTDN, CASE WHEN substr([Biens_fonds_Immeuble].[Numero],1,1) = "(" THEN [Biens_fonds_Immeuble].[Numero] ELSE "(" || [Biens_fonds_Immeuble].[Numero] || ")" END AS NUMERO, [_Validite].Nom AS VALIDITE, [_Integralite].Nom AS INTEGRALITE, [_Genre_Immeuble].Nom AS GENRE, Biens_fonds_Immeuble.Superficie_totale AS SUPERFICIE_TOTALE, Biens_fonds_Immeuble.UFID FROM Biens_fonds_PosImmeuble INNER JOIN Biens_fonds_Immeuble ON Biens_fonds_PosImmeuble.PosImmeuble_de = Biens_fonds_Immeuble.id LEFT JOIN Biens_fonds_DDP ON Biens_fonds_Immeuble.id = Biens_fonds_DDP.DDP_de LEFT JOIN _Validite ON Biens_fonds_Immeuble.Validite = _Validite.ID LEFT JOIN _Integralite ON Biens_fonds_Immeuble.Integralite = _Integralite.ID LEFT JOIN _Genre_Immeuble ON Biens_fonds_Immeuble.Genre = _Genre_Immeuble.ID WHERE Biens_fonds_Immeuble.Genre=3 Or Biens_fonds_Immeuble.Genre=4 Or Biens_fonds_Immeuble.Genre=5 Or Biens_fonds_Immeuble.Genre=6 Or Biens_fonds_Immeuble.Genre=7;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>IMMEUBLE_NUM_DDP_PROJ</QueryName>
+    <SQL>SELECT Biens_fonds_PosImmeubleProj.Pos_re AS X, Biens_fonds_PosImmeubleProj.Pos_ho AS Y, Biens_fonds_PosImmeubleProj.Ori AS ORI, Biens_fonds_ImmeubleProj.IdentDN AS IDENTDN, CASE WHEN substr([Biens_fonds_ImmeubleProj].[Numero],1,1) = "(" THEN [Biens_fonds_ImmeubleProj].[Numero] ELSE "(" || [Biens_fonds_ImmeubleProj].[Numero] || ")" END AS NUMERO, [_Validite].Nom AS VALIDITE, [_Integralite].Nom AS INTEGRALITE, [_Genre_Immeuble].Nom AS GENRE, Biens_fonds_DDPProj.Superficie AS SUPERFICIE, Biens_fonds_DDPProj.SuperficieRF AS SUPERFICIERF, Biens_fonds_ImmeubleProj.UFID FROM Biens_fonds_PosImmeubleProj INNER JOIN Biens_fonds_ImmeubleProj ON Biens_fonds_PosImmeubleProj.PosImmeubleProj_de = Biens_fonds_ImmeubleProj.id LEFT JOIN Biens_fonds_DDPProj ON Biens_fonds_ImmeubleProj.id = Biens_fonds_DDPProj.DDPProj_de LEFT JOIN _Validite ON Biens_fonds_ImmeubleProj.Validite = _Validite.ID LEFT JOIN _Integralite ON Biens_fonds_ImmeubleProj.Integralite = _Integralite.ID LEFT JOIN _Genre_Immeuble ON Biens_fonds_ImmeubleProj.Genre = _Genre_Immeuble.ID WHERE Biens_fonds_ImmeubleProj.Genre=3 Or Biens_fonds_ImmeubleProj.Genre=4 Or Biens_fonds_ImmeubleProj.Genre=5 Or Biens_fonds_ImmeubleProj.Genre=6 Or Biens_fonds_ImmeubleProj.Genre=7;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>IMMEUBLE_NUM_PROJ</QueryName>
+    <SQL>SELECT Biens_fonds_PosImmeubleProj.Pos_re AS X, Biens_fonds_PosImmeubleProj.Pos_ho AS Y, Biens_fonds_PosImmeubleProj.Ori AS ORI, Biens_fonds_ImmeubleProj.IdentDN AS IDENTDN, Biens_fonds_ImmeubleProj.Numero AS NUMERO, [_Validite].Nom AS VALIDITE, [_Integralite].Nom AS INTEGRALITE, [_Genre_Immeuble].Nom AS GENRE, Biens_fonds_Bien_fondsProj.Superficie AS SUPERFICIE, Biens_fonds_Bien_fondsProj.SuperficieRF AS SUPERFICIERF, Biens_fonds_ImmeubleProj.UFID FROM Biens_fonds_PosImmeubleProj INNER JOIN Biens_fonds_ImmeubleProj ON Biens_fonds_PosImmeubleProj.PosImmeubleProj_de = Biens_fonds_ImmeubleProj.id LEFT JOIN Biens_fonds_Bien_fondsProj ON Biens_fonds_ImmeubleProj.id = Biens_fonds_Bien_fondsProj.Bien_fondsProj_de LEFT JOIN _Validite ON Biens_fonds_ImmeubleProj.Validite = _Validite.ID LEFT JOIN _Integralite ON Biens_fonds_ImmeubleProj.Integralite = _Integralite.ID LEFT JOIN _Genre_Immeuble ON Biens_fonds_ImmeubleProj.Genre = _Genre_Immeuble.ID WHERE Biens_fonds_ImmeubleProj.Genre=0 Or Biens_fonds_ImmeubleProj.Genre=1 Or Biens_fonds_ImmeubleProj.Genre=2;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>NOM_COMMUNE</QueryName>
+    <SQL>SELECT Limites_commune_Limite_commune.Geometrie_re AS X, Limites_commune_Limite_commune.Geometrie_ho AS Y, Limites_commune_Commune.Nom AS NOM, Limites_commune_Commune.NoOFS AS NOOFS, Limites_commune_Commune.NumCom AS NUMCOM, Limites_commune_Commune.UFID
+FROM Limites_commune_Limite_commune INNER JOIN Limites_commune_Commune ON Limites_commune_Limite_commune.Limite_commune_de = Limites_commune_Commune.id;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>NT</QueryName>
+    <SQL>SELECT RepartitionNT_PosNiveau_tolerance.Pos_re AS X, RepartitionNT_PosNiveau_tolerance.Pos_ho AS Y, RepartitionNT_PosNiveau_tolerance.Ori AS ORI, [_NT].Nom AS GENRE, RepartitionNT_Niveau_tolerance.En_vigueur AS [DATE], RepartitionNT_Niveau_tolerance.IdentDN AS IDENTDN, RepartitionNT_Niveau_tolerance.Identification AS NUMERO, RepartitionNT_Niveau_tolerance.UFID
+FROM RepartitionNT_PosNiveau_tolerance INNER JOIN RepartitionNT_Niveau_tolerance ON RepartitionNT_PosNiveau_tolerance.PosNiveau_tolerance_de = RepartitionNT_Niveau_tolerance.id LEFT JOIN _NT ON RepartitionNT_Niveau_tolerance.Genre = [_NT].ID;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>PFA1</QueryName>
+    <SQL>SELECT Points_fixesCategorie1_PFA1.Geometrie_re AS X, Points_fixesCategorie1_PFA1.Geometrie_ho AS Y, Points_fixesCategorie1_PosPFA1.Ori AS ORI, Points_fixesCategorie1_PFA1.GeomAlt AS ALTITUDE, Points_fixesCategorie1_PFA1.PrecAlt AS PRECALT, FiabAlt.Nom AS FIABALT, FiablPlan.Nom AS FIABPLAN, Points_fixesCategorie1_PFA1.PrecPlan AS PRECPLAN, Points_fixesCategorie1_PFA1.Numero AS NUMERO, Points_fixesCategorie1_PFA1.IdentDN AS IDENTDN, Points_fixesCategorie1_PFA1.UFID, FiablPlan.* FROM Points_fixesCategorie1_PosPFA1 INNER JOIN Points_fixesCategorie1_PFA1 ON Points_fixesCategorie1_PosPFA1.PosPFA1_de = Points_fixesCategorie1_PFA1.id LEFT JOIN _Oui_Non AS FiabAlt ON Points_fixesCategorie1_PFA1.FiabAlt = FiabAlt.ID LEFT JOIN _Oui_Non AS FiablPlan ON Points_fixesCategorie1_PFA1.FiabPlan = FiablPlan.ID;
+	</SQL>
+</Queries>
+  <Queries>
+    <QueryName>PFA2</QueryName>
+    <SQL>SELECT Points_fixesCategorie2_PFA2.Geometrie_re AS X, Points_fixesCategorie2_PFA2.Geometrie_ho AS Y, Points_fixesCategorie2_PosPFA2.Ori AS ORI, Points_fixesCategorie2_PFA2.GeomAlt AS ALTITUDE, FiabPlan.Nom AS FIABPLAN, FiabAlt.Nom AS FIABALT, Points_fixesCategorie2_PFA2.PrecAlt AS PRECALT, Points_fixesCategorie2_PFA2.PrecPlan AS PRECPLAN, Points_fixesCategorie2_PFA2.Numero AS NUMERO, Points_fixesCategorie2_PFA2.IdentDN AS IDENTDN, Points_fixesCategorie2_PFA2.UFID
+FROM Points_fixesCategorie2_PosPFA2 INNER JOIN Points_fixesCategorie2_PFA2 ON Points_fixesCategorie2_PosPFA2.PosPFA2_de = Points_fixesCategorie2_PFA2.id LEFT JOIN _Oui_Non AS FiabPlan ON Points_fixesCategorie2_PFA2.FiabPlan = FiabPlan.ID LEFT JOIN _Oui_Non AS FiabAlt ON Points_fixesCategorie2_PFA2.FiabAlt = FiabAlt.ID;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>PFA3</QueryName>
+    <SQL>SELECT Points_fixesCategorie3_PFA3.Geometrie_re AS X, Points_fixesCategorie3_PFA3.Geometrie_ho AS Y, Points_fixesCategorie3_PosPFA3.Ori AS ORI, Points_fixesCategorie3_PFA3.GeomAlt AS ALTITUDE, Points_fixesCategorie3_PFA3.PrecAlt AS PRECALT, FiabAlt.Nom AS FIABALT, FiabPlan.Nom AS FIABPLAN, Points_fixesCategorie3_PFA3.PrecPlan AS PRECPLAN, Points_fixesCategorie3_PFA3.Numero AS NUMERO, Points_fixesCategorie3_PFA3.IdentDN AS IDENTDN, Points_fixesCategorie3_PFA3.UFID
+FROM Points_fixesCategorie3_PosPFA3 INNER JOIN Points_fixesCategorie3_PFA3 ON Points_fixesCategorie3_PosPFA3.PosPFA3_de = Points_fixesCategorie3_PFA3.id LEFT JOIN _Oui_Non AS FiabPlan ON Points_fixesCategorie3_PFA3.FiabPlan = FiabPlan.ID LEFT JOIN _Oui_Non AS FiabAlt ON Points_fixesCategorie3_PFA3.FiabAlt = FiabAlt.ID;
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>PFP1_inaccessible</QueryName>
+    <SQL>SELECT Points_fixesCategorie1_PFP1.Geometrie_re AS X, Points_fixesCategorie1_PFP1.Geometrie_ho AS Y, Points_fixesCategorie1_PosPFP1.Ori AS ORI, Points_fixesCategorie1_PFP1.GeomAlt AS ALTITUDE, Points_fixesCategorie1_PFP1.PrecAlt AS PRECALT, [_Oui_Non].Nom AS FIABPLAN, [_Oui_Non_1].Nom AS FIABALT, Points_fixesCategorie1_PFP1.PrecPlan AS PRECPLAN, Points_fixesCategorie1_PFP1.Numero AS NUMERO, Points_fixesCategorie1_PFP1.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Accessibilite].Nom AS ACCESSIBILITE, Points_fixesCategorie1_PFP1.UFID FROM  Points_fixesCategorie1_PosPFP1 INNER JOIN Points_fixesCategorie1_PFP1 ON Points_fixesCategorie1_PosPFP1.PosPFP1_de = Points_fixesCategorie1_PFP1.id  LEFT JOIN _Oui_Non ON Points_fixesCategorie1_PFP1.FiabPlan = [_Oui_Non].ID  LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Points_fixesCategorie1_PFP1.FiabAlt = [_Oui_Non_1].ID LEFT JOIN _Accessibilite ON Points_fixesCategorie1_PFP1.Accessibilite = [_Accessibilite].ID LEFT JOIN _Materiel ON Points_fixesCategorie1_PFP1.Signe = [_Materiel].ID WHERE [_Accessibilite].Nom="inaccessible";
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>PFP1_stationnable</QueryName>
+    <SQL>SELECT Points_fixesCategorie1_PFP1.Geometrie_re AS X, Points_fixesCategorie1_PFP1.Geometrie_ho AS Y, Points_fixesCategorie1_PosPFP1.Ori AS ORI, Points_fixesCategorie1_PFP1.GeomAlt AS ALTITUDE, Points_fixesCategorie1_PFP1.PrecAlt AS PRECALT, [_Oui_Non].Nom AS FIABPLAN, [_Oui_Non_1].Nom AS FIABALT, Points_fixesCategorie1_PFP1.PrecPlan AS PRECPLAN, Points_fixesCategorie1_PFP1.Numero AS NUMERO, Points_fixesCategorie1_PFP1.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Accessibilite].Nom AS ACCESSIBILITE, Points_fixesCategorie1_PFP1.UFID
+FROM Points_fixesCategorie1_PosPFP1 INNER JOIN Points_fixesCategorie1_PFP1 ON Points_fixesCategorie1_PosPFP1.PosPFP1_de = Points_fixesCategorie1_PFP1.id LEFT JOIN _Oui_Non ON Points_fixesCategorie1_PFP1.FiabPlan = [_Oui_Non].ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Points_fixesCategorie1_PFP1.FiabAlt = [_Oui_Non_1].ID LEFT JOIN _Materiel ON Points_fixesCategorie1_PFP1.Signe = [_Materiel].ID LEFT JOIN _Accessibilite ON Points_fixesCategorie1_PFP1.Accessibilite = [_Accessibilite].ID
+WHERE [_Accessibilite].Nom="accessible";
+</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>PFP2_inaccessible</QueryName>
+    <SQL>SELECT Points_fixesCategorie2_PFP2.Geometrie_re AS X, Points_fixesCategorie2_PFP2.Geometrie_ho AS Y, Points_fixesCategorie2_PosPFP2.Ori AS ORI, Points_fixesCategorie2_PFP2.GeomAlt AS ALTITUDE, Points_fixesCategorie2_PFP2.PrecAlt AS PRECALT, [_Oui_Non].Nom AS FIABPLAN, [_Oui_Non_1].Nom AS FIABALT, Points_fixesCategorie2_PFP2.PrecPlan AS PRECPLAN, Points_fixesCategorie2_PFP2.Numero AS NUMERO, Points_fixesCategorie2_PFP2.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Accessibilite].Nom AS ACCESSIBILITE, Points_fixesCategorie2_PFP2.UFID
+		FROM Points_fixesCategorie2_PosPFP2 INNER JOIN Points_fixesCategorie2_PFP2 ON Points_fixesCategorie2_PosPFP2.PosPFP2_de = Points_fixesCategorie2_PFP2.id LEFT JOIN _Oui_Non ON Points_fixesCategorie2_PFP2.FiabPlan = [_Oui_Non].ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Points_fixesCategorie2_PFP2.FiabAlt = [_Oui_Non_1].ID LEFT JOIN _Materiel ON Points_fixesCategorie2_PFP2.Signe = [_Materiel].ID LEFT JOIN _Accessibilite ON Points_fixesCategorie2_PFP2.Accessibilite = [_Accessibilite].ID
+		WHERE [_Accessibilite].Nom="inaccessible";
+	</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>PFP2_stationnable</QueryName>
+    <SQL>SELECT Points_fixesCategorie2_PFP2.Geometrie_re AS X, Points_fixesCategorie2_PFP2.Geometrie_ho AS Y, Points_fixesCategorie2_PosPFP2.Ori AS ORI, Points_fixesCategorie2_PFP2.GeomAlt AS ALTITUDE, Points_fixesCategorie2_PFP2.PrecAlt AS PRECALT, [_Oui_Non].Nom AS FIABPLAN, [_Oui_Non_1].Nom AS FIABALT, Points_fixesCategorie2_PFP2.PrecPlan AS PRECPLAN, Points_fixesCategorie2_PFP2.Numero AS NUMERO, Points_fixesCategorie2_PFP2.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Accessibilite].Nom AS ACCESSIBILITE, Points_fixesCategorie2_PFP2.UFID
+		FROM Points_fixesCategorie2_PosPFP2 INNER JOIN Points_fixesCategorie2_PFP2 ON Points_fixesCategorie2_PosPFP2.PosPFP2_de = Points_fixesCategorie2_PFP2.id LEFT JOIN _Oui_Non ON Points_fixesCategorie2_PFP2.FiabPlan = [_Oui_Non].ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Points_fixesCategorie2_PFP2.FiabAlt = [_Oui_Non_1].ID LEFT JOIN _Materiel ON Points_fixesCategorie2_PFP2.Signe = [_Materiel].ID LEFT JOIN _Accessibilite ON Points_fixesCategorie2_PFP2.Accessibilite = [_Accessibilite].ID
+		WHERE [_Accessibilite].Nom="accessible";
+	</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>PFP3_Borne</QueryName>
+    <SQL>
+      SELECT Points_fixesCategorie3_PFP3.Geometrie_re AS X, Points_fixesCategorie3_PFP3.Geometrie_ho AS Y, Points_fixesCategorie3_PosPFP3.Ori AS ORI, Points_fixesCategorie3_PFP3.GeomAlt AS ALTITUDE, Points_fixesCategorie3_PFP3.PrecAlt AS PRECALT, _Oui_Non.Nom AS FIABPLAN, _Oui_Non_1.Nom AS FIABALT, Points_fixesCategorie3_PFP3.PrecPlan AS PRECPLAN, Points_fixesCategorie3_PFP3.Numero AS NUMERO, Points_fixesCategorie3_PFP3.IdentDN AS IDENTDN, _Materiel.Nom AS SIGNE, _Oui_Non_2.Nom AS FICHE, Points_fixesCategorie3_PFP3.UFID FROM Points_fixesCategorie3_PosPFP3 INNER JOIN Points_fixesCategorie3_PFP3 ON Points_fixesCategorie3_PosPFP3.PosPFP3_de = Points_fixesCategorie3_PFP3.id LEFT JOIN _Oui_Non ON Points_fixesCategorie3_PFP3.FiabPlan = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Points_fixesCategorie3_PFP3.FiabAlt = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Points_fixesCategorie3_PFP3.Fiche = _Oui_Non_2.ID LEFT JOIN _Materiel ON Points_fixesCategorie3_PFP3.Signe = _Materiel.ID WHERE Points_fixesCategorie3_PFP3.Signe=0 Or Points_fixesCategorie3_PFP3.Signe=1;
+    </SQL>
+</Queries>
+<Queries>
+    <QueryName>PFP3_Cheville</QueryName>
+    <SQL>SELECT Points_fixesCategorie3_PFP3.Geometrie_re AS X, Points_fixesCategorie3_PFP3.Geometrie_ho AS Y, Points_fixesCategorie3_PosPFP3.Ori AS ORI, Points_fixesCategorie3_PFP3.GeomAlt AS ALTITUDE, Points_fixesCategorie3_PFP3.PrecAlt AS PRECALT, [_Oui_Non].Nom AS FIABPLAN, [_Oui_Non_1].Nom AS FIABALT, Points_fixesCategorie3_PFP3.PrecPlan AS PRECPLAN, Points_fixesCategorie3_PFP3.Numero AS NUMERO, Points_fixesCategorie3_PFP3.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Oui_Non_2].Nom AS FICHE, Points_fixesCategorie3_PFP3.UFID FROM Points_fixesCategorie3_PosPFP3 INNER JOIN Points_fixesCategorie3_PFP3 ON Points_fixesCategorie3_PosPFP3.PosPFP3_de = Points_fixesCategorie3_PFP3.id LEFT JOIN _Oui_Non ON Points_fixesCategorie3_PFP3.FiabPlan = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Points_fixesCategorie3_PFP3.FiabAlt = _Oui_Non_1 .ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Points_fixesCategorie3_PFP3.Fiche = _Oui_Non_2.ID LEFT JOIN _Materiel ON Points_fixesCategorie3_PFP3.Signe = _Materiel.ID WHERE Points_fixesCategorie3_PFP3.Signe=2;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>PFP3_Croix</QueryName>
+    <SQL>SELECT Points_fixesCategorie3_PFP3.Geometrie_re AS X, Points_fixesCategorie3_PFP3.Geometrie_ho AS Y, Points_fixesCategorie3_PosPFP3.Ori AS ORI, Points_fixesCategorie3_PFP3.GeomAlt AS ALTITUDE, Points_fixesCategorie3_PFP3.PrecAlt AS PRECALT, [_Oui_Non].Nom AS FIABPLAN, [_Oui_Non_1].Nom AS FIABALT, Points_fixesCategorie3_PFP3.PrecPlan AS PRECPLAN, Points_fixesCategorie3_PFP3.Numero AS NUMERO, Points_fixesCategorie3_PFP3.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Oui_Non_2].Nom AS FICHE, Points_fixesCategorie3_PFP3.UFID FROM Points_fixesCategorie3_PosPFP3 INNER JOIN Points_fixesCategorie3_PFP3 ON  Points_fixesCategorie3_PosPFP3.PosPFP3_de = Points_fixesCategorie3_PFP3.id LEFT JOIN _Oui_Non ON Points_fixesCategorie3_PFP3.FiabPlan = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Points_fixesCategorie3_PFP3.FiabAlt = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Points_fixesCategorie3_PFP3.Fiche = _Oui_Non_2.ID LEFT JOIN _Materiel ON Points_fixesCategorie3_PFP3.Signe = _Materiel.ID WHERE Points_fixesCategorie3_PFP3.Signe=5;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>PFP3_Pieu</QueryName>
+    <SQL>SELECT Points_fixesCategorie3_PFP3.Geometrie_re AS X, Points_fixesCategorie3_PFP3.Geometrie_ho AS Y, Points_fixesCategorie3_PosPFP3.Ori AS ORI, Points_fixesCategorie3_PFP3.GeomAlt AS ALTITUDE, Points_fixesCategorie3_PFP3.PrecAlt AS PRECALT, [_Oui_Non].Nom AS FIABPLAN, [_Oui_Non_1].Nom AS FIABALT, Points_fixesCategorie3_PFP3.PrecPlan AS PRECPLAN, Points_fixesCategorie3_PFP3.Numero AS NUMERO, Points_fixesCategorie3_PFP3.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Oui_Non_2].Nom AS FICHE, Points_fixesCategorie3_PFP3.UFID FROM Points_fixesCategorie3_PosPFP3 INNER JOIN Points_fixesCategorie3_PFP3 ON Points_fixesCategorie3_PosPFP3.PosPFP3_de = Points_fixesCategorie3_PFP3.id LEFT JOIN _Oui_Non ON Points_fixesCategorie3_PFP3.FiabPlan = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Points_fixesCategorie3_PFP3.FiabAlt = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Points_fixesCategorie3_PFP3.Fiche = _Oui_Non_2.ID LEFT JOIN _Materiel ON Points_fixesCategorie3_PFP3.Signe = _Materiel.ID WHERE Points_fixesCategorie3_PFP3.Signe=3 Or Points_fixesCategorie3_PFP3.Signe=4;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>PLAN</QueryName>
+    <SQL>SELECT Repartitions_plans_Posplan.Pos_re AS X, Repartitions_plans_Posplan.Pos_ho AS Y, Repartitions_plans_Posplan.Ori AS ORI, Repartitions_plans_Plan.Approbation_DM AS APPROBATION, Repartitions_plans_Plan.En_vigueur AS EN_VIGUEUR, Repartitions_plans_Plan.IdentDN AS IDENTDN, Repartitions_plans_Plan.Numero AS NUMERO, Repartitions_plans_Plan.CodePlan AS CODEPLAN, Repartitions_plans_Plan.DossierTech AS DOSSIERTECH, Repartitions_plans_Plan.UFID
+		FROM Repartitions_plans_Posplan INNER JOIN Repartitions_plans_Plan ON Repartitions_plans_Posplan.Posplan_de = Repartitions_plans_Plan.id;
+	</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>Pts_BF_Borne</QueryName>
+    <SQL>SELECT Biens_fonds_Point_limite.Geometrie_re AS X, Biens_fonds_Point_limite.Geometrie_ho AS Y, Biens_fonds_PosPoint_limite.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Biens_fonds_Point_limite.PrecPlan AS PRECPLAN, Biens_fonds_Point_limite.Identification AS NUMERO, Biens_fonds_Point_limite.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS ANC_BORNE_SPECIAL, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Biens_fonds_Point_limite.UFID FROM Biens_fonds_PosPoint_limite INNER JOIN Biens_fonds_Point_limite ON Biens_fonds_PosPoint_limite.PosPoint_limite_de = Biens_fonds_Point_limite.id LEFT JOIN _Oui_Non ON Biens_fonds_Point_limite.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Biens_fonds_Point_limite.Anc_borne_speciale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Biens_fonds_Point_limite.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Biens_fonds_Point_limite.Signe = _Materiel.ID WHERE Biens_fonds_Point_limite.Signe=0 Or Biens_fonds_Point_limite.Signe=1;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>Pts_BF_Cheville</QueryName>
+    <SQL>SELECT Biens_fonds_Point_limite.Geometrie_re AS X, Biens_fonds_Point_limite.Geometrie_ho AS Y, Biens_fonds_PosPoint_limite.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Biens_fonds_Point_limite.PrecPlan AS PRECPLAN, Biens_fonds_Point_limite.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS ANC_BORNE_SPECIAL, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Biens_fonds_Point_limite.UFID, Biens_fonds_Point_limite.Identification AS NUMERO FROM Biens_fonds_PosPoint_limite INNER JOIN Biens_fonds_Point_limite ON Biens_fonds_PosPoint_limite.PosPoint_limite_de = Biens_fonds_Point_limite.id LEFT JOIN _Oui_Non ON Biens_fonds_Point_limite.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Biens_fonds_Point_limite.Anc_borne_speciale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Biens_fonds_Point_limite.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Biens_fonds_Point_limite.Signe = _Materiel.ID WHERE Biens_fonds_Point_limite.Signe=2;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>Pts_BF_Croix</QueryName>
+    <SQL>SELECT Biens_fonds_Point_limite.Geometrie_re AS X, Biens_fonds_Point_limite.Geometrie_ho AS Y, Biens_fonds_PosPoint_limite.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Biens_fonds_Point_limite.PrecPlan AS PRECPLAN, Biens_fonds_Point_limite.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS ANC_BORNE_SPECIAL, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Biens_fonds_Point_limite.UFID, Biens_fonds_Point_limite.Identification AS NUMERO FROM Biens_fonds_PosPoint_limite INNER JOIN Biens_fonds_Point_limite ON Biens_fonds_PosPoint_limite.PosPoint_limite_de = Biens_fonds_Point_limite.id LEFT JOIN _Oui_Non ON Biens_fonds_Point_limite.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Biens_fonds_Point_limite.Anc_borne_speciale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Biens_fonds_Point_limite.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Biens_fonds_Point_limite.Signe = _Materiel.ID WHERE Biens_fonds_Point_limite.Signe=5;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>Pts_BF_Non_mate_defini</QueryName>
+    <SQL>SELECT Biens_fonds_Point_limite.Geometrie_re AS X, Biens_fonds_Point_limite.Geometrie_ho AS Y, Biens_fonds_PosPoint_limite.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Biens_fonds_Point_limite.PrecPlan AS PRECPLAN, Biens_fonds_Point_limite.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS ANC_BORNE_SPECIAL, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Biens_fonds_Point_limite.UFID, Biens_fonds_Point_limite.Identification AS NUMERO FROM Biens_fonds_PosPoint_limite INNER JOIN Biens_fonds_Point_limite ON Biens_fonds_PosPoint_limite.PosPoint_limite_de = Biens_fonds_Point_limite.id LEFT JOIN _Oui_Non ON Biens_fonds_Point_limite.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Biens_fonds_Point_limite.Anc_borne_speciale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Biens_fonds_Point_limite.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Biens_fonds_Point_limite.Signe = _Materiel.ID WHERE Biens_fonds_Point_limite.Signe=6 AND Biens_fonds_Point_limite.Defini_exactement=0;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>Pts_BF_Non_mate_nondefini</QueryName>
+    <SQL>SELECT Biens_fonds_Point_limite.Geometrie_re AS X, Biens_fonds_Point_limite.Geometrie_ho AS Y, Biens_fonds_PosPoint_limite.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Biens_fonds_Point_limite.PrecPlan AS PRECPLAN, Biens_fonds_Point_limite.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS ANC_BORNE_SPECIAL, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Biens_fonds_Point_limite.UFID, Biens_fonds_Point_limite.Identification AS NUMERO FROM Biens_fonds_PosPoint_limite INNER JOIN Biens_fonds_Point_limite ON Biens_fonds_PosPoint_limite.PosPoint_limite_de = Biens_fonds_Point_limite.id LEFT JOIN _Oui_Non ON Biens_fonds_Point_limite.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Biens_fonds_Point_limite.Anc_borne_speciale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Biens_fonds_Point_limite.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Biens_fonds_Point_limite.Signe = _Materiel.ID WHERE Biens_fonds_Point_limite.Signe=6 AND Biens_fonds_Point_limite.Defini_exactement=1;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>Pts_BF_Pieu</QueryName>
+    <SQL>SELECT Biens_fonds_Point_limite.Geometrie_re AS X, Biens_fonds_Point_limite.Geometrie_ho AS Y, Biens_fonds_PosPoint_limite.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Biens_fonds_Point_limite.PrecPlan AS PRECPLAN, Biens_fonds_Point_limite.IdentDN AS IDENTDN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS ANC_BORNE_SPECIAL, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Biens_fonds_Point_limite.UFID, Biens_fonds_Point_limite.Identification AS NUMERO FROM Biens_fonds_PosPoint_limite INNER JOIN Biens_fonds_Point_limite ON Biens_fonds_PosPoint_limite.PosPoint_limite_de = Biens_fonds_Point_limite.id LEFT JOIN _Oui_Non ON Biens_fonds_Point_limite.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Biens_fonds_Point_limite.Anc_borne_speciale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Biens_fonds_Point_limite.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Biens_fonds_Point_limite.Signe = _Materiel.ID WHERE Biens_fonds_Point_limite.Signe=4 Or Biens_fonds_Point_limite.Signe=3;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>Pts_COM_Borne</QueryName>
+    <SQL>SELECT Limites_commune_Point_limite_ter.Geometrie_re AS X, Limites_commune_Point_limite_ter.Geometrie_ho AS Y, Limites_commune_PosPoint_limite_ter.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Limites_commune_Point_limite_ter.PrecPlan AS PRECPLAN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS BORNE_TERRITORIALE, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Limites_commune_Point_limite_ter.Identification AS NUMERO, Limites_commune_Mise_a_jourCOM.IdentDN AS IDENTDN, Limites_commune_Point_limite_ter.UFID FROM Limites_commune_Point_limite_ter INNER JOIN Limites_commune_PosPoint_limite_ter ON Limites_commune_Point_limite_ter.id = Limites_commune_PosPoint_limite_ter.PosPoint_limite_ter_de INNER JOIN Limites_commune_Mise_a_jourCOM ON Limites_commune_Point_limite_ter.Origine = Limites_commune_Mise_a_jourCOM.id LEFT JOIN _Oui_Non ON Limites_commune_Point_limite_ter.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON  Limites_commune_Point_limite_ter.Borne_territoriale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Limites_commune_Point_limite_ter.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Limites_commune_Point_limite_ter.Signe = _Materiel.ID WHERE Limites_commune_Point_limite_ter.Signe=0 Or Limites_commune_Point_limite_ter.Signe=1;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>Pts_COM_Cheville</QueryName>
+    <SQL>SELECT Limites_commune_Point_limite_ter.Geometrie_re AS X, Limites_commune_Point_limite_ter.Geometrie_ho AS Y, Limites_commune_PosPoint_limite_ter.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Limites_commune_Point_limite_ter.PrecPlan AS PRECPLAN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS BORNE_TERRITORIALE, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Limites_commune_Point_limite_ter.Identification AS NUMERO, Limites_commune_Mise_a_jourCOM.IdentDN AS IDENTDN, Limites_commune_Point_limite_ter.UFID FROM Limites_commune_Point_limite_ter INNER JOIN Limites_commune_PosPoint_limite_ter ON Limites_commune_Point_limite_ter.id = Limites_commune_PosPoint_limite_ter.PosPoint_limite_ter_de INNER JOIN Limites_commune_Mise_a_jourCOM ON Limites_commune_Point_limite_ter.id = Limites_commune_Mise_a_jourCOM.id LEFT JOIN _Oui_Non ON Limites_commune_Point_limite_ter.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Limites_commune_Point_limite_ter.Borne_territoriale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Limites_commune_Point_limite_ter.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Limites_commune_Point_limite_ter.Signe = _Materiel.ID WHERE Limites_commune_Point_limite_ter.Signe=2;
+	</SQL>
+</Queries>
+<Queries>
+	<QueryName>Pts_COM_Croix</QueryName>
+    <SQL>SELECT Limites_commune_Point_limite_ter.Geometrie_re AS X, Limites_commune_Point_limite_ter.Geometrie_ho AS Y, Limites_commune_PosPoint_limite_ter.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Limites_commune_Point_limite_ter.PrecPlan AS PRECPLAN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS BORNE_TERRITORIALE, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Limites_commune_Point_limite_ter.Identification AS NUMERO, Limites_commune_Mise_a_jourCOM.IdentDN AS IDENTDN, Limites_commune_Point_limite_ter.UFID FROM Limites_commune_Point_limite_ter INNER JOIN Limites_commune_PosPoint_limite_ter ON Limites_commune_Point_limite_ter.id = Limites_commune_PosPoint_limite_ter.PosPoint_limite_ter_de INNER JOIN Limites_commune_Mise_a_jourCOM ON Limites_commune_Point_limite_ter.Origine = Limites_commune_Mise_a_jourCOM.id LEFT JOIN _Oui_Non ON Limites_commune_Point_limite_ter.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Limites_commune_Point_limite_ter.Borne_territoriale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Limites_commune_Point_limite_ter.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Limites_commune_Point_limite_ter.Signe = _Materiel.ID WHERE Limites_commune_Point_limite_ter.Signe=5;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>Pts_COM_Non_mate_defini</QueryName>
+    <SQL>SELECT Limites_commune_Point_limite_ter.Geometrie_re AS X, Limites_commune_Point_limite_ter.Geometrie_ho AS Y, Limites_commune_PosPoint_limite_ter.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Limites_commune_Point_limite_ter.PrecPlan AS PRECPLAN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS BORNE_TERRITORIALE, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Limites_commune_Point_limite_ter.Identification AS NUMERO,  Limites_commune_Mise_a_jourCOM.IdentDN AS IDENTDN,  Limites_commune_Point_limite_ter.UFID FROM Limites_commune_Point_limite_ter INNER JOIN Limites_commune_PosPoint_limite_ter ON Limites_commune_Point_limite_ter.id = Limites_commune_PosPoint_limite_ter.PosPoint_limite_ter_de INNER JOIN Limites_commune_Mise_a_jourCOM ON Limites_commune_Point_limite_ter.Origine = Limites_commune_Mise_a_jourCOM.id LEFT JOIN _Oui_Non ON Limites_commune_Point_limite_ter.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Limites_commune_Point_limite_ter.Borne_territoriale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Limites_commune_Point_limite_ter.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Limites_commune_Point_limite_ter.Signe = _Materiel.ID WHERE Limites_commune_Point_limite_ter.Signe=5 AND Limites_commune_Point_limite_ter.Defini_exactement=0;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>Pts_COM_Non_mate_nondefini</QueryName>
+    <SQL>SELECT Limites_commune_Point_limite_ter.Geometrie_re AS X, Limites_commune_Point_limite_ter.Geometrie_ho AS Y, Limites_commune_PosPoint_limite_ter.Ori AS ORI, Limites_commune_Point_limite_ter.FiabPlan AS FIABPLAN, Limites_commune_Point_limite_ter.PrecPlan AS PRECPLAN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS BORNE_TERRITORIALE, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Limites_commune_Point_limite_ter.Identification AS NUMERO, Limites_commune_Mise_a_jourCOM.IdentDN AS IDENTDN, Limites_commune_Point_limite_ter.UFID FROM Limites_commune_Point_limite_ter INNER JOIN Limites_commune_PosPoint_limite_ter ON Limites_commune_Point_limite_ter.id = Limites_commune_PosPoint_limite_ter.PosPoint_limite_ter_de INNER JOIN Limites_commune_Mise_a_jourCOM ON Limites_commune_Point_limite_ter.Origine =  Limites_commune_Mise_a_jourCOM.id LEFT JOIN _Oui_Non ON Limites_commune_Point_limite_ter.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON  Limites_commune_Point_limite_ter.Borne_territoriale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON  Limites_commune_Point_limite_ter.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Limites_commune_Point_limite_ter.Signe = _Materiel.ID WHERE Limites_commune_Point_limite_ter.Signe=5 AND Limites_commune_Point_limite_ter.Defini_exactement=1;
+	</SQL>
+  </Queries>
+  <Queries>
+    <QueryName>Pts_COM_Pieu</QueryName>
+    <SQL>
+		SELECT Limites_commune_Point_limite_ter.Geometrie_re AS X, Limites_commune_Point_limite_ter.Geometrie_ho AS Y, Limites_commune_PosPoint_limite_ter.Ori AS ORI, [_Oui_Non_2].Nom AS FIABPLAN, Limites_commune_Point_limite_ter.PrecPlan AS PRECPLAN, [_Materiel].Nom AS SIGNE, [_Oui_Non_1].Nom AS BORNE_TERRITORIALE, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Limites_commune_Point_limite_ter.Identification AS NUMERO, Limites_commune_Mise_a_jourCOM.IdentDN AS IDENTDN, Limites_commune_Point_limite_ter.UFID FROM Limites_commune_Point_limite_ter INNER JOIN Limites_commune_PosPoint_limite_ter ON Limites_commune_Point_limite_ter.id = Limites_commune_PosPoint_limite_ter.PosPoint_limite_ter_de INNER JOIN Limites_commune_Mise_a_jourCOM ON Limites_commune_Point_limite_ter.Origine = Limites_commune_Point_limite_ter.id LEFT JOIN _Oui_Non ON Limites_commune_Point_limite_ter.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Limites_commune_Point_limite_ter.Borne_territoriale = _Oui_Non_1.ID LEFT JOIN _Oui_Non AS _Oui_Non_2 ON Limites_commune_Point_limite_ter.FiabPlan = _Oui_Non_2.ID LEFT JOIN _Materiel ON Limites_commune_Point_limite_ter.Signe = _Materiel.ID WHERE Limites_commune_Point_limite_ter.Signe=3 Or Limites_commune_Point_limite_ter.Signe=4;
+	</SQL>
+</Queries>
+<Queries>
+    <QueryName>PTS_CS</QueryName>
+    <SQL>SELECT Couverture_du_sol_Point_particulier.Geometrie_re AS X, Couverture_du_sol_Point_particulier.Geometrie_ho AS Y, Couverture_du_sol_PosPoint_particulier.Ori AS ORI, [_Oui_Non_1].Nom AS FIABPLAN, Couverture_du_sol_Point_particulier.PrecPlan AS PRECPLAN, Couverture_du_sol_Point_particulier.IdentDN AS IDENTDN, Couverture_du_sol_Point_particulier.Identification AS NUMERO, [_Oui_Non].Nom AS DEFINI_EXACTEMENT,  Couverture_du_sol_Point_particulier.UFID FROM Couverture_du_sol_Point_particulier INNER JOIN Couverture_du_sol_PosPoint_particulier ON Couverture_du_sol_Point_particulier.id =  Couverture_du_sol_PosPoint_particulier.PosPoint_particulier_de LEFT JOIN _Oui_Non ON Couverture_du_sol_Point_particulier.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Couverture_du_sol_Point_particulier.FiabPlan = _Oui_Non_1.ID;
+	</SQL>
+</Queries>
+  <Queries>
+    <QueryName>PTS_OD</QueryName>
+    <SQL>SELECT Objets_divers_Point_particulier.Geometrie_re AS X, Objets_divers_Point_particulier.Geometrie_ho AS Y, Objets_divers_PosPoint_particulier.Ori AS ORI, [_Oui_Non_1].Nom AS FIABPLAN, Objets_divers_Point_particulier.PrecPlan AS PRECPLAN, Objets_divers_Point_particulier.IdentDN AS IDENTDN, Objets_divers_Point_particulier.Identification AS NUMERO, [_Oui_Non].Nom AS DEFINI_EXACTEMENT, Objets_divers_Point_particulier.UFID FROM Objets_divers_Point_particulier INNER JOIN Objets_divers_PosPoint_particulier ON Objets_divers_Point_particulier.id = Objets_divers_PosPoint_particulier.PosPoint_particulier_de LEFT JOIN _Oui_Non ON Objets_divers_Point_particulier.Defini_exactement = _Oui_Non.ID LEFT JOIN _Oui_Non AS _Oui_Non_1 ON Objets_divers_Point_particulier.FiabPlan = _Oui_Non_1.ID;
+	</SQL>
+</Queries>
+</NewDataSet>
