@@ -34,5 +34,5 @@ La première application métier pour l'importation de données Interlis MD.01-M
 - insertion des blocs et textes de la BDCO (n°parcelle, n°ECA, adresse, nom local, etc...)
 
 ## Configuration requise
-- AutoCAD ou produit verticals, dès 2010 (les versions LT ne sont pas supportées par REVO)
+- AutoCAD ou produit verticals, dès 2014 (les versions LT ne sont pas supportées par REVO)
 - tout matériel supportant les logiciels Autodesk est compatible avec le plugin REVO
