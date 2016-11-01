@@ -297,13 +297,6 @@
       <Link>VB\frmState.vb</Link>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="..\..\R20_x64\Revo\VB\frmSupport.Designer.vb">
-      <Link>VB\frmSupport.Designer.vb</Link>
-    </Compile>
-    <Compile Include="..\..\R20_x64\Revo\VB\frmSupport.vb">
-      <Link>VB\frmSupport.vb</Link>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="..\..\R20_x64\Revo\VB\frmWait.Designer.vb">
       <Link>VB\frmWait.Designer.vb</Link>
     </Compile>
@@ -443,9 +436,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\R20_x64\Revo\VB\frmState.resx">
       <Link>VB\frmState.resx</Link>
-    </EmbeddedResource>
-    <EmbeddedResource Include="..\..\R20_x64\Revo\VB\frmSupport.resx">
-      <Link>VB\frmSupport.resx</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\R20_x64\Revo\VB\frmWait.resx">
       <Link>VB\frmWait.resx</Link>
