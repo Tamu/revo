@@ -36,3 +36,6 @@ La première application métier pour l'importation de données Interlis MD.01-M
 ## Configuration requise
 - AutoCAD ou produit verticals, dès 2014 (les versions LT ne sont pas supportées par REVO)
 - tout matériel supportant les logiciels Autodesk est compatible avec le plugin REVO
+
+# Support et garantie
+Aucune support n'est apporté par mail ou téléphone. Le support est uniquement effectué de manière volontaire par la communauté des développeurs. Les développeurs sauraient être tenues pour responsables des dommages matériels ou immatériels qui pourraient être causés par l'utilisation du logiciel ou par des problèmes techniques ainsi que d'un résultat effectué par le logiciel.
