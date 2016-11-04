@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <update>
-	<version>3000</version>
+	<version>1000</version>
 	<file>https://raw.githubusercontent.com/Tamu/revo/master/install/revo-update.exe</file>
 	<filex64>https://raw.githubusercontent.com/Tamu/revo/master/install/revo-update.exe</filex64>
 </update>
