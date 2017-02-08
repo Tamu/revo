@@ -5,11 +5,6 @@ La première application métier pour l'importation de données Interlis MD.01-M
 
 Voir la documentation dans le wiki :  https://github.com/tamu/revo/wiki
 
-# Procédure d'installation:
-1. Télécharger l'installateur sur la page du wiki
-2. Lancer l'installateur et suivre les étapes décrites
-3. Lancer AutoCAD puis, dans le ruban "REVO"
-
 # Fonctionnalités du plugin REVO
 ## Généralités
 - importation des données MD.01-MO-VD Interlis en 1 clic
