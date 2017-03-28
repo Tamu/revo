@@ -5,6 +5,9 @@ La première application métier pour l'importation de données Interlis MD.01-M
 
 Voir la documentation dans le wiki :  https://github.com/tamu/revo/wiki
 
+Information : Pour les versions AutoCAD plus ancienne voir la branch 'old-AutoCAD-2010-2014'. Selon concernant les versions 
+2010 R18.0, 2011 R18.2, 2012 R18.2, 2013 R19.0, 2014 R19.1.
+
 # Fonctionnalités du plugin REVO
 ## Généralités
 - importation des données MD.01-MO-VD Interlis en 1 clic
