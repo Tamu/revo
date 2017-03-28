@@ -568,7 +568,8 @@
   <PropertyGroup>
     <PostBuildEvent>copy "$(ProjectDir)bin\Release\plugin.dll" "$(SolutionDir)install\REVO.bundle\Contents\Windows-$(Platform)\plugin15.dll"
 copy "$(ProjectDir)bin\Release\plugin.dll" "$(SolutionDir)install\REVO.bundle\Contents\Windows-$(Platform)\plugin16.dll"
-copy "$(ProjectDir)bin\Release\plugin.dll" "$(SolutionDir)install\REVO.bundle\Contents\Windows-$(Platform)\plugin17.dll"</PostBuildEvent>
+copy "$(ProjectDir)bin\Release\plugin.dll" "$(SolutionDir)install\REVO.bundle\Contents\Windows-$(Platform)\plugin17.dll"
+copy "$(ProjectDir)bin\Release\plugin.dll" "$(SolutionDir)install\REVO.bundle\Contents\Windows-$(Platform)\plugin18.dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
