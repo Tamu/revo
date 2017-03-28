@@ -351,8 +351,6 @@ Namespace Revo
             Dim Conn As New Revo.connect
             If CDbl(Ass.SyncProfilAcad) = 1 Then Conn.RevoUpdateProfile()
 
-            'Mise à jour
-            If Revo.MyCommands.REVOprofil Like "REVO*" Then CheckUpdate() 'Désactiver pour les package non REVO
 
 
         End Sub

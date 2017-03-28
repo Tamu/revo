@@ -2442,7 +2442,7 @@ Rotation180:
                                     pathXY += Math.Round(Poly.GetPoint2dAt(i).X, 3) & "," & Math.Round(Poly.GetPoint2dAt(i).Y, 3)
                                 Next
 
-                                Description = "Longueur : " & Math.Round(Poly.Length, 2) & " m"
+                                Description = "Longueur : " & Math.Round(Poly.Length, 2) & " m" & "###" & "Aire : " & Math.Round(Poly.Area, 2) & " m2"
                                 If Poly.NumberOfVertices < 3 Then ShapeValide = 1
 
                                 Textes += (Project & "###" & Layer & "###" & Num & "###" & Description & "###" & pathXY & "###" & ShapeValide) & vbCrLf
