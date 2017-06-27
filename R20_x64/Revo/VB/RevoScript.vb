@@ -1716,110 +1716,131 @@ Namespace Revo
                     End If
                 End If
 
+
+
+                If Mid(PSprop(0), 1, 1) = "<" Then 'Delete Layouts
+                    PSprop(0) = PSprop(0).Replace("<", "")
+                    
+                    Using tr As Transaction = ed.Document.TransactionManager.StartTransaction()
+                        For Each Lay As AcadLayout In CollLayouts
+                            Try
+                                If Lay.Name Like PSprop(0) Then
+                                    LayoutManager.Current.DeleteLayout(Lay.Name)
+                                End If
+                            Catch
+                                Connect.RevoLog(Connect.DateLog & "Cmd PS" & vbTab & False & vbTab & "Error delete : " & Lay.Name)
+                            End Try
+                        Next
+                        tr.Commit()
+                    End Using
+
+                End If
+
+
                 If TestTemplateExist = True Then
 
-                    'Renommer et Modifier la présentation 
-                    Dim lm As LayoutManager = LayoutManager.Current
-                    For Each lay As AcadLayout In CollLayouts
-                        Try
-                            If lay.Name Like Replace(PSprop(0), ">", "", 1, 1) Then
-                                If Mid(PSprop(0), 1, 1) <> ">" Then
-                                    If lm.CurrentLayout <> lay.Name Then lm.CurrentLayout = lay.Name
-                                End If
-
-                                If PSprop(1) <> Nothing Then '   1   Name = "New name"
-                                    If LayoutNameExist(CollLayouts, PSprop(1)) Then
-                                        Connect.RevoLog(Connect.DateLog & "Cmd PS" & vbTab & False & vbTab & "Error rename layout3: " & lay.Layout.Name)
-                                    Else
-                                        lay.Layout.Name = PSprop(1)
+                        'Renommer et Modifier la présentation 
+                        Dim lm As LayoutManager = LayoutManager.Current
+                        For Each lay As AcadLayout In CollLayouts
+                            Try
+                                If lay.Name Like Replace(PSprop(0), ">", "", 1, 1) Then
+                                    If Mid(PSprop(0), 1, 1) <> ">" Then
+                                        If lm.CurrentLayout <> lay.Name Then lm.CurrentLayout = lay.Name
                                     End If
-                                End If
 
-                                If PSprop(5) <> Nothing Then '   5   WinRotation = dbl (défault degré ou g = grade)
-                                    Try
-                                        Dim WinRot As Double = 0
-                                        If InStr(PSprop(5).ToLower, "g") <> 0 Then ' = grade
-                                            WinRot = CDbl(Replace(PSprop(5), "g", ""))
-                                            ed.SwitchToModelSpace()
-                                            cmdCmd("#Cmd;_UCS|Z|" & WinRot & "|_plan|_c")
-                                            ed.SwitchToPaperSpace()
-                                        Else ' défault degré
-                                            WinRot = CDbl(PSprop(5))
-                                            ed.SwitchToModelSpace()
-                                            cmdCmd("#Cmd;_UCS|Z|" & WinRot & "|_plan|_c")
-                                            ed.SwitchToPaperSpace()
-                                        End If
-
-                                    Catch
-                                    End Try
-                                End If
-
-                                If PSprop(3) <> Nothing Then '   3   WinCenter = "x,y"/all
-                                    Try
-                                        If PSprop(3).ToLower = "all" Then
-                                            ed.SwitchToModelSpace()
-                                            Zooming.ZoomExtents()
-                                            ed.SwitchToPaperSpace()
+                                    If PSprop(1) <> Nothing Then '   1   Name = "New name"
+                                        If LayoutNameExist(CollLayouts, PSprop(1)) Then
+                                            Connect.RevoLog(Connect.DateLog & "Cmd PS" & vbTab & False & vbTab & "Error rename layout3: " & lay.Layout.Name)
                                         Else
-                                            Dim XYsplit() As String = Split(PSprop(3), ",")
-                                            If XYsplit.Count = 2 Then
+                                            lay.Layout.Name = PSprop(1)
+                                        End If
+                                    End If
+
+                                    If PSprop(5) <> Nothing Then '   5   WinRotation = dbl (défault degré ou g = grade)
+                                        Try
+                                            Dim WinRot As Double = 0
+                                            If InStr(PSprop(5).ToLower, "g") <> 0 Then ' = grade
+                                                WinRot = CDbl(Replace(PSprop(5), "g", ""))
                                                 ed.SwitchToModelSpace()
-                                                Dim Pts As New Point3d(XYsplit(0), XYsplit(1), 0)
-                                                Zooming.ZoomWindow(Pts, Pts)
+                                                cmdCmd("#Cmd;_UCS|Z|" & WinRot & "|_plan|_c")
+                                                ed.SwitchToPaperSpace()
+                                            Else ' défault degré
+                                                WinRot = CDbl(PSprop(5))
+                                                ed.SwitchToModelSpace()
+                                                cmdCmd("#Cmd;_UCS|Z|" & WinRot & "|_plan|_c")
                                                 ed.SwitchToPaperSpace()
                                             End If
-                                        End If
 
-                                    Catch
-                                    End Try
-                                End If
-
-                                If PSprop(4) <> Nothing Then '   4   WinScale = "0.5" = 1:2000
-                                    Try
-                                        If IsNumeric(PSprop(4)) Then
-                                            ed.SwitchToModelSpace()
-                                            Dim oLock As DocumentLock = Application.DocumentManager.MdiActiveDocument.LockDocument()
-                                            Dim vpid As ObjectId = ed.CurrentViewportObjectId
-                                            Using tr As Transaction = ed.Document.TransactionManager.StartTransaction()
-                                                Dim vport As Viewport = DirectCast(tr.GetObject(vpid, DatabaseServices.OpenMode.ForWrite), Viewport)
-                                                'ed.WriteMessage(vport.CustomScale.ToString())
-                                                vport.CustomScale = CDbl(PSprop(4))
-                                                tr.Commit()
-                                            End Using
-                                            oLock.Dispose()
-                                            ed.SwitchToPaperSpace()
-                                        End If
-                                    Catch
-                                    End Try
-                                End If
-
-
-                                'Modifcation du réglage de l'impression ------------------------------
-
-                                If PSprop(6) <> "" Then ' 6   PaperScale = dbl (rapport d'impression : XXX / 1 unité dessin)
-                                    If IsNumeric(PSprop(6)) Then
-                                        PlotCurrentLayout("", "", PSprop(6), "1", "", True, False)
+                                        Catch
+                                        End Try
                                     End If
+
+                                    If PSprop(3) <> Nothing Then '   3   WinCenter = "x,y"/all
+                                        Try
+                                            If PSprop(3).ToLower = "all" Then
+                                                ed.SwitchToModelSpace()
+                                                Zooming.ZoomExtents()
+                                                ed.SwitchToPaperSpace()
+                                            Else
+                                                Dim XYsplit() As String = Split(PSprop(3), ",")
+                                                If XYsplit.Count = 2 Then
+                                                    ed.SwitchToModelSpace()
+                                                    Dim Pts As New Point3d(XYsplit(0), XYsplit(1), 0)
+                                                    Zooming.ZoomWindow(Pts, Pts)
+                                                    ed.SwitchToPaperSpace()
+                                                End If
+                                            End If
+
+                                        Catch
+                                        End Try
+                                    End If
+
+                                    If PSprop(4) <> Nothing Then '   4   WinScale = "0.5" = 1:2000
+                                        Try
+                                            If IsNumeric(PSprop(4)) Then
+                                                ed.SwitchToModelSpace()
+                                                Dim oLock As DocumentLock = Application.DocumentManager.MdiActiveDocument.LockDocument()
+                                                Dim vpid As ObjectId = ed.CurrentViewportObjectId
+                                                Using tr As Transaction = ed.Document.TransactionManager.StartTransaction()
+                                                    Dim vport As Viewport = DirectCast(tr.GetObject(vpid, DatabaseServices.OpenMode.ForWrite), Viewport)
+                                                    'ed.WriteMessage(vport.CustomScale.ToString())
+                                                    vport.CustomScale = CDbl(PSprop(4))
+                                                    tr.Commit()
+                                                End Using
+                                                oLock.Dispose()
+                                                ed.SwitchToPaperSpace()
+                                            End If
+                                        Catch
+                                        End Try
+                                    End If
+
+
+                                    'Modifcation du réglage de l'impression ------------------------------
+
+                                    If PSprop(6) <> "" Then ' 6   PaperScale = dbl (rapport d'impression : XXX / 1 unité dessin)
+                                        If IsNumeric(PSprop(6)) Then
+                                            PlotCurrentLayout("", "", PSprop(6), "1", "", True, False)
+                                        End If
+                                    End If
+
+                                    If PSprop(7) <> "" Then '   7   CTB = "acad.ctb" (nom du CTB avec extention ou Aucune = "None")
+                                        PlotCurrentLayout("", "", "", "", PSprop(7), True, False)
+                                    End If
+
+
                                 End If
-
-                                If PSprop(7) <> "" Then '   7   CTB = "acad.ctb" (nom du CTB avec extention ou Aucune = "None")
-                                    PlotCurrentLayout("", "", "", "", PSprop(7), True, False)
-                                End If
-
-
-                            End If
-                        Catch ex As COMException
-                            ' MsgBox("Un bloc n'a pu être supprimé")
-                        End Try
-                    Next
+                            Catch ex As COMException
+                                ' MsgBox("Un bloc n'a pu être supprimé")
+                            End Try
+                        Next
 
 
-                    curDwg.Regen(AcRegenType.acAllViewports)
-                Else
+                        curDWG.Regen(AcRegenType.acAllViewports)
+                    Else
+                        Return Connect.DateLog & "Cmd PS" & vbTab & False & vbTab & "Erreur: " & vbTab & curDWG.Name
+                    End If
+                Else 'ignore the command
                     Return Connect.DateLog & "Cmd PS" & vbTab & False & vbTab & "Erreur: " & vbTab & curDwg.Name
-                End If
-            Else 'ignore the command
-                Return Connect.DateLog & "Cmd PS" & vbTab & False & vbTab & "Erreur: " & vbTab & curDwg.Name
             End If
 
 
