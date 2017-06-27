@@ -257,6 +257,7 @@ Namespace Revo
                                 If InfoCmd(0) = "#STY" Then Connect.RevoLog(cmdSTY(CmdLine))
                                 If InfoCmd(0) = "#PURGE" Then Connect.RevoLog(cmdPurge(CmdLine))
                                 If InfoCmd(0) = "#ZOOM" Then Connect.RevoLog(cmdZoom(CmdLine))
+                                If InfoCmd(0) = "#XREF" Then Connect.RevoLog(cmdXref(CmdLine))
                                 If InfoCmd(0) = "#EXPORT" Then Connect.RevoLog(cmdExport(CmdLine))
                                 If InfoCmd(0) = "#IMPORT" Then
                                     TestCmd = cmdImport(CmdLine, ImportFiles)
@@ -307,6 +308,11 @@ Namespace Revo
             'Verification de l'existance du FichierALire
             If System.IO.File.Exists(FichierALire) Then
                 Try
+
+
+                    'Ajout des variables systèmes
+                    Cmds.Add("#Var;INSBASE;Acad;[[Val]]")
+
                     Dim sr As StreamReader = New StreamReader(FichierALire, System.Text.Encoding.Default)
                     Dim ligne As String
                     '--- Traitement du fichier ligne par ligne
@@ -1507,6 +1513,79 @@ Namespace Revo
             Return Connect.DateLog & "Cmd Zoom" & vbTab & True & vbTab & "Type: " & Cmdinfo(1) & vbTab
 
         End Function
+
+
+        ''' <summary>
+        ''' Revo Command: Xref edit
+        ''' </summary>
+        ''' <param name="Cmd">Commande line</param>
+        ''' <remarks>
+        ''' #Xref;name
+        ''' </remarks>
+        Public Function cmdXref(ByVal Cmd As String)  ' Xref edit
+
+
+            '[[Propriété]]
+            '   1   Name = "New name"
+            '   2   Url = "c:/..."
+            '   3   XYZInsertionPoint = dbl,dbl,dbl
+            '   4   Rotation = dbl
+            '   5   ScaleFactor = dbl
+            '   6   TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
+            '   7   Layer = "other layer"
+
+            Dim PSprop(0 To 9) As String
+            Dim Cmdinfo() As String
+            Dim TabProp() As String
+            Dim curDwg As Document = Application.DocumentManager.MdiActiveDocument
+
+            Cmdinfo = SplitCmd(Cmd, 1) '1 = min de paramètre obligatoire
+
+            If Cmdinfo(1) <> "" Then 'si la ligne n'est pas vide
+
+                'Chargement des propriétés
+
+                For i = 2 To Cmdinfo.Count - 1 'Boucle prop
+                    If InStr(Cmdinfo(i), "[[") <> 0 And InStr(Cmdinfo(i), "]]") <> 0 Then
+                        Cmdinfo(i) = Replace(Replace(Cmdinfo(i), "[[", "", 1, 1), "]]", ";", 1, 1)
+                        TabProp = SplitCmd(Cmdinfo(i), 1)
+                        ' TabProp(0) = TabProp(0).ToLower
+
+                        If "name" = TabProp(0) Then ' 1  Name = ""  Nouveau nom
+                            PSprop(1) = TabProp(1)
+                        ElseIf "url" = TabProp(0) Then ' 2  URL = ""  URL
+                            PSprop(2) = TabProp(1)
+                        ElseIf "xyzinsertionpoint" = TabProp(0) Then ' 3   XYZInsertionPoint
+                            PSprop(3) = TabProp(1)
+                        ElseIf "rotation" = TabProp(0) Then '  4   Rotation
+                            PSprop(4) = TabProp(1)
+                        ElseIf "scalefactor" = TabProp(0) Then '  5   ScaleFactor
+                            PSprop(5) = TabProp(1)
+                        ElseIf "truecolor" = TabProp(0) Then '  6   TrueColor
+                            PSprop(6) = TabProp(1)
+                        ElseIf "layer" = TabProp(0) Then '  7   Layer
+                            PSprop(7) = TabProp(1)
+                        End If
+                    End If
+                Next
+
+            End If
+
+
+
+
+            'Execute command
+            If Cmdinfo(1).ToUpper = "EXTENTS" Then
+
+
+            Else 'ignore the command
+                Return Connect.DateLog & "Cmd Xref" & vbTab & False & vbTab & "Pas de paramètre" & vbTab
+            End If
+
+            Return Connect.DateLog & "Cmd Xref" & vbTab & True & vbTab & "Type: " & Cmdinfo(1) & vbTab
+
+        End Function
+
 
         ''' <summary>
         ''' Revo Command: Purge in draws
