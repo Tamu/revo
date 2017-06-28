@@ -311,7 +311,9 @@ Namespace Revo
 
 
                     'Ajout des variables systèmes
-                    Cmds.Add("#Var;INSBASE;Acad;[[Val]]")
+                    Dim InsBase As Point3d = Application.GetSystemVariable("INSBASE")
+                    Cmds.Add("#Var;INSBASE;Acad;[[Val]]" & InsBase.X & "," & InsBase.Y & "," & InsBase.Z)
+
 
                     Dim sr As StreamReader = New StreamReader(FichierALire, System.Text.Encoding.Default)
                     Dim ligne As String
@@ -3216,8 +3218,9 @@ Namespace Revo
             '7  ScaleFactor = dbl
             '8  LayerIsland = "" (calque pour la détection d'objets)
             '9  Annotative = 1 / 0
+            '10 StyleFilter = "" (SOLID)
 
-            Dim HAprop(0 To 9) As String
+            Dim HAprop(0 To 10) As String
             Dim Cmdinfo() As String
             Dim OBJColor As Color
             OBJColor = Color.FromColorIndex(ColorMethod.ByAci, 7)
@@ -3263,6 +3266,8 @@ Namespace Revo
                         HAprop(8) = TabProp(1)
                     ElseIf "annotative" = TabProp(0) Then '9  Annotative = 1 / 0
                         HAprop(9) = TabProp(1)
+                    ElseIf "stylefilter" = TabProp(0) Then '10 StyleFilter = "" (SOLID)
+                        HAprop(10) = TabProp(1)
                     End If
                 End If
             Next
@@ -3344,6 +3349,13 @@ Namespace Revo
             End If
 
 
+            'Traitement des hachures existantes
+
+            ''Couleur     '2  TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock  
+            'HAprop(2)
+
+            '' Layer
+
             Return Connect.DateLog & "Cmd HA" & vbTab & True & vbTab & "Type: " & Cmdinfo(1) & "(nbre:" & CollPoly.Count & ")" & vbTab & acDwg.Name
 
         End Function
@@ -3382,8 +3394,10 @@ Namespace Revo
 
             '1X  PropPerso ???
 
+            'Hatch
+            '16 StyleFilter = "" (SOLID)
 
-            Dim OBJprop(0 To 16) As String
+            Dim OBJprop(0 To 17) As String
             Dim Cmdinfo() As String
             Dim TabProp() As String
             Dim OBJColor As Color
@@ -3432,8 +3446,10 @@ Namespace Revo
                             OBJprop(14) = TabProp(1)
                         ElseIf "annotative" = TabProp(0) Then ' 15 Annotative = 1 / 0
                             OBJprop(15) = TabProp(1)
+                        ElseIf "stylefilter" = TabProp(0) Then '16 StyleFilter = "" (SOLID)
+                            OBJprop(16) = TabProp(1)
 
-                            '15  PropPerso ???
+                            '1X  PropPerso ???
 
                         End If
                     End If
@@ -3535,41 +3551,49 @@ Namespace Revo
                                                 ElseIf TypeName(acEnt) = "DBPoint" Then
                                                     CollDBPoint.Add(acEnt)
                                                 ElseIf TypeName(acEnt) = "Hatch" Then
-                                                    CollHatch.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Arc" Then
-                                                    CollArc.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Circle" Or TypeName(acEnt) = "IAcadCircle2" Then
-                                                    CollCircle.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "AlignedDimension" Then
-                                                    CollAlignedDimension.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "RotatedDimension" Then
-                                                    CollRadialDimension.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "RadialDimension" Then
-                                                    CollRadialDimension.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "LineAngularDimension2" Then
-                                                    CollLineAngularDimension2.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "ArcDimension" Then
-                                                    CollArcDimension.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "DiametricDimension" Then
-                                                    CollDiametricDimension.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Spline" Then
-                                                    CollSpline.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Xline" Then
-                                                    CollXline.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Ray" Then
-                                                    CollRay.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Helix" Then
-                                                    CollHelix.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Ellipse" Then
-                                                    CollEllipse.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "AttributeDefinition" Or TypeName(acEnt) = "IAcadAttribute2" Or TypeName(acEnt) = "IAcadAttribute2" Then
-                                                    CollAttribute.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Viewport" Or TypeName(acEnt) = "IAcadPViewport2" Then
-                                                    'ne faire rien
-                                                Else
-                                                    CollOthers.Add(acEnt)
-                                                    Connect.RevoLog(TypeName(acEnt))
-                                                End If
+                                                    'if filter Type   
+                                                    If OBJprop(16) <> "" Then '16 StyleFilter = "" (SOLID)
+                                                        Dim Ha As Hatch = acEnt
+                                                        If Ha.PatternName.ToLower = OBJprop(16).ToLower Then
+                                                            CollHatch.Add(acEnt)
+                                                        End If
+                                                    Else
+                                                        CollHatch.Add(acEnt)
+                                                    End If
+                                            ElseIf TypeName(acEnt) = "Arc" Then
+                                                CollArc.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "Circle" Or TypeName(acEnt) = "IAcadCircle2" Then
+                                                CollCircle.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "AlignedDimension" Then
+                                                CollAlignedDimension.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "RotatedDimension" Then
+                                                CollRadialDimension.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "RadialDimension" Then
+                                                CollRadialDimension.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "LineAngularDimension2" Then
+                                                CollLineAngularDimension2.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "ArcDimension" Then
+                                                CollArcDimension.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "DiametricDimension" Then
+                                                CollDiametricDimension.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "Spline" Then
+                                                CollSpline.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "Xline" Then
+                                                CollXline.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "Ray" Then
+                                                CollRay.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "Helix" Then
+                                                CollHelix.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "Ellipse" Then
+                                                CollEllipse.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "AttributeDefinition" Or TypeName(acEnt) = "IAcadAttribute2" Or TypeName(acEnt) = "IAcadAttribute2" Then
+                                                CollAttribute.Add(acEnt)
+                                            ElseIf TypeName(acEnt) = "Viewport" Or TypeName(acEnt) = "IAcadPViewport2" Then
+                                                'ne faire rien
+                                            Else
+                                                CollOthers.Add(acEnt)
+                                                Connect.RevoLog(TypeName(acEnt))
+                                            End If
                                             End If
                                         End If
                                     Catch ex As Exception
@@ -3930,6 +3954,50 @@ Namespace Revo
                             End Try
                         End If
                     Next
+                End If
+
+
+                If "COTATION" Like STYprop(1).ToUpper Then 'Si type de style Cotation
+
+                    '' Get the current database
+                    Dim acDocX As Document = Application.DocumentManager.MdiActiveDocument
+                    Dim acCurDb As Database = acDocX.Database
+
+                    Dim ed As Editor = acDocX.Editor
+                    Using trx As Transaction = acCurDb.TransactionManager.StartTransaction()
+                        Dim dimTbl As DimStyleTable = trx.GetObject(acCurDb.DimStyleTableId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
+
+                        Dim dimDtr As DimStyleTableRecord = trx.GetObject(dimTbl("DimStyle1"), Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
+                        Dim ids As ObjectIdCollection = dimDtr.GetPersistentReactorIds()
+                        dimDtr.Dimclrd = Color.FromColorIndex(ColorMethod.ByBlock, 0)
+                        dimDtr.Dimclre = Color.FromColorIndex(ColorMethod.ByBlock, 0)
+                        dimDtr.Dimclrt = Color.FromColorIndex(ColorMethod.ByBlock, 0)
+                        dimDtr.Dimlwd = ConvertLineWeight("byblock")
+                        dimDtr.Dimlwe = ConvertLineWeight("byblock")
+                        dimDtr.Dimltex1 = acCurDb.ByBlockLinetype
+                        dimDtr.Dimltex2 = acCurDb.ByBlockLinetype
+                        dimDtr.Dimltype = acCurDb.ByBlockLinetype
+
+                        ' http://help.autodesk.com/view/ACD/2016/ENU/?guid=GUID-D86FAE33-CF6E-4BAD-AB77-DA5A5C6E8E57
+
+                        'For Each objId As ObjectId In ids
+                        '    If objId.ObjectClass.IsDerivedFrom(RXClass.GetClass(GetType(Dimension))) Then
+                        '        Dim dimen As Dimension = trx.GetObject(objId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
+                        '        dimen.DimensionStyle = dimTbl("DimStyle2")
+
+
+                        '        ''''' or
+                        '        ''''''dimen.DimensionStyleName = "DimStyle2"
+                        '    End If
+                        'Next
+                        trx.Commit()
+                    End Using
+
+
+
+
+
+
                 End If
 
             Else 'ignore the command
