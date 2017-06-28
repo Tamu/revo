@@ -1546,6 +1546,7 @@ Namespace Revo
             If Cmdinfo(1) <> "" Then 'si la ligne n'est pas vide
 
                 'Chargement des propriétés
+                PSprop(0) = Cmdinfo(1) 'NomOriginal
 
                 For i = 2 To Cmdinfo.Count - 1 'Boucle prop
                     If InStr(Cmdinfo(i), "[[") <> 0 And InStr(Cmdinfo(i), "]]") <> 0 Then
@@ -1574,6 +1575,119 @@ Namespace Revo
             End If
 
 
+            'Si nom < ou << Supprime le Xref
+            If Left(PSprop(0), 2) = "<<" Then ' Delete IF not EXIST
+                Dim NameXref As String = PSprop(0).Replace("<<", "")
+
+                ' Get the current database and start a transaction
+                Dim acCurDb As Autodesk.AutoCAD.DatabaseServices.Database
+                acCurDb = Application.DocumentManager.MdiActiveDocument.Database
+             
+
+                Using acTrans As Transaction = acCurDb.TransactionManager.StartTransaction()
+                    ' Create a reference to a DWG file
+                   
+                    ' If a valid reference is created then continue
+
+                    ' Attach the DWG reference to the current space
+                    '  Dim insPt As New Point3d(1, 1, 0)
+                    ' Using acBlkRef As New BlockReference(insPt, acXrefId)
+
+                    Dim acBlkTblRec As BlockTableRecord
+                    acBlkTblRec = acTrans.GetObject(acCurDb.CurrentSpaceId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
+                    Dim ListUnResolveXref As New Collection
+
+
+                    Using i_Tx As Transaction = acCurDb.TransactionManager.StartTransaction()
+                        ' ed.WriteMessage(vbLf & "---Resolving the XRefs------------------")
+
+                        acCurDb.ResolveXrefs(True, False)
+                       
+                        Dim i_xg As XrefGraph = acCurDb.GetHostDwgXrefGraph(True)
+                        ' ed.WriteMessage(vbLf & "---XRef's Graph-------------------------")
+                        ' ed.WriteMessage(vbLf & "CURRENT DRAWING")
+                        Dim i_root As GraphNode = i_xg.RootNode
+                        'printChildren(root, "|-------", ed, Tx)
+                        'ed.WriteMessage(vbLf & "----------------------------------------" & vbLf)
+                     
+
+                        For o As Integer = 0 To i_root.NumOut - 1
+                            Dim child As XrefGraphNode = TryCast(i_root.Out(o), XrefGraphNode)
+                           
+                            If child.Name.ToLower Like NameXref.ToLower Then 'if Right Name
+                                If child.XrefStatus = XrefStatus.FileNotFound Then 'if unResolved
+                                    Dim bl As BlockTableRecord = TryCast(i_Tx.GetObject(child.BlockTableRecordId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForRead), BlockTableRecord)
+
+                                    ListUnResolveXref.Add(bl.ObjectId)
+
+                                    'i_ed.WriteMessage(vbLf + i_indent + child.Database.Filename)
+                                    ' Name of the Xref (found name)
+                                    ' You can find the original path too:
+                                    'if (bl.IsFromExternalReference == true)
+                                    ' i_ed.WriteMessage("\n" + i_indent + "Xref path name: "
+                                    '                      + bl.PathName);
+                                    ' printChildren(child, "| " + i_indent, i_ed, i_Tx)
+                                End If
+                            End If
+
+                        Next
+
+
+                    End Using
+                    ' acBlkTblRec.AppendEntity(acBlkRef)
+                    ' acTrans.AddNewlyCreatedDBObject(acBlkRef, True)
+                    ' End Using
+
+                    For Each acXrefId As ObjectId In ListUnResolveXref
+                        acCurDb.DetachXref(acXrefId) 'MsgBox("The external reference is detached.")
+
+                    Next
+
+
+                    ' Save the new objects to the database
+                    acTrans.Commit()
+
+                    ' Dispose of the transaction
+                End Using
+
+
+            ElseIf Left(PSprop(0), 1) = "<" Then ' Delete
+
+            ElseIf Left(PSprop(0), 1) = ">" Then ' Attach
+
+                Dim NameXref As String = PSprop(0).Replace(">", "")
+
+                ' Get the current database and start a transaction
+                Dim acCurDb As Autodesk.AutoCAD.DatabaseServices.Database
+                acCurDb = Application.DocumentManager.MdiActiveDocument.Database
+
+                Using acTrans As Transaction = acCurDb.TransactionManager.StartTransaction()
+
+                    ' Create a reference to a DWG file
+                    Dim PathName As String = NameXref
+                    Dim acXrefId As ObjectId = acCurDb.AttachXref(PathName, "Exterior Elevations")
+
+                    ' If a valid reference is created then continue
+                    If Not acXrefId.IsNull Then
+                        ' Attach the DWG reference to the current space
+                        Dim insPt As New Point3d(0, 0, 0)
+                        Using acBlkRef As New BlockReference(insPt, acXrefId)
+
+                            Dim acBlkTblRec As BlockTableRecord
+                            acBlkTblRec = acTrans.GetObject(acCurDb.CurrentSpaceId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
+
+                            acBlkTblRec.AppendEntity(acBlkRef)
+                            acTrans.AddNewlyCreatedDBObject(acBlkRef, True)
+                        End Using
+                    End If
+
+                    ' Save the new objects to the database
+                    acTrans.Commit()
+
+                    ' Dispose of the transaction
+                End Using
+
+            End If
 
 
             'Execute command
@@ -3904,8 +4018,11 @@ Namespace Revo
             'Text
             '2 : Fonts = ""
             '3 : Height = dbl
+            '4 : TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock (line+texte)
+            '5 : LineType = dbl(1 - 255) / ByBlock(Line)
+            '6 : LineWeight = dbl(1 - 255) / ByBlock(Line)
 
-            Dim STYprop(0 To 3) As String
+            Dim STYprop(0 To 6) As String
             Dim TabProp() As String
             Dim Cmdinfo() As String = SplitCmd(Cmd, 1)
 
@@ -3933,6 +4050,12 @@ Namespace Revo
                             STYprop(2) = TabProp(1)
                         ElseIf "height" = TabProp(0) Then ' 3 : Height = dbl
                             If IsNumeric(TabProp(1)) Then STYprop(3) = TabProp(1)
+                        ElseIf "truecolor" = TabProp(0) Then '4 : TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock (line+texte)
+                            STYprop(4) = TabProp(1)
+                        ElseIf "linetype" = TabProp(0) Then '5 : LineType = dbl(1 - 255) / ByBlock(Line)
+                            STYprop(5) = TabProp(1)
+                        ElseIf "lineweight" = TabProp(0) Then '6 : LineWeight = dbl(1 - 255) / ByBlock(Line)
+                            STYprop(6) = TabProp(1)
                         End If
                     End If
                 Next
@@ -3945,6 +4068,7 @@ Namespace Revo
                             Try
                                 If File.Exists(STYprop(2)) Then
                                     STY.fontFile = STYprop(2) ' 2 : Fonts = ""
+
                                 Else
                                     Connect.RevoLog(Connect.DateLog & "Cmd STY" & vbTab & False & vbTab & "Erreur: file is missing" & vbTab & STYprop(2))
                                 End If
@@ -3969,14 +4093,52 @@ Namespace Revo
 
                         Dim dimDtr As DimStyleTableRecord = trx.GetObject(dimTbl("DimStyle1"), Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
                         Dim ids As ObjectIdCollection = dimDtr.GetPersistentReactorIds()
-                        dimDtr.Dimclrd = Color.FromColorIndex(ColorMethod.ByBlock, 0)
-                        dimDtr.Dimclre = Color.FromColorIndex(ColorMethod.ByBlock, 0)
-                        dimDtr.Dimclrt = Color.FromColorIndex(ColorMethod.ByBlock, 0)
-                        dimDtr.Dimlwd = ConvertLineWeight("byblock")
-                        dimDtr.Dimlwe = ConvertLineWeight("byblock")
-                        dimDtr.Dimltex1 = acCurDb.ByBlockLinetype
-                        dimDtr.Dimltex2 = acCurDb.ByBlockLinetype
-                        dimDtr.Dimltype = acCurDb.ByBlockLinetype
+
+
+                        '4 : TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock (line+texte)
+                        If STYprop(4) <> "" Then
+                            If STYprop(4).ToLower = "byblock" Then
+                                dimDtr.Dimclrd = Color.FromColorIndex(ColorMethod.ByBlock, 0)
+                                dimDtr.Dimclre = Color.FromColorIndex(ColorMethod.ByBlock, 0)
+                                dimDtr.Dimclrt = Color.FromColorIndex(ColorMethod.ByBlock, 0)
+                            ElseIf STYprop(4).ToLower = "bylayer" Then
+                                dimDtr.Dimclrd = Color.FromColorIndex(ColorMethod.ByLayer, 0)
+                                dimDtr.Dimclre = Color.FromColorIndex(ColorMethod.ByLayer, 0)
+                                dimDtr.Dimclrt = Color.FromColorIndex(ColorMethod.ByLayer, 0)
+                            End If
+
+                        End If
+
+                        '5 : LineType = "" / ByBlock(Line)
+                        If STYprop(5) <> "" Then
+                            If STYprop(5).ToLower = "byblock" Then
+                                dimDtr.Dimltex1 = acCurDb.ByBlockLinetype
+                                dimDtr.Dimltex2 = acCurDb.ByBlockLinetype
+                                dimDtr.Dimltype = acCurDb.ByBlockLinetype
+                            ElseIf STYprop(5).ToLower = "bylayer" Then
+                                dimDtr.Dimltex1 = acCurDb.ByLayerLinetype
+                                dimDtr.Dimltex2 = acCurDb.ByLayerLinetype
+                                dimDtr.Dimltype = acCurDb.ByLayerLinetype
+                            ElseIf STYprop(5) <> "" Then
+                                ' Attribution d'un type de ligne : A FAIRE ....
+                            End If
+
+                        End If
+
+                        '6 : LineWeight = dbl(1 - 255) / ByBlock(Line)
+                        If STYprop(6) <> "" Then
+                            If STYprop(6).ToLower = "byblock" Then
+                                dimDtr.Dimlwd = ConvertLineWeight("byblock")
+                                dimDtr.Dimlwe = ConvertLineWeight("byblock")
+                            ElseIf STYprop(6).ToLower = "bylayer" Then
+                                dimDtr.Dimlwd = ConvertLineWeight("bylayer")
+                                dimDtr.Dimlwe = ConvertLineWeight("bylayer")
+                            ElseIf IsNumeric(STYprop(6)) Then
+                                dimDtr.Dimlwe = ConvertLineWeight(Trim(STYprop(6)))
+                            End If
+                           
+                        End If
+
 
                         ' http://help.autodesk.com/view/ACD/2016/ENU/?guid=GUID-D86FAE33-CF6E-4BAD-AB77-DA5A5C6E8E57
 
