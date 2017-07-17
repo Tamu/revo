@@ -3475,7 +3475,7 @@ Namespace Revo
             '#OBJ;filtre. Calque;filtre. obj;[[PropA]]Val;[[PropB]]Val;
             ' Modifie la propriété d'objet d'un calque
             ' 0  Filtre Calque
-            ' 1  Filtre type obj
+            ' 1  Filtre Objet = "*" (< pour effacer les objets)
             'Général
             ' 2  TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
             ' 3  Layer = ""
@@ -3494,14 +3494,18 @@ Namespace Revo
             'Block
             '11  ScaleFactor = dbl
             '12  Text = "*"||"abc" (inteli, * = tout)
-            '13  Space = *PaperSpaceXYZ*/current/Model/paper/ * (all: défault)
+            '13  Space = *PaperSpaceXYZ*/current/Model/paper/Block/ * (all: défault)
             '14  Attribute = "*" (filtre)
             '15  Annotative = 1 / 0
+
 
             '1X  PropPerso ???
 
             'Hatch
-            '16 StyleFilter = "" (SOLID)
+            '16  StyleFilter = "" (SOLID)
+
+            'All 3D Objects 
+            '17  Flatshot = _TOP/_BOTTOM/_LEFT/_RIGHT/_FRONT/_BACK
 
 
             Dim CollAlignedDimension As New Collection
@@ -3529,10 +3533,11 @@ Namespace Revo
             Dim CollSpline As New Collection
             Dim CollXline As New Collection
 
+            Dim ActiveDelete = False 'Suppresion de l'objet
 
             Try
 
-                Dim OBJprop(0 To 17) As String
+                Dim OBJprop(0 To 20) As String
                 Dim Cmdinfo() As String
                 Dim TabProp() As String
                 Dim OBJColor As Color
@@ -3546,58 +3551,73 @@ Namespace Revo
 
                 If Cmdinfo(0) <> "" Then 'si le nom du calque n'est pas vide
 
-                    OBJprop(0) = Cmdinfo(1)
-                    OBJprop(1) = Cmdinfo(2)
+                    OBJprop(0) = Cmdinfo(1) ' Filtre Calque = "*"
+                    OBJprop(1) = Cmdinfo(2) ' Filtre Objet = "*" (< pour effacer les objets)
 
-                    For i = 1 To Cmdinfo.Count - 1 'Boucle prop
-                        If InStr(Cmdinfo(i), "[[") <> 0 And InStr(Cmdinfo(i), "]]") <> 0 Then
-                            Cmdinfo(i) = Replace(Replace(Cmdinfo(i), "[[", "", 1, 1), "]]", ";", 1, 1)
-                            TabProp = SplitCmd(Cmdinfo(i), 1)
-                            TabProp(0) = TabProp(0).ToLower
+                    If (Left(OBJprop(1), 1)) = "<" Then ' Si suppresion de l'objet activé
+                        ActiveDelete = True
+                        OBJprop(1) = Mid(OBJprop(1), 2, OBJprop(1).Length - 1)
+                    End If
 
-                            If "truecolor" = TabProp(0) Then ' 2  TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
-                                OBJprop(2) = TabProp(1)
-                            ElseIf "layer" = TabProp(0) Then ' 3  Layer = ""
-                                OBJprop(3) = TabProp(1)
-                            ElseIf "linetype" = TabProp(0) Then ' 4  LineType = ""
-                                OBJprop(4) = TabProp(1)
-                            ElseIf "linetypescale" = TabProp(0) Then  ' 5  LinetypeScale = dbl
-                                If IsNumeric(TabProp(1)) Then OBJprop(5) = TabProp(1)
-                            ElseIf "lineweight" = TabProp(0) Then ' 6  Lineweight = dbl
-                                If IsNumeric(TabProp(1)) Then OBJprop(6) = TabProp(1)
-                            ElseIf "rotation" = TabProp(0) Then ' 7  Rotation = dbl
-                                If IsNumeric(TabProp(1)) Then OBJprop(7) = TabProp(1)
-                            ElseIf "stylename" = TabProp(0) Then ' 8  StyleName = ""
-                                OBJprop(8) = TabProp(1)
-                            ElseIf "alignment" = TabProp(0) Then ' 9  Alignment = TopCenter
-                                OBJprop(9) = TabProp(1)
-                            ElseIf "height" = TabProp(0) Then '10  Height = dbl
-                                If IsNumeric(TabProp(1)) Then OBJprop(10) = TabProp(1)
-                            ElseIf "scalefactor" = TabProp(0) Then '11  ScaleFactor = dbl
-                                If IsNumeric(TabProp(1)) Then OBJprop(11) = TabProp(1)
-                            ElseIf "text" = TabProp(0) Then '12  Text = "*"||"abc"
-                                OBJprop(12) = TabProp(1)
-                            ElseIf "space" = TabProp(0) Then ' 13  space = ""
-                                OBJprop(13) = TabProp(1)
-                            ElseIf "attribute" = TabProp(0) Then ' 14  space = ""
-                                OBJprop(14) = TabProp(1)
-                            ElseIf "annotative" = TabProp(0) Then ' 15 Annotative = 1 / 0
-                                OBJprop(15) = TabProp(1)
-                            ElseIf "stylefilter" = TabProp(0) Then '16 StyleFilter = "" (SOLID)
-                                OBJprop(16) = TabProp(1)
+                    Try
+                        For i = 1 To Cmdinfo.Count - 1 'Boucle prop
+                            Try
+                                If InStr(Cmdinfo(i), "[[") <> 0 And InStr(Cmdinfo(i), "]]") <> 0 Then
+                                    Cmdinfo(i) = Replace(Replace(Cmdinfo(i), "[[", "", 1, 1), "]]", ";", 1, 1)
+                                    TabProp = SplitCmd(Cmdinfo(i), 1)
+                                    TabProp(0) = TabProp(0).ToLower
 
-                                '1X  PropPerso ???
+                                    If "truecolor" = TabProp(0) Then ' 2  TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
+                                        OBJprop(2) = TabProp(1)
+                                    ElseIf "layer" = TabProp(0) Then ' 3  Layer = ""
+                                        OBJprop(3) = TabProp(1)
+                                    ElseIf "linetype" = TabProp(0) Then ' 4  LineType = ""
+                                        OBJprop(4) = TabProp(1)
+                                    ElseIf "linetypescale" = TabProp(0) Then  ' 5  LinetypeScale = dbl
+                                        If IsNumeric(TabProp(1)) Then OBJprop(5) = TabProp(1)
+                                    ElseIf "lineweight" = TabProp(0) Then ' 6  Lineweight = dbl
+                                        If IsNumeric(TabProp(1)) Then OBJprop(6) = TabProp(1)
+                                    ElseIf "rotation" = TabProp(0) Then ' 7  Rotation = dbl
+                                        If IsNumeric(TabProp(1)) Then OBJprop(7) = TabProp(1)
+                                    ElseIf "stylename" = TabProp(0) Then ' 8  StyleName = ""
+                                        OBJprop(8) = TabProp(1)
+                                    ElseIf "alignment" = TabProp(0) Then ' 9  Alignment = TopCenter
+                                        OBJprop(9) = TabProp(1)
+                                    ElseIf "height" = TabProp(0) Then '10  Height = dbl
+                                        If IsNumeric(TabProp(1)) Then OBJprop(10) = TabProp(1)
+                                    ElseIf "scalefactor" = TabProp(0) Then '11  ScaleFactor = dbl
+                                        If IsNumeric(TabProp(1)) Then OBJprop(11) = TabProp(1)
+                                    ElseIf "text" = TabProp(0) Then '12  Text = "*"||"abc"
+                                        OBJprop(12) = TabProp(1)
+                                    ElseIf "space" = TabProp(0) Then ' 13  space = ""
+                                        OBJprop(13) = TabProp(1)
+                                    ElseIf "attribute" = TabProp(0) Then ' 14  space = ""
+                                        OBJprop(14) = TabProp(1)
+                                    ElseIf "annotative" = TabProp(0) Then ' 15 Annotative = 1 / 0
+                                        OBJprop(15) = TabProp(1)
+                                    ElseIf "stylefilter" = TabProp(0) Then '16 StyleFilter = "" (SOLID)
+                                        OBJprop(16) = TabProp(1)
+                                    ElseIf "flatshot" = TabProp(0) Then   '17  Flatshot = _TOP/_BOTTOM/_LEFT/_RIGHT/_FRONT/_BACK
+                                        OBJprop(17) = TabProp(1)
+                                    Else
+                                        '1X  PropPerso ???
+                                    End If
+                                End If
+                            Catch
+                                Console.WriteLine("Error OBJ Prop")
+                            End Try
 
-                            End If
-                        End If
-                    Next
+                        Next
+                    Catch
+                        Console.WriteLine("Error OBJ Prop")
+                    End Try
 
                     ' Start a transaction
                     Dim LA As AcadLayer
 #If _AcadVer_ < 19 Then ' Ancienne Version 2010-2011-2012
                     Dim acDwg As AcadDocument = Application.DocumentManager.MdiActiveDocument.AcadDocument
 #Else 'Versio AutoCAD 2013 et +
-                Dim acDwg As Autodesk.AutoCAD.Interop.AcadDocument = DocumentExtension.GetAcadDocument(Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument)
+                    Dim acDwg As Autodesk.AutoCAD.Interop.AcadDocument = DocumentExtension.GetAcadDocument(Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument)
 #End If
                     For Each LA In acDwg.Layers
                         LA.Lock = False
@@ -3617,6 +3637,8 @@ Namespace Revo
                         For Each acLay As AcadLayout In acDwg.Layouts
                             If acLay.Name <> "Model" Then CurSpaceName += "<<" & acLay.Block.Name & ">>"
                         Next
+                    ElseIf OBJprop(13).ToLower = "block" Then
+                        CurSpaceName = "!block!"
                     Else
                         For Each acLay As AcadLayout In acDwg.Layouts
                             If acLay.Name Like OBJprop(13) Then CurSpaceName += "<<" & acLay.Block.Name & ">>"
@@ -3654,210 +3676,307 @@ Namespace Revo
                     Dim acDoc As Document = Application.DocumentManager.MdiActiveDocument
                     Dim acCurDb As Database = acDoc.Database
 
-                    ' If CollLoad = False Then
-                    'CollLoad = True
-                    Using acTrans As Transaction = acCurDb.TransactionManager.StartTransaction() '' Start a transaction
+
+                    If CurSpaceName = "!block!" Then
+                        'Si espace travail dans bloc
+
+                        ' Boucle dans la table des blocs
+
+                        Try
+                            Dim tr As Transaction = acCurDb.TransactionManager.StartTransaction()
+                            Using tr
+
+                                Dim bt As BlockTable = TryCast(acCurDb.BlockTableId.GetObject(DatabaseServices.OpenMode.ForRead), BlockTable)
+
+                                For Each objId As ObjectId In bt
+                                    Dim btr As BlockTableRecord = CType(objId.GetObject(DatabaseServices.OpenMode.ForRead), BlockTableRecord)
+                                    If btr.IsLayout Then
+                                        Continue For
+                                    End If
+
+                                    ' Change every entity to be of color ByBlock
+
+                                    ' Iterate through the BlockTableRecord contents
+
+                                    For Each id As ObjectId In btr
+                                        ' Open the entity
+                                        '  btr.Name
+                                        Dim ent2 As Entity = CType(tr.GetObject(id, DatabaseServices.OpenMode.ForWrite), Entity)
+
+                                        ' Change each entity's color to ByBlock
+                                        '  ent2.Color = Color.FromColorIndex(ColorMethod.ByBlock, 0)
+                                        If TypeName(ent2) Like OBJprop(1) Then
 
 
-                        '' Request for objects to be selected in the drawing area
-                        Dim acSSPrompt As PromptSelectionResult = acDoc.Editor.SelectAll()
-                        '' If the prompt status is OK, objects were selected
-                        If acSSPrompt.Status = PromptStatus.OK Then
-                            Dim acSSet As SelectionSet = acSSPrompt.Value
-                            '' Step through the objects in the selection set
-                            For Each acSSObj As SelectedObject In acSSet
-                                '' Check to make sure a valid SelectedObject object was returned
-                                If Not IsDBNull(acSSObj) Then
+                                            If OBJprop(2) <> Nothing Then
+                                                OBJColor = AcadTrueColor(OBJprop(2))
+                                                ent2.ColorIndex = OBJColor.ColorIndex '2  TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
+                                            End If
 
-                                    Try
-                                        '' Open the selected object for write
-                                        Dim acEnt As Entity = acTrans.GetObject(acSSObj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
-                                        Dim acEnt2 As Entity = acTrans.GetObject(acSSObj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
-                                        If Not IsDBNull(acEnt) Then
+                                            If OBJprop(3) <> Nothing Then ent2.Layer = OBJprop(3) ' 3  Layer = ""
+                                            If OBJprop(4) <> Nothing Then ent2.Linetype = OBJprop(4) ' 4  LineType = ""
+                                            If OBJprop(5) <> Nothing Then ent2.LinetypeScale = OBJprop(5) ' 5  LinetypeScale = dbl
+                                            If OBJprop(6) <> Nothing Then ent2.LineWeight = ConvertLineWeight(OBJprop(6)) ' 6  Lineweight = dbl
 
-                                            If InStr(CurSpaceName.ToLower, "<<" & acEnt.BlockName.ToLower & ">>") <> 0 Then 'Contrôle si le Space est concerné
 
-                                                If TypeName(acEnt) = "Polyline" Then
-                                                    CollPolyline.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Line" Or TypeName(acEnt) = "IAcadLine2" Then
-                                                    CollLine.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "BlockReference" Then
-                                                    CollBlockReference.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "DBText" Or TypeName(acEnt) = "IAcadText2" Then
-                                                    CollDBText.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "MText" Or TypeName(acEnt) = "IAcadMText2" Then
-                                                    CollMText.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Polyline2d" Or TypeName(acEnt) = "IAcadLWPolyline2" Then
-                                                    CollPolyline2d.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Polyline3d" Then
-                                                    CollPolyline3d.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "DBPoint" Then
-                                                    CollDBPoint.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Hatch" Then
-                                                    'if filter Type   
-                                                    If OBJprop(16) <> "" Then '16 StyleFilter = "" (SOLID)
-                                                        Dim Ha As Hatch = acEnt
-                                                        If Ha.PatternName.ToLower = OBJprop(16).ToLower Then
-                                                            CollHatch.Add(acEnt)
+                                            If TypeName(ent2) = "Hatch" Then
+                                                Dim callback = ""
+                                                Dim HachEnt As New Collection
+
+                                                'if filter Type   
+                                                If OBJprop(16) <> "" Then '16 StyleFilter = "" (SOLID)
+                                                    Dim Ha As Hatch = ent2
+                                                    If Ha.PatternName.ToLower = OBJprop(16).ToLower Then
+                                                        If ActiveDelete = False Then
+                                                            HachEnt.Add(ent2)
+                                                            callback = PropOBJ("Hatch", HachEnt, acCurDb, OBJprop)
+                                                        Else
+                                                            ent2.Erase()
                                                         End If
-                                                    Else
-                                                        CollHatch.Add(acEnt)
                                                     End If
-                                                ElseIf TypeName(acEnt) = "Arc" Then
-                                                    CollArc.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Circle" Or TypeName(acEnt) = "IAcadCircle2" Then
-                                                    CollCircle.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "AlignedDimension" Then
-                                                    CollAlignedDimension.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "RotatedDimension" Then
-                                                    CollRadialDimension.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "RadialDimension" Then
-                                                    CollRadialDimension.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "LineAngularDimension2" Then
-                                                    CollLineAngularDimension2.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "ArcDimension" Then
-                                                    CollArcDimension.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "DiametricDimension" Then
-                                                    CollDiametricDimension.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Spline" Then
-                                                    CollSpline.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Xline" Then
-                                                    CollXline.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Ray" Then
-                                                    CollRay.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Helix" Then
-                                                    CollHelix.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Ellipse" Then
-                                                    CollEllipse.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "AttributeDefinition" Or TypeName(acEnt) = "IAcadAttribute2" Or TypeName(acEnt) = "IAcadAttribute2" Then
-                                                    CollAttribute.Add(acEnt)
-                                                ElseIf TypeName(acEnt) = "Viewport" Or TypeName(acEnt) = "IAcadPViewport2" Then
-                                                    'ne faire rien
                                                 Else
-                                                    CollOthers.Add(acEnt)
-                                                    ' Connect.RevoLog(TypeName(acEnt))
+                                                    If ActiveDelete = False Then
+                                                        HachEnt.Add(ent2)
+                                                        callback = PropOBJ("Hatch", HachEnt, acCurDb, OBJprop)
+                                                    Else
+                                                        ent2.Erase()
+                                                    End If
+                                                End If
+
+                                            ElseIf TypeName(ent2) = "Wipeout" Then
+                                                If ActiveDelete = False Then
+                                                Else
+                                                    ent2.Erase()
                                                 End If
                                             End If
+
                                         End If
-                                    Catch
-                                        ' Calque verrouillé : eOnLockedLayer
-                                        Console.WriteLine("Error2 cmdOBJ")
-                                    End Try
-                                End If
-                            Next
-                            '' Save the new object to the database
-                            acTrans.Commit()
-                        End If
-                        '' Dispose of the transaction
-                    End Using
-                    ' End If
 
-                    'Traitement des propriétés des objets
+                                    Next id
 
-                    If "DBTEXT" Like OBJprop(1).ToUpper Then ' TEXTE
+                                Next objId
+
+                                tr.Commit()
+
+
+                            End Using
+                        Catch 'e As Autodesk.AutoCAD.Runtime.Exception
+                            ' Something went wrong
+                            Console.WriteLine("#OBJ : Error bloc edit")
+                        End Try
+
+
+
+
+                    Else
+
+                        ' If CollLoad = False Then
+                        'CollLoad = True
                         Using acTrans As Transaction = acCurDb.TransactionManager.StartTransaction() '' Start a transaction
-                            For Each ObjDBText As DBText In CollDBText 'Traitement des objets: DBText
-                                If ObjDBText.Layer.ToUpper Like OBJprop(0).ToUpper = True Then 'Filtre calque
 
-                                    'Problème:  eNotFromThisDocument
-                                    Dim acEnt As Entity = acTrans.GetObject(ObjDBText.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
-                                    If Not IsDBNull(acEnt) Then
-                                        If OBJprop(2) <> Nothing Then
-                                            OBJColor = AcadTrueColor(OBJprop(2))
-                                            ObjDBText.ColorIndex = OBJColor.ColorIndex '2 TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
-                                        End If
+
+                            '' Request for objects to be selected in the drawing area
+                            Dim acSSPrompt As PromptSelectionResult = acDoc.Editor.SelectAll()
+                            '' If the prompt status is OK, objects were selected
+                            If acSSPrompt.Status = PromptStatus.OK Then
+                                Dim acSSet As SelectionSet = acSSPrompt.Value
+                                '' Step through the objects in the selection set
+                                For Each acSSObj As SelectedObject In acSSet
+                                    '' Check to make sure a valid SelectedObject object was returned
+                                    If Not IsDBNull(acSSObj) Then
 
                                         Try
-                                            If OBJprop(3) <> Nothing Then ObjDBText.Layer = OBJprop(3) ' 3  Layer = ""
-                                            If OBJprop(4) <> Nothing Then ObjDBText.Linetype = OBJprop(4) ' 4  LineType = ""
-                                            If OBJprop(5) <> Nothing Then ObjDBText.LinetypeScale = OBJprop(5) ' 5  LinetypeScale = dbl
-                                            If OBJprop(6) <> Nothing Then ObjDBText.LineWeight = ConvertLineWeight(OBJprop(6)) ' 6  Lineweight = dbl
-                                            If OBJprop(7) <> Nothing Then ObjDBText.Rotation = OBJprop(7) ' 7  Rotation = dbl
-                                            If OBJprop(8) <> Nothing Then ' 8  StyleName = ""
-                                                Dim textStyleTable As TextStyleTable = TryCast(acTrans.GetObject(acCurDb.TextStyleTableId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForRead), TextStyleTable)
-                                                Dim textStyleId As ObjectId = ObjectId.Null
-                                                If textStyleTable.Has(OBJprop(8)) Then
-                                                    textStyleId = textStyleTable(OBJprop(8))
-                                                    ObjDBText.TextStyleId = textStyleId ' acCurDb.Textstyle 'OBJprop(8)
+                                            '' Open the selected object for write
+                                            Dim acEnt As Entity = acTrans.GetObject(acSSObj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
+                                            Dim acEnt2 As Entity = acTrans.GetObject(acSSObj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
+                                            If Not IsDBNull(acEnt) & TypeName(acEnt) Like OBJprop(1) Then
+
+                                                If InStr(CurSpaceName.ToLower, " << " & acEnt.BlockName.ToLower & " >> ") <> 0 Then 'Contrôle si le Space est concerné
+
+                                                    If TypeName(acEnt) = "Polyline" Then
+                                                        CollPolyline.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Line" Or TypeName(acEnt) = "IAcadLine2" Then
+                                                        CollLine.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "BlockReference" Then
+                                                        CollBlockReference.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "DBText" Or TypeName(acEnt) = "IAcadText2" Then
+                                                        CollDBText.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "MText" Or TypeName(acEnt) = "IAcadMText2" Then
+                                                        CollMText.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Polyline2d" Or TypeName(acEnt) = "IAcadLWPolyline2" Then
+                                                        CollPolyline2d.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Polyline3d" Then
+                                                        CollPolyline3d.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "DBPoint" Then
+                                                        CollDBPoint.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Hatch" Then
+                                                        'if filter Type   
+                                                        If OBJprop(16) <> "" Then '16 StyleFilter = "" (SOLID)
+                                                            Dim Ha As Hatch = acEnt
+                                                            If Ha.PatternName.ToLower = OBJprop(16).ToLower Then
+                                                                CollHatch.Add(acEnt)
+                                                            End If
+                                                        Else
+                                                            CollHatch.Add(acEnt)
+                                                        End If
+                                                    ElseIf TypeName(acEnt) = "Arc" Then
+                                                        CollArc.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Circle" Or TypeName(acEnt) = "IAcadCircle2" Then
+                                                        CollCircle.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "AlignedDimension" Then
+                                                        CollAlignedDimension.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "RotatedDimension" Then
+                                                        CollRadialDimension.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "RadialDimension" Then
+                                                        CollRadialDimension.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "LineAngularDimension2" Then
+                                                        CollLineAngularDimension2.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "ArcDimension" Then
+                                                        CollArcDimension.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "DiametricDimension" Then
+                                                        CollDiametricDimension.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Spline" Then
+                                                        CollSpline.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Xline" Then
+                                                        CollXline.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Ray" Then
+                                                        CollRay.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Helix" Then
+                                                        CollHelix.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Ellipse" Then
+                                                        CollEllipse.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "AttributeDefinition" Or TypeName(acEnt) = "IAcadAttribute2" Or TypeName(acEnt) = "IAcadAttribute2" Then
+                                                        CollAttribute.Add(acEnt)
+                                                    ElseIf TypeName(acEnt) = "Viewport" Or TypeName(acEnt) = "IAcadPViewport2" Then
+                                                        'ne faire rien
+                                                    Else
+                                                        CollOthers.Add(acEnt)
+                                                        ' Connect.RevoLog(TypeName(acEnt))
+                                                    End If
                                                 End If
                                             End If
-                                            If OBJprop(15) <> "" Then
-                                                If OBJprop(15) = 1 Then ObjDBText.Annotative = AnnotativeStates.True
-                                                If OBJprop(15) = 0 Then ObjDBText.Annotative = AnnotativeStates.False
-                                            End If
-
-
                                         Catch
+                                            ' Calque verrouillé : eOnLockedLayer
+                                            Console.WriteLine("Error2 cmdOBJ")
                                         End Try
-
-                                        If OBJprop(9) <> Nothing Then ' 9  Alignment = TopCenter
-                                            Dim InsertPt As Point3d
-                                            If ObjDBText.AlignmentPoint = Nothing Then
-                                                InsertPt = ObjDBText.Position
-                                            Else
-                                                InsertPt = ObjDBText.AlignmentPoint
-                                            End If
-
-                                            If OBJprop(9).ToUpper = "TOPCENTER" Then
-                                                ObjDBText.HorizontalMode = 1 : ObjDBText.VerticalMode = 3
-                                            ElseIf OBJprop(9).ToUpper = "TOPLEFT" Then
-                                                ObjDBText.HorizontalMode = 0 : ObjDBText.VerticalMode = 3
-                                            ElseIf OBJprop(9).ToUpper = "TOPRIGHT" Then
-                                                ObjDBText.HorizontalMode = 2 : ObjDBText.VerticalMode = 3
-                                            ElseIf OBJprop(9).ToUpper = "BOTTOMCENTER" Then
-                                                ObjDBText.HorizontalMode = 1 : ObjDBText.VerticalMode = 1
-                                            ElseIf OBJprop(9).ToUpper = "BOTTOMLEFT" Then
-                                                ObjDBText.HorizontalMode = 0 : ObjDBText.VerticalMode = 1
-                                            ElseIf OBJprop(9).ToUpper = "BOTTOMRIGHT" Then
-                                                ObjDBText.HorizontalMode = 2 : ObjDBText.VerticalMode = 1
-                                            ElseIf OBJprop(9).ToUpper = "MIDDLECENTER" Then
-                                                ObjDBText.HorizontalMode = 1 : ObjDBText.VerticalMode = 2
-                                            ElseIf OBJprop(9).ToUpper = "MIDDLELEFT" Then
-                                                ObjDBText.HorizontalMode = 0 : ObjDBText.VerticalMode = 2
-                                            ElseIf OBJprop(9).ToUpper = "MIDDLERIGHT" Then
-                                                ObjDBText.HorizontalMode = 2 : ObjDBText.VerticalMode = 2
-                                            End If
-                                            ObjDBText.AlignmentPoint = InsertPt
-                                        End If
-                                        If OBJprop(10) <> Nothing Then ObjDBText.Height = OBJprop(10) '10  Height = dbl
                                     End If
-                                End If
-                            Next
-                            '' Save the new object to the database
-                            acTrans.Commit()
+                                Next
+                                '' Save the new object to the database
+                                acTrans.Commit()
+                            End If
                             '' Dispose of the transaction
                         End Using
+                        ' End If
+
+                        'Traitement des propriétés des objets
+
+                        If "DBTEXT" Like OBJprop(1).ToUpper Then ' TEXTE
+                            Using acTrans As Transaction = acCurDb.TransactionManager.StartTransaction() '' Start a transaction
+                                For Each ObjDBText As DBText In CollDBText 'Traitement des objets: DBText
+                                    If ObjDBText.Layer.ToUpper Like OBJprop(0).ToUpper = True Then 'Filtre calque
+
+                                        'Problème:  eNotFromThisDocument
+                                        Dim acEnt As Entity = acTrans.GetObject(ObjDBText.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
+                                        If Not IsDBNull(acEnt) Then
+                                            If OBJprop(2) <> Nothing Then
+                                                OBJColor = AcadTrueColor(OBJprop(2))
+                                                ObjDBText.ColorIndex = OBJColor.ColorIndex '2 TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
+                                            End If
+
+                                            Try
+                                                If OBJprop(3) <> Nothing Then ObjDBText.Layer = OBJprop(3) ' 3  Layer = ""
+                                                If OBJprop(4) <> Nothing Then ObjDBText.Linetype = OBJprop(4) ' 4  LineType = ""
+                                                If OBJprop(5) <> Nothing Then ObjDBText.LinetypeScale = OBJprop(5) ' 5  LinetypeScale = dbl
+                                                If OBJprop(6) <> Nothing Then ObjDBText.LineWeight = ConvertLineWeight(OBJprop(6)) ' 6  Lineweight = dbl
+                                                If OBJprop(7) <> Nothing Then ObjDBText.Rotation = OBJprop(7) ' 7  Rotation = dbl
+                                                If OBJprop(8) <> Nothing Then ' 8  StyleName = ""
+                                                    Dim textStyleTable As TextStyleTable = TryCast(acTrans.GetObject(acCurDb.TextStyleTableId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForRead), TextStyleTable)
+                                                    Dim textStyleId As ObjectId = ObjectId.Null
+                                                    If textStyleTable.Has(OBJprop(8)) Then
+                                                        textStyleId = textStyleTable(OBJprop(8))
+                                                        ObjDBText.TextStyleId = textStyleId ' acCurDb.Textstyle 'OBJprop(8)
+                                                    End If
+                                                End If
+                                                If OBJprop(15) <> "" Then
+                                                    If OBJprop(15) = 1 Then ObjDBText.Annotative = AnnotativeStates.True
+                                                    If OBJprop(15) = 0 Then ObjDBText.Annotative = AnnotativeStates.False
+                                                End If
+
+
+                                            Catch
+                                            End Try
+
+                                            If OBJprop(9) <> Nothing Then ' 9  Alignment = TopCenter
+                                                Dim InsertPt As Point3d
+                                                If ObjDBText.AlignmentPoint = Nothing Then
+                                                    InsertPt = ObjDBText.Position
+                                                Else
+                                                    InsertPt = ObjDBText.AlignmentPoint
+                                                End If
+
+                                                If OBJprop(9).ToUpper = "TOPCENTER" Then
+                                                    ObjDBText.HorizontalMode = 1 : ObjDBText.VerticalMode = 3
+                                                ElseIf OBJprop(9).ToUpper = "TOPLEFT" Then
+                                                    ObjDBText.HorizontalMode = 0 : ObjDBText.VerticalMode = 3
+                                                ElseIf OBJprop(9).ToUpper = "TOPRIGHT" Then
+                                                    ObjDBText.HorizontalMode = 2 : ObjDBText.VerticalMode = 3
+                                                ElseIf OBJprop(9).ToUpper = "BOTTOMCENTER" Then
+                                                    ObjDBText.HorizontalMode = 1 : ObjDBText.VerticalMode = 1
+                                                ElseIf OBJprop(9).ToUpper = "BOTTOMLEFT" Then
+                                                    ObjDBText.HorizontalMode = 0 : ObjDBText.VerticalMode = 1
+                                                ElseIf OBJprop(9).ToUpper = "BOTTOMRIGHT" Then
+                                                    ObjDBText.HorizontalMode = 2 : ObjDBText.VerticalMode = 1
+                                                ElseIf OBJprop(9).ToUpper = "MIDDLECENTER" Then
+                                                    ObjDBText.HorizontalMode = 1 : ObjDBText.VerticalMode = 2
+                                                ElseIf OBJprop(9).ToUpper = "MIDDLELEFT" Then
+                                                    ObjDBText.HorizontalMode = 0 : ObjDBText.VerticalMode = 2
+                                                ElseIf OBJprop(9).ToUpper = "MIDDLERIGHT" Then
+                                                    ObjDBText.HorizontalMode = 2 : ObjDBText.VerticalMode = 2
+                                                End If
+                                                ObjDBText.AlignmentPoint = InsertPt
+                                            End If
+                                            If OBJprop(10) <> Nothing Then ObjDBText.Height = OBJprop(10) '10  Height = dbl
+                                        End If
+                                    End If
+                                Next
+                                '' Save the new object to the database
+                                acTrans.Commit()
+                                '' Dispose of the transaction
+                            End Using
+                        End If
+
+                        Dim testpr As Double = 0
+                        testpr += PropOBJ("MText", CollMText, acCurDb, OBJprop)
+                        testpr += PropOBJ("BlockReference", CollBlockReference, acCurDb, OBJprop)
+                        testpr += PropOBJ("AlignedDimension", CollAlignedDimension, acCurDb, OBJprop)
+                        testpr += PropOBJ("Arc", CollArc, acCurDb, OBJprop)
+                        testpr += PropOBJ("ArcDimension", CollArcDimension, acCurDb, OBJprop)
+                        testpr += PropOBJ("BlockReference", CollBlockReference, acCurDb, OBJprop)
+                        testpr += PropOBJ("Circle", CollCircle, acCurDb, OBJprop)
+                        testpr += PropOBJ("DBPoint", CollDBPoint, acCurDb, OBJprop)
+                        testpr += PropOBJ("DBText", CollDBText, acCurDb, OBJprop)
+                        testpr += PropOBJ("DiametricDimension", CollDiametricDimension, acCurDb, OBJprop)
+                        testpr += PropOBJ("Ellipse", CollEllipse, acCurDb, OBJprop)
+                        testpr += PropOBJ("Hatch", CollHatch, acCurDb, OBJprop)
+                        testpr += PropOBJ("Helix", CollHelix, acCurDb, OBJprop)
+                        testpr += PropOBJ("LineAngularDimension2", CollLineAngularDimension2, acCurDb, OBJprop)
+                        testpr += PropOBJ("Line", CollLine, acCurDb, OBJprop)
+                        testpr += PropOBJ("MText", CollMText, acCurDb, OBJprop)
+                        testpr += PropOBJ("Polyline3d", CollPolyline3d, acCurDb, OBJprop)
+                        testpr += PropOBJ("Polyline2d", CollPolyline2d, acCurDb, OBJprop)
+                        testpr += PropOBJ("Polyline", CollPolyline, acCurDb, OBJprop)
+                        testpr += PropOBJ("RadialDimension", CollRadialDimension, acCurDb, OBJprop)
+                        testpr += PropOBJ("Ray", CollRay, acCurDb, OBJprop)
+                        testpr += PropOBJ("RotatedDimension", CollRotatedDimension, acCurDb, OBJprop)
+                        testpr += PropOBJ("Spline", CollSpline, acCurDb, OBJprop)
+                        testpr += PropOBJ("Xline", CollXline, acCurDb, OBJprop)
+                        testpr += PropOBJ("Attribute", CollAttribute, acCurDb, OBJprop)
+
+                        testpr += PropOBJ("OTHERS", CollOthers, acCurDb, OBJprop)
+                        ObjDone = testpr
+
+
                     End If
-
-                    Dim testpr As Double = 0
-                    testpr += PropOBJ("MText", CollMText, acCurDb, OBJprop)
-                    testpr += PropOBJ("BlockReference", CollBlockReference, acCurDb, OBJprop)
-                    testpr += PropOBJ("AlignedDimension", CollAlignedDimension, acCurDb, OBJprop)
-                    testpr += PropOBJ("Arc", CollArc, acCurDb, OBJprop)
-                    testpr += PropOBJ("ArcDimension", CollArcDimension, acCurDb, OBJprop)
-                    testpr += PropOBJ("BlockReference", CollBlockReference, acCurDb, OBJprop)
-                    testpr += PropOBJ("Circle", CollCircle, acCurDb, OBJprop)
-                    testpr += PropOBJ("DBPoint", CollDBPoint, acCurDb, OBJprop)
-                    testpr += PropOBJ("DBText", CollDBText, acCurDb, OBJprop)
-                    testpr += PropOBJ("DiametricDimension", CollDiametricDimension, acCurDb, OBJprop)
-                    testpr += PropOBJ("Ellipse", CollEllipse, acCurDb, OBJprop)
-                    testpr += PropOBJ("Hatch", CollHatch, acCurDb, OBJprop)
-                    testpr += PropOBJ("Helix", CollHelix, acCurDb, OBJprop)
-                    testpr += PropOBJ("LineAngularDimension2", CollLineAngularDimension2, acCurDb, OBJprop)
-                    testpr += PropOBJ("Line", CollLine, acCurDb, OBJprop)
-                    testpr += PropOBJ("MText", CollMText, acCurDb, OBJprop)
-                    testpr += PropOBJ("Polyline3d", CollPolyline3d, acCurDb, OBJprop)
-                    testpr += PropOBJ("Polyline2d", CollPolyline2d, acCurDb, OBJprop)
-                    testpr += PropOBJ("Polyline", CollPolyline, acCurDb, OBJprop)
-                    testpr += PropOBJ("RadialDimension", CollRadialDimension, acCurDb, OBJprop)
-                    testpr += PropOBJ("Ray", CollRay, acCurDb, OBJprop)
-                    testpr += PropOBJ("RotatedDimension", CollRotatedDimension, acCurDb, OBJprop)
-                    testpr += PropOBJ("Spline", CollSpline, acCurDb, OBJprop)
-                    testpr += PropOBJ("Xline", CollXline, acCurDb, OBJprop)
-                    testpr += PropOBJ("Attribute", CollAttribute, acCurDb, OBJprop)
-
-                    testpr += PropOBJ("OTHERS", CollOthers, acCurDb, OBJprop)
-                    ObjDone = testpr
 
                 Else 'ignore the command
                     Return Connect.DateLog & "Cmd OBJ" & vbTab & False & vbTab & "Pas de paramètre" & vbTab
@@ -3867,7 +3986,7 @@ Namespace Revo
 #If _AcadVer_ < 19 Then ' Ancienne Version 2010-2011-2012
                 Dim acDWG2 As AcadDocument = Application.DocumentManager.MdiActiveDocument.AcadDocument
 #Else 'Versio AutoCAD 2013 et +
-            Dim acDWG2 As Autodesk.AutoCAD.Interop.AcadDocument = DocumentExtension.GetAcadDocument(Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument)
+                Dim acDWG2 As Autodesk.AutoCAD.Interop.AcadDocument = DocumentExtension.GetAcadDocument(Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument)
 #End If
                 Return Connect.DateLog & "Cmd OBJ (" & ObjDone & ")" & vbTab & True & vbTab & "Type: " & Cmdinfo(1) & vbTab & acDWG2.Name
 

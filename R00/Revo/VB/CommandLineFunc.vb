@@ -239,41 +239,41 @@ End Module
 Class CommandsAsync
 
 
-    Public Async Sub CmdsAsync(Args() As Object)
-        Try
-            'For Each cmd In Args
-            '    Dim tl = CmdAsync("FLATTEN")
-            '    Console.WriteLine("---> commande FLATTEN")
-            'Next
+    'Public Async Sub CmdsAsync(Args() As Object)
+    '    Try
+    '        'For Each cmd In Args
+    '        '    Dim tl = CmdAsync("FLATTEN")
+    '        '    Console.WriteLine("---> commande FLATTEN")
+    '        'Next
 
-            '  Dim dt As DataTable = Await CmdAsync(Args)
-            ' Dim cmdResult As Autodesk.AutoCAD.EditorInput.Editor.CommandResult = CmdAsync(Args)
-            ' cmdResult.OnCompleted(AddressOf Continuation)
-
-
-            Console.WriteLine("End CmdsAsync")
-        Catch ex As Exception
-            Throw ex
-        End Try
-    End Sub
-
-    Private Async Function CmdAsync(Cmd As Object) As Threading.Tasks.Task 'As Threading.Tasks.Task(Of Autodesk.AutoCAD.EditorInput.Editor.CommandResult)
-
-        ' Dim doc = Application.DocumentManager.MdiActiveDocument
-        Dim ed As Autodesk.AutoCAD.EditorInput.Editor = Application.DocumentManager.MdiActiveDocument.Editor
+    '        '  Dim dt As DataTable = Await CmdAsync(Args)
+    '        ' Dim cmdResult As Autodesk.AutoCAD.EditorInput.Editor.CommandResult = CmdAsync(Args)
+    '        ' cmdResult.OnCompleted(AddressOf Continuation)
 
 
-        Console.WriteLine("2 Async Started")
+    '        Console.WriteLine("End CmdsAsync")
+    '    Catch ex As Exception
+    '        Throw ex
+    '    End Try
+    'End Sub
 
-        '  Dim cmdResult As Autodesk.AutoCAD.EditorInput.Editor.CommandResult = ed.CommandAsync("FLATTEN")
-        '  cmdResult.OnCompleted(AddressOf Continuation)
+    'Private Async Function CmdAsync(Cmd As Object) As Threading.Tasks.Task 'As Threading.Tasks.Task(Of Autodesk.AutoCAD.EditorInput.Editor.CommandResult)
 
-        '  Await ed.CommandAsync("FLATTEN")
+    '    ' Dim doc = Application.DocumentManager.MdiActiveDocument
+    '    Dim ed As Autodesk.AutoCAD.EditorInput.Editor = Application.DocumentManager.MdiActiveDocument.Editor
 
-        Console.WriteLine("3 Async endend")
 
-        ' Return cmdResult
-    End Function
+    '    Console.WriteLine("2 Async Started")
+
+    '    '  Dim cmdResult As Autodesk.AutoCAD.EditorInput.Editor.CommandResult = ed.CommandAsync("FLATTEN")
+    '    '  cmdResult.OnCompleted(AddressOf Continuation)
+
+    '    '  Await ed.CommandAsync("FLATTEN")
+
+    '    Console.WriteLine("3 Async endend")
+
+    '    ' Return cmdResult
+    'End Function
 
 
     Private Sub Continuation()
