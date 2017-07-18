@@ -25,8 +25,8 @@ Imports System.IO
 ' Version information for an assembly consists of the following four values:
 '    Major  .  Minor  . Build Number .  Revision
 ' <Assembly: AssemblyVersion>     <<<<------- C'est la variable de référence
-<Assembly: AssemblyVersion("3.5.0.0")>
-<Assembly: AssemblyFileVersion("3.5.0.0")>
+<Assembly: AssemblyVersion("3.6.0.0")>
+<Assembly: AssemblyFileVersion("3.6.0.0")>
 
 ' In order to sign your assembly you must specify a key to use. Refer to the 
 ' Microsoft .NET Framework documentation for more information on assembly signing.
