@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.10
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "acad", "C:\Program Files\Autodesk\AutoCAD 2017 - French\acad.exe", "{DAFB8302-DF6A-41ED-9BB1-18D62108A164}"
 	ProjectSection(DebuggerProjectSystem) = preProject
@@ -34,18 +34,18 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Any CPU.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Mixed Platforms.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x64.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x86.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|Any CPU.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|Mixed Platforms.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|x64.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|x86.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Any CPU.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Mixed Platforms.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x64.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x86.ActiveCfg = Release
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Any CPU.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Mixed Platforms.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x64.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x86.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|Any CPU.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|Mixed Platforms.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|x64.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|x86.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Any CPU.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x64.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x86.ActiveCfg = Release|x64
 		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Debug|Mixed Platforms.Build.0 = Debug|x86

@@ -1521,7 +1521,7 @@ Namespace Revo
 
             '[[Propriété]]
             '   1   Name = "New name"
-            '   2   Url = "c:/..."
+            '   2   Url = "c:/..." (change link to : # absolute, @ relative, Replace : C:/||Y:/])
             '   3   XYZInsertionPoint = dbl,dbl,dbl
             '   4   Rotation = dbl
             '   5   ScaleFactor = dbl
@@ -1546,19 +1546,19 @@ Namespace Revo
                         TabProp = SplitCmd(Cmdinfo(i), 1)
                         ' TabProp(0) = TabProp(0).ToLower
 
-                        If "name" = TabProp(0) Then ' 1  Name = ""  Nouveau nom
+                        If "name" = TabProp(0).ToLower Then ' 1  Name = ""  Nouveau nom
                             PSprop(1) = TabProp(1)
-                        ElseIf "url" = TabProp(0) Then ' 2  URL = ""  URL
+                        ElseIf "url" = TabProp(0).ToLower Then ' 2  URL = ""  URL
                             PSprop(2) = TabProp(1)
-                        ElseIf "xyzinsertionpoint" = TabProp(0) Then ' 3   XYZInsertionPoint
+                        ElseIf "xyzinsertionpoint" = TabProp(0).ToLower Then ' 3   XYZInsertionPoint
                             PSprop(3) = TabProp(1)
-                        ElseIf "rotation" = TabProp(0) Then '  4   Rotation
+                        ElseIf "rotation" = TabProp(0).ToLower Then '  4   Rotation
                             PSprop(4) = TabProp(1)
-                        ElseIf "scalefactor" = TabProp(0) Then '  5   ScaleFactor
+                        ElseIf "scalefactor" = TabProp(0).ToLower Then '  5   ScaleFactor
                             PSprop(5) = TabProp(1)
-                        ElseIf "truecolor" = TabProp(0) Then '  6   TrueColor
+                        ElseIf "truecolor" = TabProp(0).ToLower Then '  6   TrueColor
                             PSprop(6) = TabProp(1)
-                        ElseIf "layer" = TabProp(0) Then '  7   Layer
+                        ElseIf "layer" = TabProp(0).ToLower Then '  7   Layer
                             PSprop(7) = TabProp(1)
                         End If
                     End If
@@ -1574,67 +1574,38 @@ Namespace Revo
                 ' Get the current database and start a transaction
                 Dim acCurDb As Autodesk.AutoCAD.DatabaseServices.Database
                 acCurDb = Application.DocumentManager.MdiActiveDocument.Database
-             
+
+
+                ' Delete XREF (DWG) ------------------------------------
 
                 Using acTrans As Transaction = acCurDb.TransactionManager.StartTransaction()
-                    ' Create a reference to a DWG file
-                   
-                    ' If a valid reference is created then continue
-
-                    ' Attach the DWG reference to the current space
-                    '  Dim insPt As New Point3d(1, 1, 0)
-                    ' Using acBlkRef As New BlockReference(insPt, acXrefId)
 
                     Dim acBlkTblRec As BlockTableRecord
                     acBlkTblRec = acTrans.GetObject(acCurDb.CurrentSpaceId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
                     Dim ListUnResolveXref As New Collection
 
-
                     Using i_Tx As Transaction = acCurDb.TransactionManager.StartTransaction()
-                        ' ed.WriteMessage(vbLf & "---Resolving the XRefs------------------")
 
                         acCurDb.ResolveXrefs(True, False)
-                       
                         Dim i_xg As XrefGraph = acCurDb.GetHostDwgXrefGraph(True)
-                        ' ed.WriteMessage(vbLf & "---XRef's Graph-------------------------")
-                        ' ed.WriteMessage(vbLf & "CURRENT DRAWING")
                         Dim i_root As GraphNode = i_xg.RootNode
-                        'printChildren(root, "|-------", ed, Tx)
-                        'ed.WriteMessage(vbLf & "----------------------------------------" & vbLf)
-                     
 
                         For o As Integer = 0 To i_root.NumOut - 1
                             Dim child As XrefGraphNode = TryCast(i_root.Out(o), XrefGraphNode)
-                           
+
                             If child.Name.ToLower Like NameXref.ToLower Then 'if Right Name
                                 If child.XrefStatus = XrefStatus.FileNotFound Then 'if unResolved
                                     Dim bl As BlockTableRecord = TryCast(i_Tx.GetObject(child.BlockTableRecordId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForRead), BlockTableRecord)
-
                                     ListUnResolveXref.Add(bl.ObjectId)
-
-                                    'i_ed.WriteMessage(vbLf + i_indent + child.Database.Filename)
-                                    ' Name of the Xref (found name)
-                                    ' You can find the original path too:
-                                    'if (bl.IsFromExternalReference == true)
-                                    ' i_ed.WriteMessage("\n" + i_indent + "Xref path name: "
-                                    '                      + bl.PathName);
-                                    ' printChildren(child, "| " + i_indent, i_ed, i_Tx)
                                 End If
                             End If
 
                         Next
-
-
                     End Using
-                    ' acBlkTblRec.AppendEntity(acBlkRef)
-                    ' acTrans.AddNewlyCreatedDBObject(acBlkRef, True)
-                    ' End Using
 
                     For Each acXrefId As ObjectId In ListUnResolveXref
                         acCurDb.DetachXref(acXrefId) 'MsgBox("The external reference is detached.")
-
                     Next
-
 
                     ' Save the new objects to the database
                     acTrans.Commit()
@@ -1642,6 +1613,100 @@ Namespace Revo
                     ' Dispose of the transaction
                 End Using
 
+
+
+                ' Delete PDF (pdf) ------------------------------------
+
+                Dim pdfDictName = PdfDefinition.GetDictionaryKey(GetType(PdfDefinition))
+                Try
+                    Using tr As Transaction = acCurDb.TransactionManager.StartTransaction()
+                        Dim nodpdf = DirectCast(tr.GetObject(acCurDb.NamedObjectsDictionaryId, DatabaseServices.OpenMode.ForRead), DBDictionary)
+                        If Not nodpdf.Contains(pdfDictName) Then
+                            Throw New System.Exception("Dictionary not found: " + pdfDictName)
+                        End If
+                        Dim dictId = nodpdf.GetAt(pdfDictName)
+                        If dictId.IsNull Then
+                            Throw New System.Exception("Failed to get Dictionary for: " + pdfDictName)
+                        End If
+
+                        Dim pdfDict = DirectCast(tr.GetObject(dictId, DatabaseServices.OpenMode.ForRead), DBDictionary)
+                        For Each pdfDictEntry As DBDictionaryEntry In pdfDict
+                            Dim pdfName = pdfDictEntry.Key
+                            Dim pdfDef = DirectCast(tr.GetObject(pdfDictEntry.Value, DatabaseServices.OpenMode.ForWrite), PdfDefinition)
+
+                            If pdfName.ToLower Like NameXref.ToLower Then 'if Right Name
+
+                                If File.Exists(pdfDef.SourceFileName) = False Then
+                                    pdfDef.Erase()
+                                End If
+
+                            End If
+
+                            ' ed.WriteMessage(vbLf & " Pdf: '{0}' is {1} loaded", pdfName, If(pdfDef.Loaded, "", "NOT"))
+                        Next
+                        tr.Commit()
+                    End Using
+                Catch ex As System.Exception
+                    ' If ed IsNot Nothing Then
+                    '  ed.WriteMessage(vbLf & " Error: " + ex.Message)
+                    ' Else
+                    ' MessageBox.Show("Error: " + ex.Message, "TestIsPdfloaded", MessageBoxButtons.OK, MessageBoxIcon.[Error])
+                    'End If
+                End Try
+
+
+
+                ' Delete Raster (JPG, PNG ...) ------------------------------------
+
+                Dim nod As DBDictionary
+                Dim imageDict As DBDictionary
+                Dim rasterImageDef As Autodesk.AutoCAD.DatabaseServices.RasterImageDef
+                Dim dictEntry As System.Collections.DictionaryEntry
+
+                Dim tm As Autodesk.AutoCAD.DatabaseServices.TransactionManager = acCurDb.TransactionManager
+                Dim trans As Autodesk.AutoCAD.DatabaseServices.Transaction = tm.StartTransaction
+
+                Try
+                    nod = tm.GetObject(acCurDb.NamedObjectsDictionaryId, DatabaseServices.OpenMode.ForRead, False)
+                    imageDict = tm.GetObject(nod.GetAt("ACAD_IMAGE_DICT"), DatabaseServices.OpenMode.ForRead, False)
+
+                    For Each dictEntry In imageDict
+                        Dim obj As DBObject = tm.GetObject(dictEntry.Value(), DatabaseServices.OpenMode.ForWrite, False)
+
+                        'check if obj is a RasterImage def the hard way:
+                        If obj.GetRXClass.IsDerivedFrom(RXClass.GetClass(GetType(RasterImageDef))) Then
+                            'create a RasterImageDef wrapper
+                            rasterImageDef = DisposableWrapper.Create(GetType(RasterImageDef), obj.UnmanagedObject, False)
+                            Dim imagePath As String = rasterImageDef.SourceFileName
+                            Dim ImageName As String = Path.GetFileNameWithoutExtension(rasterImageDef.ActiveFileName)
+
+                            If ImageName.ToLower Like NameXref.ToLower Then 'if Right Name
+
+                                If File.Exists(imagePath) = False Then
+                                    'If Not rasterImageDef.IsLoaded Then
+                                    'rasterImageDef.AssertWriteEnabled(True, True)
+                                    ' rasterImageDef.Load()
+                                    rasterImageDef.Erase()
+                                    'End If
+                                End If
+
+                            End If
+                        End If
+
+
+                    Next
+                    trans.Commit()
+                Catch
+                    'aborts (or causes a "rollback" of) the transaction
+                    trans.Abort()
+                    'CommandLinePrompts.Message("Oops!!" & vbCrLf)
+                Finally
+                    If (Not trans Is Nothing) Then
+                        trans.Dispose()
+                    End If
+                End Try
+
+                curDwg.Editor.Regen()
 
             ElseIf Left(PSprop(0), 1) = "<" Then ' Delete
 
@@ -1682,18 +1747,209 @@ Namespace Revo
             End If
 
 
-            'Execute command
-            If Cmdinfo(1).ToUpper = "EXTENTS" Then
 
 
-            Else 'ignore the command
-                Return Connect.DateLog & "Cmd Xref" & vbTab & False & vbTab & "Pas de paramètre" & vbTab
+
+
+
+            'Si  Url = "c:/..." (change link to : # absolute, @ relative, Replace : C:/abc||Y:/xyz])
+            If PSprop(2) <> Nothing Then ' URL absolute or relative or Replace
+
+                Dim isAbsolute As Boolean = False
+                Dim isRelative As Boolean = False
+                Dim filePath As String = Path.GetDirectoryName(curDwg.Name)
+                Dim NameXref As String = PSprop(0).Replace("<<", "").Replace("<", "").Replace(">", "")
+                Dim replaceOldValue As String = ""
+                Dim replaceNewValue As String = ""
+
+                Dim urlParam As String = PSprop(2)
+                If Left(urlParam, 1) = "#" Then ' Active # absolute
+                    isAbsolute = True
+                    urlParam = Right(urlParam, urlParam.Length - 1)
+                ElseIf Left(urlParam, 1) = "@" Then 'Active @ relative
+                    isRelative = True
+                    urlParam = Right(urlParam, urlParam.Length - 1)
+                End If
+
+                If InStr(urlParam, "||") <> 0 Then ' Replace : C:/abc||Y:/xyz])
+                    Dim replaceValues() As String = Split(urlParam, "||")
+                    If replaceValues.Count = 2 Then
+                        replaceOldValue = replaceValues(0)
+                        replaceNewValue = replaceValues(1)
+                    End If
+                End If
+
+
+
+                ' Get the current database and start a transaction
+                Dim acCurDb As Autodesk.AutoCAD.DatabaseServices.Database
+                acCurDb = Application.DocumentManager.MdiActiveDocument.Database
+
+
+                ' Replace URL XREF (DWG) ------------------------------------
+
+
+                Using i_Tx As Transaction = acCurDb.TransactionManager.StartTransaction()
+
+                        acCurDb.ResolveXrefs(True, False)
+                        Dim i_xg As XrefGraph = acCurDb.GetHostDwgXrefGraph(True)
+                        Dim i_root As GraphNode = i_xg.RootNode
+
+                    For o As Integer = 0 To i_root.NumOut - 1
+                        Dim child As XrefGraphNode = TryCast(i_root.Out(o), XrefGraphNode)
+
+                        If child.Name.ToLower Like NameXref.ToLower Then 'if Right Name
+
+                            Dim bl As BlockTableRecord = TryCast(i_Tx.GetObject(child.BlockTableRecordId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite), BlockTableRecord)
+
+                            If isRelative = True Then
+                                bl.PathName = bl.PathName.Replace(filePath, ".")
+                            ElseIf isAbsolute = True And Left(bl.PathName, 1) = "." Then
+                                bl.PathName = filePath & Right(bl.PathName, bl.PathName.Count - 1)
+                            End If
+
+                            If replaceOldValue <> "" Then
+                                bl.PathName = bl.PathName.Replace(replaceOldValue, replaceNewValue)
+                            End If
+
+                        End If
+
+                    Next
+
+                    ' Save the new objects to the database
+                    i_Tx.Commit()
+
+                End Using
+
+                ' Dispose of the transaction
+
+
+
+                ' Replace URL PDF (pdf) ------------------------------------
+
+                Dim pdfDictName = PdfDefinition.GetDictionaryKey(GetType(PdfDefinition))
+                Try
+                    Using tr As Transaction = acCurDb.TransactionManager.StartTransaction()
+                        Dim nodpdf = DirectCast(tr.GetObject(acCurDb.NamedObjectsDictionaryId, DatabaseServices.OpenMode.ForRead), DBDictionary)
+                        If Not nodpdf.Contains(pdfDictName) Then
+                            Throw New System.Exception("Dictionary not found: " + pdfDictName)
+                        End If
+                        Dim dictId = nodpdf.GetAt(pdfDictName)
+                        If dictId.IsNull Then
+                            Throw New System.Exception("Failed to get Dictionary for: " + pdfDictName)
+                        End If
+
+                        Dim pdfDict = DirectCast(tr.GetObject(dictId, DatabaseServices.OpenMode.ForRead), DBDictionary)
+                        For Each pdfDictEntry As DBDictionaryEntry In pdfDict
+                            Dim pdfName = pdfDictEntry.Key
+                            Dim pdfDef = DirectCast(tr.GetObject(pdfDictEntry.Value, DatabaseServices.OpenMode.ForWrite), PdfDefinition)
+
+                            If pdfName.ToLower Like NameXref.ToLower Then 'if Right Name
+
+                                If isRelative = True Then
+                                    pdfDef.SourceFileName = pdfDef.SourceFileName.Replace(filePath, ".")
+                                ElseIf isAbsolute = True And Left(pdfDef.SourceFileName, 1) = "." Then
+                                    pdfDef.SourceFileName = filePath & Right(pdfDef.SourceFileName, pdfDef.SourceFileName.Count - 1)
+                                End If
+
+                                If replaceOldValue <> "" Then
+                                    pdfDef.SourceFileName = pdfDef.SourceFileName.Replace(replaceOldValue, replaceNewValue)
+                                End If
+
+                            End If
+
+                        Next
+                        tr.Commit()
+                    End Using
+                Catch ex As System.Exception
+                    ' If ed IsNot Nothing Then
+                    '  ed.WriteMessage(vbLf & " Error: " + ex.Message)
+                    ' Else
+                    ' MessageBox.Show("Error: " + ex.Message, "TestIsPdfloaded", MessageBoxButtons.OK, MessageBoxIcon.[Error])
+                    'End If
+                End Try
+
+
+
+                ' Replace URL Raster (JPG, PNG ...) ------------------------------------
+
+                Dim nod As DBDictionary
+                Dim imageDict As DBDictionary
+                Dim rasterImageDef As Autodesk.AutoCAD.DatabaseServices.RasterImageDef
+                Dim dictEntry As System.Collections.DictionaryEntry
+
+                Dim tm As Autodesk.AutoCAD.DatabaseServices.TransactionManager = acCurDb.TransactionManager
+                Dim trans As Autodesk.AutoCAD.DatabaseServices.Transaction = tm.StartTransaction
+
+                Try
+                    nod = tm.GetObject(acCurDb.NamedObjectsDictionaryId, DatabaseServices.OpenMode.ForRead, False)
+                    imageDict = tm.GetObject(nod.GetAt("ACAD_IMAGE_DICT"), DatabaseServices.OpenMode.ForRead, False)
+
+                    For Each dictEntry In imageDict
+                        Dim obj As DBObject = tm.GetObject(dictEntry.Value(), DatabaseServices.OpenMode.ForWrite, False)
+
+                        'check if obj is a RasterImage def the hard way:
+                        If obj.GetRXClass.IsDerivedFrom(RXClass.GetClass(GetType(RasterImageDef))) Then
+                            'create a RasterImageDef wrapper
+                            rasterImageDef = DisposableWrapper.Create(GetType(RasterImageDef), obj.UnmanagedObject, False)
+                            Dim imagePath As String = rasterImageDef.SourceFileName
+                            Dim ImageName As String = Path.GetFileNameWithoutExtension(rasterImageDef.ActiveFileName)
+
+                            If ImageName.ToLower Like NameXref.ToLower Then 'if Right Name
+
+                                If isRelative = True Then
+                                    rasterImageDef.SourceFileName = rasterImageDef.SourceFileName.Replace(filePath, ".")
+                                ElseIf isAbsolute = True And Left(rasterImageDef.SourceFileName, 1) = "." Then
+                                    rasterImageDef.SourceFileName = filePath & Right(rasterImageDef.SourceFileName, rasterImageDef.SourceFileName.Count - 1)
+                                End If
+
+                                If replaceOldValue <> "" Then
+                                    rasterImageDef.SourceFileName = rasterImageDef.SourceFileName.Replace(replaceOldValue, replaceNewValue)
+                                End If
+
+
+                            End If
+                        End If
+                    Next
+                    trans.Commit()
+                Catch
+                    'aborts (or causes a "rollback" of) the transaction
+                    trans.Abort()
+                    'CommandLinePrompts.Message("Oops!!" & vbCrLf)
+                Finally
+                    If (Not trans Is Nothing) Then
+                        trans.Dispose()
+                    End If
+                End Try
+
+                curDwg.Editor.Regen()
+
             End If
+
+
+
 
             Return Connect.DateLog & "Cmd Xref" & vbTab & True & vbTab & "Type: " & Cmdinfo(1) & vbTab
 
         End Function
 
+
+        ' Recursively prints out information about the XRef's hierarchy
+        Private Shared Sub printChildren(i_root As GraphNode, i_indent As String, i_ed As Editor, i_Tx As Transaction)
+            For o As Integer = 0 To i_root.NumOut - 1
+                Dim child As XrefGraphNode = TryCast(i_root.Out(o), XrefGraphNode)
+                If child.XrefStatus = XrefStatus.Resolved Then
+                    Dim bl As BlockTableRecord = TryCast(i_Tx.GetObject(child.BlockTableRecordId, DatabaseServices.OpenMode.ForRead), BlockTableRecord)
+                    i_ed.WriteMessage((Convert.ToString(vbLf) & i_indent) + child.Database.Filename)
+                    ' Name of the Xref (found name)
+                    ' You can find the original path too:
+                    'if (bl.IsFromExternalReference == true)
+                    ' i_ed.WriteMessage("\n" + i_indent + "Xref path name: " 
+                    '                      + bl.PathName);
+                    printChildren(child, Convert.ToString("| ") & i_indent, i_ed, i_Tx)
+                End If
+            Next
+        End Sub
 
         ''' <summary>
         ''' Revo Command: Purge in draws
@@ -3729,7 +3985,7 @@ Namespace Revo
                                                     If Ha.PatternName.ToLower = OBJprop(16).ToLower Then
                                                         If ActiveDelete = False Then
                                                             HachEnt.Add(ent2)
-                                                            callback = PropOBJ("Hatch", HachEnt, acCurDb, OBJprop)
+                                                            callback = PropOBJ("Hatch", HachEnt, acCurDb, OBJprop, False)
                                                         Else
                                                             ent2.Erase()
                                                         End If
@@ -3737,7 +3993,7 @@ Namespace Revo
                                                 Else
                                                     If ActiveDelete = False Then
                                                         HachEnt.Add(ent2)
-                                                        callback = PropOBJ("Hatch", HachEnt, acCurDb, OBJprop)
+                                                        callback = PropOBJ("Hatch", HachEnt, acCurDb, OBJprop, False)
                                                     Else
                                                         ent2.Erase()
                                                     End If
@@ -3789,69 +4045,77 @@ Namespace Revo
                                             '' Open the selected object for write
                                             Dim acEnt As Entity = acTrans.GetObject(acSSObj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
                                             Dim acEnt2 As Entity = acTrans.GetObject(acSSObj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
-                                            If Not IsDBNull(acEnt) & TypeName(acEnt) Like OBJprop(1) Then
+                                            If Not IsDBNull(acEnt) Then
 
-                                                If InStr(CurSpaceName.ToLower, " << " & acEnt.BlockName.ToLower & " >> ") <> 0 Then 'Contrôle si le Space est concerné
+                                                If TypeName(acEnt) Like OBJprop(1) Then
 
-                                                    If TypeName(acEnt) = "Polyline" Then
-                                                        CollPolyline.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Line" Or TypeName(acEnt) = "IAcadLine2" Then
-                                                        CollLine.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "BlockReference" Then
-                                                        CollBlockReference.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "DBText" Or TypeName(acEnt) = "IAcadText2" Then
-                                                        CollDBText.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "MText" Or TypeName(acEnt) = "IAcadMText2" Then
-                                                        CollMText.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Polyline2d" Or TypeName(acEnt) = "IAcadLWPolyline2" Then
-                                                        CollPolyline2d.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Polyline3d" Then
-                                                        CollPolyline3d.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "DBPoint" Then
-                                                        CollDBPoint.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Hatch" Then
-                                                        'if filter Type   
-                                                        If OBJprop(16) <> "" Then '16 StyleFilter = "" (SOLID)
-                                                            Dim Ha As Hatch = acEnt
-                                                            If Ha.PatternName.ToLower = OBJprop(16).ToLower Then
+                                                    Dim SearchString As String = CurSpaceName.ToLower
+                                                    Dim SearchChar As String = "<<" & acEnt.BlockName.ToLower & ">>"
+
+                                                    Dim findSpace As Integer = InStr(SearchString, SearchChar)
+
+                                                    If findSpace <> 0 Then 'Contrôle si le Space est concerné
+
+                                                        If TypeName(acEnt) = "Polyline" Then
+                                                            CollPolyline.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Line" Or TypeName(acEnt) = "IAcadLine2" Then
+                                                            CollLine.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "BlockReference" Then
+                                                            CollBlockReference.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "DBText" Or TypeName(acEnt) = "IAcadText2" Then
+                                                            CollDBText.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "MText" Or TypeName(acEnt) = "IAcadMText2" Then
+                                                            CollMText.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Polyline2d" Or TypeName(acEnt) = "IAcadLWPolyline2" Then
+                                                            CollPolyline2d.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Polyline3d" Then
+                                                            CollPolyline3d.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "DBPoint" Then
+                                                            CollDBPoint.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Hatch" Then
+                                                            'if filter Type   
+                                                            If OBJprop(16) <> "" Then '16 StyleFilter = "" (SOLID)
+                                                                Dim Ha As Hatch = acEnt
+                                                                If Ha.PatternName.ToLower = OBJprop(16).ToLower Then
+                                                                    CollHatch.Add(acEnt)
+                                                                End If
+                                                            Else
                                                                 CollHatch.Add(acEnt)
                                                             End If
+                                                        ElseIf TypeName(acEnt) = "Arc" Then
+                                                            CollArc.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Circle" Or TypeName(acEnt) = "IAcadCircle2" Then
+                                                            CollCircle.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "AlignedDimension" Then
+                                                            CollAlignedDimension.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "RotatedDimension" Then
+                                                            CollRadialDimension.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "RadialDimension" Then
+                                                            CollRadialDimension.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "LineAngularDimension2" Then
+                                                            CollLineAngularDimension2.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "ArcDimension" Then
+                                                            CollArcDimension.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "DiametricDimension" Then
+                                                            CollDiametricDimension.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Spline" Then
+                                                            CollSpline.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Xline" Then
+                                                            CollXline.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Ray" Then
+                                                            CollRay.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Helix" Then
+                                                            CollHelix.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Ellipse" Then
+                                                            CollEllipse.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "AttributeDefinition" Or TypeName(acEnt) = "IAcadAttribute2" Or TypeName(acEnt) = "IAcadAttribute2" Then
+                                                            CollAttribute.Add(acEnt)
+                                                        ElseIf TypeName(acEnt) = "Viewport" Or TypeName(acEnt) = "IAcadPViewport2" Then
+                                                            'ne faire rien
                                                         Else
-                                                            CollHatch.Add(acEnt)
+                                                            CollOthers.Add(acEnt)
+                                                            ' Connect.RevoLog(TypeName(acEnt))
                                                         End If
-                                                    ElseIf TypeName(acEnt) = "Arc" Then
-                                                        CollArc.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Circle" Or TypeName(acEnt) = "IAcadCircle2" Then
-                                                        CollCircle.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "AlignedDimension" Then
-                                                        CollAlignedDimension.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "RotatedDimension" Then
-                                                        CollRadialDimension.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "RadialDimension" Then
-                                                        CollRadialDimension.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "LineAngularDimension2" Then
-                                                        CollLineAngularDimension2.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "ArcDimension" Then
-                                                        CollArcDimension.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "DiametricDimension" Then
-                                                        CollDiametricDimension.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Spline" Then
-                                                        CollSpline.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Xline" Then
-                                                        CollXline.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Ray" Then
-                                                        CollRay.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Helix" Then
-                                                        CollHelix.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Ellipse" Then
-                                                        CollEllipse.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "AttributeDefinition" Or TypeName(acEnt) = "IAcadAttribute2" Or TypeName(acEnt) = "IAcadAttribute2" Then
-                                                        CollAttribute.Add(acEnt)
-                                                    ElseIf TypeName(acEnt) = "Viewport" Or TypeName(acEnt) = "IAcadPViewport2" Then
-                                                        'ne faire rien
-                                                    Else
-                                                        CollOthers.Add(acEnt)
-                                                        ' Connect.RevoLog(TypeName(acEnt))
                                                     End If
                                                 End If
                                             End If
@@ -3946,33 +4210,33 @@ Namespace Revo
                         End If
 
                         Dim testpr As Double = 0
-                        testpr += PropOBJ("MText", CollMText, acCurDb, OBJprop)
-                        testpr += PropOBJ("BlockReference", CollBlockReference, acCurDb, OBJprop)
-                        testpr += PropOBJ("AlignedDimension", CollAlignedDimension, acCurDb, OBJprop)
-                        testpr += PropOBJ("Arc", CollArc, acCurDb, OBJprop)
-                        testpr += PropOBJ("ArcDimension", CollArcDimension, acCurDb, OBJprop)
-                        testpr += PropOBJ("BlockReference", CollBlockReference, acCurDb, OBJprop)
-                        testpr += PropOBJ("Circle", CollCircle, acCurDb, OBJprop)
-                        testpr += PropOBJ("DBPoint", CollDBPoint, acCurDb, OBJprop)
-                        testpr += PropOBJ("DBText", CollDBText, acCurDb, OBJprop)
-                        testpr += PropOBJ("DiametricDimension", CollDiametricDimension, acCurDb, OBJprop)
-                        testpr += PropOBJ("Ellipse", CollEllipse, acCurDb, OBJprop)
-                        testpr += PropOBJ("Hatch", CollHatch, acCurDb, OBJprop)
-                        testpr += PropOBJ("Helix", CollHelix, acCurDb, OBJprop)
-                        testpr += PropOBJ("LineAngularDimension2", CollLineAngularDimension2, acCurDb, OBJprop)
-                        testpr += PropOBJ("Line", CollLine, acCurDb, OBJprop)
-                        testpr += PropOBJ("MText", CollMText, acCurDb, OBJprop)
-                        testpr += PropOBJ("Polyline3d", CollPolyline3d, acCurDb, OBJprop)
-                        testpr += PropOBJ("Polyline2d", CollPolyline2d, acCurDb, OBJprop)
-                        testpr += PropOBJ("Polyline", CollPolyline, acCurDb, OBJprop)
-                        testpr += PropOBJ("RadialDimension", CollRadialDimension, acCurDb, OBJprop)
-                        testpr += PropOBJ("Ray", CollRay, acCurDb, OBJprop)
-                        testpr += PropOBJ("RotatedDimension", CollRotatedDimension, acCurDb, OBJprop)
-                        testpr += PropOBJ("Spline", CollSpline, acCurDb, OBJprop)
-                        testpr += PropOBJ("Xline", CollXline, acCurDb, OBJprop)
-                        testpr += PropOBJ("Attribute", CollAttribute, acCurDb, OBJprop)
+                        testpr += PropOBJ("MText", CollMText, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("BlockReference", CollBlockReference, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("AlignedDimension", CollAlignedDimension, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Arc", CollArc, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("ArcDimension", CollArcDimension, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("BlockReference", CollBlockReference, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Circle", CollCircle, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("DBPoint", CollDBPoint, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("DBText", CollDBText, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("DiametricDimension", CollDiametricDimension, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Ellipse", CollEllipse, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Hatch", CollHatch, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Helix", CollHelix, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("LineAngularDimension2", CollLineAngularDimension2, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Line", CollLine, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("MText", CollMText, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Polyline3d", CollPolyline3d, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Polyline2d", CollPolyline2d, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Polyline", CollPolyline, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("RadialDimension", CollRadialDimension, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Ray", CollRay, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("RotatedDimension", CollRotatedDimension, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Spline", CollSpline, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Xline", CollXline, acCurDb, OBJprop, ActiveDelete)
+                        testpr += PropOBJ("Attribute", CollAttribute, acCurDb, OBJprop, ActiveDelete)
 
-                        testpr += PropOBJ("OTHERS", CollOthers, acCurDb, OBJprop)
+                        testpr += PropOBJ("OTHERS", CollOthers, acCurDb, OBJprop, ActiveDelete)
                         ObjDone = testpr
 
 
@@ -4003,154 +4267,164 @@ Namespace Revo
         ''' <param name="Types">Type des objets</param>
         ''' <param name="OBJcoll">Collection des objets</param>
         ''' <remarks></remarks>
-        Public Function PropOBJ(ByVal Types As String, ByVal OBJcoll As Collection, ByVal acCurDb As Database, ByVal OBJprop() As String)  ' Remarks
+        Public Function PropOBJ(ByVal Types As String, ByVal OBJcoll As Collection, ByVal acCurDb As Database, ByVal OBJprop() As String, ByVal ActiveDelete As Boolean)  ' Remarks
 
             If Types.ToUpper Like OBJprop(1).ToUpper And OBJcoll.Count > 0 Then
 
                 Try
 
-              
-                Dim OBJColor As Color
-                OBJColor = Color.FromColorIndex(ColorMethod.ByAci, 7)
 
-                Using acTrans As Transaction = acCurDb.TransactionManager.StartTransaction() '' Start a transaction
-                    For Each Obj In OBJcoll 'Traitement des objets: 
+                    Dim OBJColor As Color
+                    OBJColor = Color.FromColorIndex(ColorMethod.ByAci, 7)
 
-                        Try
+                    Using acTrans As Transaction = acCurDb.TransactionManager.StartTransaction() '' Start a transaction
+                        For Each Obj In OBJcoll 'Traitement des objets: 
 
-                            If Obj.Layer.ToUpper Like OBJprop(0).ToUpper = True Then 'Filtre calque
-                                Dim acEnt As Entity = acTrans.GetObject(Obj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
-                                If Not IsDBNull(acEnt) Then
-                                    If OBJprop(2) <> Nothing Then
-                                        OBJColor = AcadTrueColor(OBJprop(2))
-                                        Obj.ColorIndex = OBJColor.ColorIndex '2  TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
-                                    End If
+                            Try
 
-                                    If OBJprop(3) <> Nothing Then Obj.Layer = OBJprop(3) ' 3  Layer = ""
-                                    If OBJprop(4) <> Nothing Then Obj.Linetype = OBJprop(4) ' 4  LineType = ""
-                                    If OBJprop(5) <> Nothing Then Obj.LinetypeScale = OBJprop(5) ' 5  LinetypeScale = dbl
-                                    If OBJprop(6) <> Nothing Then Obj.LineWeight = ConvertLineWeight(OBJprop(6)) ' 6  Lineweight = dbl
+                                If Obj.Layer.ToUpper Like OBJprop(0).ToUpper = True Then 'Filtre calque
+                                    Dim acEnt As Entity = acTrans.GetObject(Obj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
+                                    If Not IsDBNull(acEnt) Then
 
-                                    If Types = "MText" Then
-                                        If OBJprop(7) <> Nothing Then Obj.Rotation = OBJprop(7) ' 7  Rotation = dbl
-                                        'If OBJprop(8) <> Nothing Then ObjMText.TextStyleId = OBJprop(8) ' 8  StyleName = ""
-                                        'If OBJprop(9) <> Nothing Then ObjMText.FlowDirection = OBJprop(9) ' 9  Alignment = TopCenter
-                                        If OBJprop(10) <> Nothing Then Obj.Height = OBJprop(10) '10  Height = dbl
-                                        'If OBJprop(11) <> Nothing Then ObjBL. = OBJprop(11) '11  ScaleFactor = dbl
+                                        If ActiveDelete = True Then
+                                            acEnt.Erase()
+                                        Else
 
-                                        If OBJprop(12) <> Nothing Then '12  Text = "*"||"abc"
-                                            Dim Param() As String = Split(OBJprop(12), "||")
-                                            If Param.Count = 2 Then
-                                                If Obj.Contents.ToUpper Like Param(0).ToUpper = True Then 'Test du texte de Mtext
-                                                    If InStr(Param(1), "*") = 0 Then
-                                                        Obj.Contents = Param(1)
-                                                    Else
-                                                        If Left(Param(1), 1) = "*" And Right(Param(1), 1) = "*" Then
-                                                            Obj.Contents = Replace(Obj.Contents, Replace(Param(0), "*", ""), Replace(Param(1), "*", ""))   ' *xyz* -> *abc*
-                                                        ElseIf Left(Param(1), 1) <> "*" And Right(Param(1), 1) = "*" Then
-                                                            Obj.Contents = Replace(Param(1), "*", "") & Obj.Contents                       ' abc***
-                                                        ElseIf Left(Param(1), 1) = "*" And Right(Param(1), 1) <> "*" Then
-                                                            Obj.Contents = Obj.Contents & Replace(Param(1), "*", "")                       ' ***abc
-                                                        Else
-                                                            Obj.Contents = Replace(Param(1), "*", "") 'Nouveau nom
+                                            ' Traitement des propriétés en général
+                                            If OBJprop(2) <> Nothing Then
+                                                OBJColor = AcadTrueColor(OBJprop(2))
+                                                Obj.ColorIndex = OBJColor.ColorIndex '2  TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
+                                            End If
+
+                                            If OBJprop(3) <> Nothing Then Obj.Layer = OBJprop(3) ' 3  Layer = ""
+                                            If OBJprop(4) <> Nothing Then Obj.Linetype = OBJprop(4) ' 4  LineType = ""
+                                            If OBJprop(5) <> Nothing Then Obj.LinetypeScale = OBJprop(5) ' 5  LinetypeScale = dbl
+                                            If OBJprop(6) <> Nothing Then Obj.LineWeight = ConvertLineWeight(OBJprop(6)) ' 6  Lineweight = dbl
+
+                                            If Types = "MText" Then
+                                                If OBJprop(7) <> Nothing Then Obj.Rotation = OBJprop(7) ' 7  Rotation = dbl
+                                                'If OBJprop(8) <> Nothing Then ObjMText.TextStyleId = OBJprop(8) ' 8  StyleName = ""
+                                                'If OBJprop(9) <> Nothing Then ObjMText.FlowDirection = OBJprop(9) ' 9  Alignment = TopCenter
+                                                If OBJprop(10) <> Nothing Then Obj.Height = OBJprop(10) '10  Height = dbl
+                                                'If OBJprop(11) <> Nothing Then ObjBL. = OBJprop(11) '11  ScaleFactor = dbl
+
+                                                If OBJprop(12) <> Nothing Then '12  Text = "*"||"abc"
+                                                    Dim Param() As String = Split(OBJprop(12), "||")
+                                                    If Param.Count = 2 Then
+                                                        If Obj.Contents.ToUpper Like Param(0).ToUpper = True Then 'Test du texte de Mtext
+                                                            If InStr(Param(1), "*") = 0 Then
+                                                                Obj.Contents = Param(1)
+                                                            Else
+                                                                If Left(Param(1), 1) = "*" And Right(Param(1), 1) = "*" Then
+                                                                    Obj.Contents = Replace(Obj.Contents, Replace(Param(0), "*", ""), Replace(Param(1), "*", ""))   ' *xyz* -> *abc*
+                                                                ElseIf Left(Param(1), 1) <> "*" And Right(Param(1), 1) = "*" Then
+                                                                    Obj.Contents = Replace(Param(1), "*", "") & Obj.Contents                       ' abc***
+                                                                ElseIf Left(Param(1), 1) = "*" And Right(Param(1), 1) <> "*" Then
+                                                                    Obj.Contents = Obj.Contents & Replace(Param(1), "*", "")                       ' ***abc
+                                                                Else
+                                                                    Obj.Contents = Replace(Param(1), "*", "") 'Nouveau nom
+                                                                End If
+                                                            End If
                                                         End If
                                                     End If
                                                 End If
+
+                                                If OBJprop(15) <> "" Then
+                                                    If OBJprop(15) = 1 Then Obj.Annotative = AnnotativeStates.True
+                                                    If OBJprop(15) = 0 Then Obj.Annotative = AnnotativeStates.False
+                                                End If
+
+                                                'If OBJprop(13) <> Nothing Then ObjBL.Item = OBJprop(13) '13  PropPerso ???
+                                                'Index = "*"||"abc"
+
                                             End If
-                                        End If
-
-                                        If OBJprop(15) <> "" Then
-                                            If OBJprop(15) = 1 Then Obj.Annotative = AnnotativeStates.True
-                                            If OBJprop(15) = 0 Then Obj.Annotative = AnnotativeStates.False
-                                        End If
-
-                                        'If OBJprop(13) <> Nothing Then ObjBL.Item = OBJprop(13) '13  PropPerso ???
-                                        'Index = "*"||"abc"
-
-                                    End If
-                                    If Types = "Hatch" Then
-                                            If OBJprop(15) <> Nothing Then
-                                                If OBJprop(15) = 1 Then Obj.Annotative = AnnotativeStates.True
-                                                If OBJprop(15) = 0 Then Obj.Annotative = AnnotativeStates.False
+                                            If Types = "Hatch" Then
+                                                If OBJprop(15) <> Nothing Then
+                                                    If OBJprop(15) = 1 Then Obj.Annotative = AnnotativeStates.True
+                                                    If OBJprop(15) = 0 Then Obj.Annotative = AnnotativeStates.False
+                                                End If
                                             End If
-                                    End If
-                                    If Types = "BlockReference" Then
-                                        If OBJprop(7) <> Nothing Then Obj.Rotation = OBJprop(7) ' 7  Rotation = dbl
+                                            If Types = "BlockReference" Then
+                                                If OBJprop(7) <> Nothing Then Obj.Rotation = OBJprop(7) ' 7  Rotation = dbl
 
-                                        If OBJprop(12) <> Nothing Then '12  Text = "*"||"abc"
-                                            Dim Param() As String = Split(OBJprop(12), "||")
-                                            If Param.Count = 2 Then
+                                                If OBJprop(12) <> Nothing Then '12  Text = "*"||"abc"
+                                                    Dim Param() As String = Split(OBJprop(12), "||")
+                                                    If Param.Count = 2 Then
 
-                                                'Boucle sur tous les attributs
-                                                Dim blkRef As BlockReference = DirectCast(acTrans.GetObject(Obj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForRead), BlockReference)
-                                                Dim attCol As AttributeCollection = blkRef.AttributeCollection 'Get the block attributue collection
-                                                'Dim attCol As AttributeCollection = br.AttributeCollection
-                                                Dim attRef As AttributeReference = Nothing
-                                                Dim CheckAtt As Boolean = False
-                                                'Loop through the attribute collection
-                                                For Each attId As ObjectId In attCol
-                                                    'Get this attribute reference
-                                                    attRef = DirectCast(acTrans.GetObject(attId, DatabaseServices.OpenMode.ForWrite), AttributeReference)
+                                                        'Boucle sur tous les attributs
+                                                        Dim blkRef As BlockReference = DirectCast(acTrans.GetObject(Obj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForRead), BlockReference)
+                                                        Dim attCol As AttributeCollection = blkRef.AttributeCollection 'Get the block attributue collection
+                                                        'Dim attCol As AttributeCollection = br.AttributeCollection
+                                                        Dim attRef As AttributeReference = Nothing
+                                                        Dim CheckAtt As Boolean = False
+                                                        'Loop through the attribute collection
+                                                        For Each attId As ObjectId In attCol
+                                                            'Get this attribute reference
+                                                            attRef = DirectCast(acTrans.GetObject(attId, DatabaseServices.OpenMode.ForWrite), AttributeReference)
 
-                                                    If OBJprop(14) = Nothing Then
-                                                        CheckAtt = True
-                                                    ElseIf attRef.Tag.ToLower Like OBJprop(14).ToLower Then
-                                                        CheckAtt = True
-                                                    Else
-                                                        CheckAtt = False
-                                                    End If
-
-                                                    If CheckAtt = True Then 'Check if attribut filter is actived
-                                                        'Store its name
-                                                        'Dim attName As String = attRef.Tag
-                                                        Try
-                                                            If attRef.TextString.ToString.ToLower Like Param(0).ToLower Then
-                                                                If InStr(Param(1), "*") = 0 Then
-                                                                    attRef.TextString = Param(1)
-                                                                Else
-                                                                    If Left(Param(1), 1) = "*" And Right(Param(1), 1) = "*" Then
-                                                                        attRef.TextString = Replace(attRef.TextString, Replace(Param(0), "*", ""), Replace(Param(1), "*", ""))   ' *xyz* -> *abc*
-                                                                    ElseIf Left(Param(1), 1) <> "*" And Right(Param(1), 1) = "*" Then
-                                                                        attRef.TextString = Replace(Param(1), "*", "") & attRef.TextString     ' abc***
-                                                                    ElseIf Left(Param(1), 1) = "*" And Right(Param(1), 1) <> "*" Then
-                                                                        attRef.TextString = attRef.TextString & Replace(Param(1), "*", "")     ' ***abc
-                                                                    Else
-                                                                        attRef.TextString = Replace(Param(1), "*", "") 'Nouveau nom               '
-                                                                    End If
-                                                                End If
+                                                            If OBJprop(14) = Nothing Then
+                                                                CheckAtt = True
+                                                            ElseIf attRef.Tag.ToLower Like OBJprop(14).ToLower Then
+                                                                CheckAtt = True
+                                                            Else
+                                                                CheckAtt = False
                                                             End If
 
-                                                            'Dim IDAttrname As Integer = Array.IndexOf(Pts.AttrName.ToArray, attName)
-                                                            'If IDAttrname >= 0 Then attRef.TextString = Pts.AttrValue(IDAttrname) 'dr(attName)
+                                                            If CheckAtt = True Then 'Check if attribut filter is actived
+                                                                'Store its name
+                                                                'Dim attName As String = attRef.Tag
+                                                                Try
+                                                                    If attRef.TextString.ToString.ToLower Like Param(0).ToLower Then
+                                                                        If InStr(Param(1), "*") = 0 Then
+                                                                            attRef.TextString = Param(1)
+                                                                        Else
+                                                                            If Left(Param(1), 1) = "*" And Right(Param(1), 1) = "*" Then
+                                                                                attRef.TextString = Replace(attRef.TextString, Replace(Param(0), "*", ""), Replace(Param(1), "*", ""))   ' *xyz* -> *abc*
+                                                                            ElseIf Left(Param(1), 1) <> "*" And Right(Param(1), 1) = "*" Then
+                                                                                attRef.TextString = Replace(Param(1), "*", "") & attRef.TextString     ' abc***
+                                                                            ElseIf Left(Param(1), 1) = "*" And Right(Param(1), 1) <> "*" Then
+                                                                                attRef.TextString = attRef.TextString & Replace(Param(1), "*", "")     ' ***abc
+                                                                            Else
+                                                                                attRef.TextString = Replace(Param(1), "*", "") 'Nouveau nom               '
+                                                                            End If
+                                                                        End If
+                                                                    End If
 
-                                                        Catch exA As Exception
+                                                                    'Dim IDAttrname As Integer = Array.IndexOf(Pts.AttrName.ToArray, attName)
+                                                                    'If IDAttrname >= 0 Then attRef.TextString = Pts.AttrValue(IDAttrname) 'dr(attName)
 
-                                                        Catch ex As COMException
-                                                            'Erreur calques verrouillés
-                                                            Connect.RevoLog(Connect.DateLog & "Cmd OBJ" & vbTab & False & vbTab & "Err attribut, layer locked: " & blkRef.Name & " > " & attRef.Tag.ToString)
-                                                        End Try
+                                                                Catch exA As Exception
+
+                                                                Catch ex As COMException
+                                                                    'Erreur calques verrouillés
+                                                                    Connect.RevoLog(Connect.DateLog & "Cmd OBJ" & vbTab & False & vbTab & "Err attribut, layer locked: " & blkRef.Name & " > " & attRef.Tag.ToString)
+                                                                End Try
+                                                            End If
+                                                        Next
+
+
+                                                        'Boucle pour les propriétés dynamique
+                                                        '   a faire
+                                                        ' ----------------------------------
                                                     End If
-                                                Next
 
+                                                End If
 
-                                                'Boucle pour les propriétés dynamique
-                                                '   a faire
-                                                ' ----------------------------------
                                             End If
 
+
+
+                                            'Fin traitement de l'objet (pas suppresion)
                                         End If
-
                                     End If
-
                                 End If
-                            End If
 
-                        Catch
-                        End Try
-                    Next
-                    '' Save the new object to the database
-                    acTrans.Commit()
-                    '' Dispose of the transaction
+                            Catch
+                            End Try
+                        Next
+                        '' Save the new object to the database
+                        acTrans.Commit()
+                        '' Dispose of the transaction
                     End Using
 
                 Catch ex As Exception
