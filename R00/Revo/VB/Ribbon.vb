@@ -74,6 +74,7 @@ Namespace Revo
 
                 'initialisation de Handler pour detecter la fermeture de ACAD
                 AddHandler Application.BeginQuit, AddressOf CloseFunction
+                AddHandler Application.DocumentManager.DocumentActivated, AddressOf DocumentActivated
 
             Catch
 
@@ -355,6 +356,26 @@ Namespace Revo
 
         End Sub
 
+        Public Sub DocumentActivated() 'ouverture document
+
+            Try
+                TaskDelay()
+
+            Catch ex As System.Exception
+                Console.WriteLine(ex.message)
+            End Try
+
+
+        End Sub
+
+        Private Async Function PutTaskDelayAsync() As Threading.Tasks.Task
+            Await Threading.Tasks.Task.Delay(2000)
+        End Function
+
+        Private Async Sub TaskDelay()
+            Await PutTaskDelayAsync()
+            createQuickStart()
+        End Sub
 
         Function CheckUpdate() 'Check version online
 
