@@ -3832,7 +3832,7 @@ Namespace Revo
                                     ElseIf "linetypescale" = TabProp(0) Then  ' 5  LinetypeScale = dbl
                                         If IsNumeric(TabProp(1)) Then OBJprop(5) = TabProp(1)
                                     ElseIf "lineweight" = TabProp(0) Then ' 6  Lineweight = dbl
-                                        If IsNumeric(TabProp(1)) Then OBJprop(6) = TabProp(1)
+                                        OBJprop(6) = TabProp(1)
                                     ElseIf "rotation" = TabProp(0) Then ' 7  Rotation = dbl
                                         If IsNumeric(TabProp(1)) Then OBJprop(7) = TabProp(1)
                                     ElseIf "stylename" = TabProp(0) Then ' 8  StyleName = ""
@@ -3999,11 +3999,12 @@ Namespace Revo
                                                     End If
                                                 End If
 
-                                            ElseIf TypeName(ent2) = "Wipeout" Then
+                                            Else ' Other objects
                                                 If ActiveDelete = False Then
                                                 Else
                                                     ent2.Erase()
                                                 End If
+                                                'Connect.RevoLog("Space Bloc : " + TypeName(ent2))
                                             End If
 
                                         End If
@@ -4269,10 +4270,9 @@ Namespace Revo
         ''' <remarks></remarks>
         Public Function PropOBJ(ByVal Types As String, ByVal OBJcoll As Collection, ByVal acCurDb As Database, ByVal OBJprop() As String, ByVal ActiveDelete As Boolean)  ' Remarks
 
-            If Types.ToUpper Like OBJprop(1).ToUpper And OBJcoll.Count > 0 Then
+            If OBJcoll.Count > 0 Then
 
                 Try
-
 
                     Dim OBJColor As Color
                     OBJColor = Color.FromColorIndex(ColorMethod.ByAci, 7)
@@ -4286,136 +4286,142 @@ Namespace Revo
                                     Dim acEnt As Entity = acTrans.GetObject(Obj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForWrite)
                                     If Not IsDBNull(acEnt) Then
 
-                                        If ActiveDelete = True Then
-                                            acEnt.Erase()
-                                        Else
+                                        If TypeName(acEnt) Like OBJprop(1) Then
 
-                                            ' Traitement des propriétés en général
-                                            If OBJprop(2) <> Nothing Then
-                                                OBJColor = AcadTrueColor(OBJprop(2))
-                                                Obj.ColorIndex = OBJColor.ColorIndex '2  TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
-                                            End If
+                                            If ActiveDelete = True Then
+                                                acEnt.Erase()
+                                            Else
 
-                                            If OBJprop(3) <> Nothing Then Obj.Layer = OBJprop(3) ' 3  Layer = ""
-                                            If OBJprop(4) <> Nothing Then Obj.Linetype = OBJprop(4) ' 4  LineType = ""
-                                            If OBJprop(5) <> Nothing Then Obj.LinetypeScale = OBJprop(5) ' 5  LinetypeScale = dbl
-                                            If OBJprop(6) <> Nothing Then Obj.LineWeight = ConvertLineWeight(OBJprop(6)) ' 6  Lineweight = dbl
+                                                ' Traitement des propriétés en général
+                                                If OBJprop(2) <> Nothing Then
+                                                    OBJColor = AcadTrueColor(OBJprop(2))
+                                                    Obj.ColorIndex = OBJColor.ColorIndex '2  TrueColor = dbl(1-255)/R,V,B/ByLayer/ByBlock
+                                                End If
 
-                                            If Types = "MText" Then
-                                                If OBJprop(7) <> Nothing Then Obj.Rotation = OBJprop(7) ' 7  Rotation = dbl
-                                                'If OBJprop(8) <> Nothing Then ObjMText.TextStyleId = OBJprop(8) ' 8  StyleName = ""
-                                                'If OBJprop(9) <> Nothing Then ObjMText.FlowDirection = OBJprop(9) ' 9  Alignment = TopCenter
-                                                If OBJprop(10) <> Nothing Then Obj.Height = OBJprop(10) '10  Height = dbl
-                                                'If OBJprop(11) <> Nothing Then ObjBL. = OBJprop(11) '11  ScaleFactor = dbl
+                                                If OBJprop(3) <> Nothing Then Obj.Layer = OBJprop(3) ' 3  Layer = ""
+                                                If OBJprop(4) <> Nothing Then Obj.Linetype = OBJprop(4) ' 4  LineType = ""
+                                                If OBJprop(5) <> Nothing Then Obj.LinetypeScale = OBJprop(5) ' 5  LinetypeScale = dbl
+                                                If OBJprop(6) <> Nothing Then Obj.LineWeight = ConvertLineWeight(OBJprop(6)) ' 6  Lineweight = dbl
 
-                                                If OBJprop(12) <> Nothing Then '12  Text = "*"||"abc"
-                                                    Dim Param() As String = Split(OBJprop(12), "||")
-                                                    If Param.Count = 2 Then
-                                                        If Obj.Contents.ToUpper Like Param(0).ToUpper = True Then 'Test du texte de Mtext
-                                                            If InStr(Param(1), "*") = 0 Then
-                                                                Obj.Contents = Param(1)
-                                                            Else
-                                                                If Left(Param(1), 1) = "*" And Right(Param(1), 1) = "*" Then
-                                                                    Obj.Contents = Replace(Obj.Contents, Replace(Param(0), "*", ""), Replace(Param(1), "*", ""))   ' *xyz* -> *abc*
-                                                                ElseIf Left(Param(1), 1) <> "*" And Right(Param(1), 1) = "*" Then
-                                                                    Obj.Contents = Replace(Param(1), "*", "") & Obj.Contents                       ' abc***
-                                                                ElseIf Left(Param(1), 1) = "*" And Right(Param(1), 1) <> "*" Then
-                                                                    Obj.Contents = Obj.Contents & Replace(Param(1), "*", "")                       ' ***abc
+                                                If Types = "MText" Then
+                                                    If OBJprop(7) <> Nothing Then Obj.Rotation = OBJprop(7) ' 7  Rotation = dbl
+                                                    'If OBJprop(8) <> Nothing Then ObjMText.TextStyleId = OBJprop(8) ' 8  StyleName = ""
+                                                    'If OBJprop(9) <> Nothing Then ObjMText.FlowDirection = OBJprop(9) ' 9  Alignment = TopCenter
+                                                    If OBJprop(10) <> Nothing Then Obj.Height = OBJprop(10) '10  Height = dbl
+                                                    'If OBJprop(11) <> Nothing Then ObjBL. = OBJprop(11) '11  ScaleFactor = dbl
+
+                                                    If OBJprop(12) <> Nothing Then '12  Text = "*"||"abc"
+                                                        Dim Param() As String = Split(OBJprop(12), "||")
+                                                        If Param.Count = 2 Then
+                                                            If Obj.Contents.ToUpper Like Param(0).ToUpper = True Then 'Test du texte de Mtext
+                                                                If InStr(Param(1), "*") = 0 Then
+                                                                    Obj.Contents = Param(1)
                                                                 Else
-                                                                    Obj.Contents = Replace(Param(1), "*", "") 'Nouveau nom
+                                                                    If Left(Param(1), 1) = "*" And Right(Param(1), 1) = "*" Then
+                                                                        Obj.Contents = Replace(Obj.Contents, Replace(Param(0), "*", ""), Replace(Param(1), "*", ""))   ' *xyz* -> *abc*
+                                                                    ElseIf Left(Param(1), 1) <> "*" And Right(Param(1), 1) = "*" Then
+                                                                        Obj.Contents = Replace(Param(1), "*", "") & Obj.Contents                       ' abc***
+                                                                    ElseIf Left(Param(1), 1) = "*" And Right(Param(1), 1) <> "*" Then
+                                                                        Obj.Contents = Obj.Contents & Replace(Param(1), "*", "")                       ' ***abc
+                                                                    Else
+                                                                        Obj.Contents = Replace(Param(1), "*", "") 'Nouveau nom
+                                                                    End If
                                                                 End If
                                                             End If
                                                         End If
                                                     End If
+
+                                                    If OBJprop(15) <> "" Then
+                                                        If OBJprop(15) = 1 Then Obj.Annotative = AnnotativeStates.True
+                                                        If OBJprop(15) = 0 Then Obj.Annotative = AnnotativeStates.False
+                                                    End If
+
+                                                    'If OBJprop(13) <> Nothing Then ObjBL.Item = OBJprop(13) '13  PropPerso ???
+                                                    'Index = "*"||"abc"
+
                                                 End If
-
-                                                If OBJprop(15) <> "" Then
-                                                    If OBJprop(15) = 1 Then Obj.Annotative = AnnotativeStates.True
-                                                    If OBJprop(15) = 0 Then Obj.Annotative = AnnotativeStates.False
+                                                If Types = "Hatch" Then
+                                                    If OBJprop(15) <> Nothing Then
+                                                        If OBJprop(15) = 1 Then Obj.Annotative = AnnotativeStates.True
+                                                        If OBJprop(15) = 0 Then Obj.Annotative = AnnotativeStates.False
+                                                    End If
                                                 End If
+                                                If Types = "BlockReference" Then
+                                                    If OBJprop(7) <> Nothing Then Obj.Rotation = OBJprop(7) ' 7  Rotation = dbl
 
-                                                'If OBJprop(13) <> Nothing Then ObjBL.Item = OBJprop(13) '13  PropPerso ???
-                                                'Index = "*"||"abc"
+                                                    If OBJprop(12) <> Nothing Then '12  Text = "*"||"abc"
+                                                        Dim Param() As String = Split(OBJprop(12), "||")
+                                                        If Param.Count = 2 Then
 
-                                            End If
-                                            If Types = "Hatch" Then
-                                                If OBJprop(15) <> Nothing Then
-                                                    If OBJprop(15) = 1 Then Obj.Annotative = AnnotativeStates.True
-                                                    If OBJprop(15) = 0 Then Obj.Annotative = AnnotativeStates.False
-                                                End If
-                                            End If
-                                            If Types = "BlockReference" Then
-                                                If OBJprop(7) <> Nothing Then Obj.Rotation = OBJprop(7) ' 7  Rotation = dbl
+                                                            'Boucle sur tous les attributs
+                                                            Dim blkRef As BlockReference = DirectCast(acTrans.GetObject(Obj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForRead), BlockReference)
+                                                            Dim attCol As AttributeCollection = blkRef.AttributeCollection 'Get the block attributue collection
+                                                            'Dim attCol As AttributeCollection = br.AttributeCollection
+                                                            Dim attRef As AttributeReference = Nothing
+                                                            Dim CheckAtt As Boolean = False
+                                                            'Loop through the attribute collection
+                                                            For Each attId As ObjectId In attCol
+                                                                'Get this attribute reference
+                                                                attRef = DirectCast(acTrans.GetObject(attId, DatabaseServices.OpenMode.ForWrite), AttributeReference)
 
-                                                If OBJprop(12) <> Nothing Then '12  Text = "*"||"abc"
-                                                    Dim Param() As String = Split(OBJprop(12), "||")
-                                                    If Param.Count = 2 Then
+                                                                If OBJprop(14) = Nothing Then
+                                                                    CheckAtt = True
+                                                                ElseIf attRef.Tag.ToLower Like OBJprop(14).ToLower Then
+                                                                    CheckAtt = True
+                                                                Else
+                                                                    CheckAtt = False
+                                                                End If
 
-                                                        'Boucle sur tous les attributs
-                                                        Dim blkRef As BlockReference = DirectCast(acTrans.GetObject(Obj.ObjectId, Autodesk.AutoCAD.DatabaseServices.OpenMode.ForRead), BlockReference)
-                                                        Dim attCol As AttributeCollection = blkRef.AttributeCollection 'Get the block attributue collection
-                                                        'Dim attCol As AttributeCollection = br.AttributeCollection
-                                                        Dim attRef As AttributeReference = Nothing
-                                                        Dim CheckAtt As Boolean = False
-                                                        'Loop through the attribute collection
-                                                        For Each attId As ObjectId In attCol
-                                                            'Get this attribute reference
-                                                            attRef = DirectCast(acTrans.GetObject(attId, DatabaseServices.OpenMode.ForWrite), AttributeReference)
-
-                                                            If OBJprop(14) = Nothing Then
-                                                                CheckAtt = True
-                                                            ElseIf attRef.Tag.ToLower Like OBJprop(14).ToLower Then
-                                                                CheckAtt = True
-                                                            Else
-                                                                CheckAtt = False
-                                                            End If
-
-                                                            If CheckAtt = True Then 'Check if attribut filter is actived
-                                                                'Store its name
-                                                                'Dim attName As String = attRef.Tag
-                                                                Try
-                                                                    If attRef.TextString.ToString.ToLower Like Param(0).ToLower Then
-                                                                        If InStr(Param(1), "*") = 0 Then
-                                                                            attRef.TextString = Param(1)
-                                                                        Else
-                                                                            If Left(Param(1), 1) = "*" And Right(Param(1), 1) = "*" Then
-                                                                                attRef.TextString = Replace(attRef.TextString, Replace(Param(0), "*", ""), Replace(Param(1), "*", ""))   ' *xyz* -> *abc*
-                                                                            ElseIf Left(Param(1), 1) <> "*" And Right(Param(1), 1) = "*" Then
-                                                                                attRef.TextString = Replace(Param(1), "*", "") & attRef.TextString     ' abc***
-                                                                            ElseIf Left(Param(1), 1) = "*" And Right(Param(1), 1) <> "*" Then
-                                                                                attRef.TextString = attRef.TextString & Replace(Param(1), "*", "")     ' ***abc
+                                                                If CheckAtt = True Then 'Check if attribut filter is actived
+                                                                    'Store its name
+                                                                    'Dim attName As String = attRef.Tag
+                                                                    Try
+                                                                        If attRef.TextString.ToString.ToLower Like Param(0).ToLower Then
+                                                                            If InStr(Param(1), "*") = 0 Then
+                                                                                attRef.TextString = Param(1)
                                                                             Else
-                                                                                attRef.TextString = Replace(Param(1), "*", "") 'Nouveau nom               '
+                                                                                If Left(Param(1), 1) = "*" And Right(Param(1), 1) = "*" Then
+                                                                                    attRef.TextString = Replace(attRef.TextString, Replace(Param(0), "*", ""), Replace(Param(1), "*", ""))   ' *xyz* -> *abc*
+                                                                                ElseIf Left(Param(1), 1) <> "*" And Right(Param(1), 1) = "*" Then
+                                                                                    attRef.TextString = Replace(Param(1), "*", "") & attRef.TextString     ' abc***
+                                                                                ElseIf Left(Param(1), 1) = "*" And Right(Param(1), 1) <> "*" Then
+                                                                                    attRef.TextString = attRef.TextString & Replace(Param(1), "*", "")     ' ***abc
+                                                                                Else
+                                                                                    attRef.TextString = Replace(Param(1), "*", "") 'Nouveau nom               '
+                                                                                End If
                                                                             End If
                                                                         End If
-                                                                    End If
 
-                                                                    'Dim IDAttrname As Integer = Array.IndexOf(Pts.AttrName.ToArray, attName)
-                                                                    'If IDAttrname >= 0 Then attRef.TextString = Pts.AttrValue(IDAttrname) 'dr(attName)
+                                                                        'Dim IDAttrname As Integer = Array.IndexOf(Pts.AttrName.ToArray, attName)
+                                                                        'If IDAttrname >= 0 Then attRef.TextString = Pts.AttrValue(IDAttrname) 'dr(attName)
 
-                                                                Catch exA As Exception
+                                                                    Catch exA As Exception
 
-                                                                Catch ex As COMException
-                                                                    'Erreur calques verrouillés
-                                                                    Connect.RevoLog(Connect.DateLog & "Cmd OBJ" & vbTab & False & vbTab & "Err attribut, layer locked: " & blkRef.Name & " > " & attRef.Tag.ToString)
-                                                                End Try
-                                                            End If
-                                                        Next
+                                                                    Catch ex As COMException
+                                                                        'Erreur calques verrouillés
+                                                                        Connect.RevoLog(Connect.DateLog & "Cmd OBJ" & vbTab & False & vbTab & "Err attribut, layer locked: " & blkRef.Name & " > " & attRef.Tag.ToString)
+                                                                    End Try
+                                                                End If
+                                                            Next
 
 
-                                                        'Boucle pour les propriétés dynamique
-                                                        '   a faire
-                                                        ' ----------------------------------
+                                                            'Boucle pour les propriétés dynamique
+                                                            '   a faire
+                                                            ' ----------------------------------
+                                                        End If
+
                                                     End If
 
                                                 End If
 
+
+
+                                                'Fin traitement de l'objet (pas suppresion)
                                             End If
 
-
-
-                                            'Fin traitement de l'objet (pas suppresion)
+                                            'Fin du traitement si Type = True
                                         End If
+
                                     End If
                                 End If
 
