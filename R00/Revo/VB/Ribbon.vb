@@ -277,16 +277,20 @@ Namespace Revo
                             End If
                         Next
 
-                        If ActiveAddBtn = True Then
-                            If ribBtnRevo.Id Is Nothing Then CreateBtnRevo()
-                            qat.AddStandardItem(ribBtnRevo)
-
-                        Else
-                            Dim msg As String = (ribBtnRevo.Description)
+                        'If ActiveAddBtn = True Then
+                        If ribBtnRevo.Id Is Nothing Then CreateBtnRevo()
+                        If ribBtnRevo.Id IsNot Nothing Then
+                            If ribBtnRevo.Id = "" Then CreateBtnRevo()
                         End If
+
+                        If ribBtnRevo.Items.Count > 0 Then qat.AddStandardItem(ribBtnRevo)
+
+                        'Else
+                        'Dim msg As String = (ribBtnRevo.Description)
+                        'End If
                     Else
-                        'MsgBox(qat.Items.Count)
-                    End If
+                            'MsgBox(qat.Items.Count)
+                        End If
                     '   MsgBox(qat.Items.Count)
                     'MsgBox(qat.Items.Item(qat.Items.Count - 1).Id)
                 Else
@@ -295,7 +299,7 @@ Namespace Revo
             Catch 'ex As System.Exception
                 'erreur de chargement
                 ' MsgBox("ERREUR : " & ex.Message)
-                MsgBox("Pour charger le menu saisissez dans la barre de commande:  " & Ass.xProduct.ToUpper & "MENU  puis valider.", vbInformation, "Impossible de charger le menu " & Ass.xTitle)
+                '  MsgBox("Pour charger le menu saisissez dans la barre de commande:  " & Ass.xProduct.ToUpper & "MENU  puis valider.", vbInformation, "Impossible de charger le menu " & Ass.xTitle)
 
             End Try
         End Sub
@@ -359,7 +363,7 @@ Namespace Revo
         Public Sub DocumentActivated() 'ouverture document
 
             Try
-                TaskDelay()
+                'TaskDelay()
 
             Catch ex As System.Exception
                 Console.WriteLine(ex.message)
@@ -368,14 +372,14 @@ Namespace Revo
 
         End Sub
 
-        Private Async Function PutTaskDelayAsync() As Threading.Tasks.Task
-            Await Threading.Tasks.Task.Delay(2000)
-        End Function
+        'Private Async Function PutTaskDelayAsync() As Threading.Tasks.Task
+        '    Await Threading.Tasks.Task.Delay(2000)
+        'End Function
 
-        Private Async Sub TaskDelay()
-            Await PutTaskDelayAsync()
-            createQuickStart()
-        End Sub
+        'Private Async Sub TaskDelay()
+        '    Await PutTaskDelayAsync()
+        '    createQuickStart()
+        'End Sub
 
         Function CheckUpdate() 'Check version online
 
@@ -533,7 +537,7 @@ Namespace Revo
             ribBtnRevo.Size = RibbonItemSize.Standard
             ribBtnRevo.ShowText = True
             ribBtnRevo.ListImageSize = RibbonImageSize.Standard
-
+            '  ribBtnRevo.Items.Clear()
 
             Dim ListFichierXML As New List(Of String)
             'Chargement des fichier script CSV : revo-perso.xml à distance (lecture seul)
@@ -589,6 +593,7 @@ Namespace Revo
                                     ribButton1.CommandParameter = "-" & Ass.xProduct & " " & Replace(NamePath & NameFile, " ", "?") & vbCr
                                     ribButton1.CommandHandler = New AdskCommandHandler()
                                     ribButton1.ShowImage = True
+                                    ribButton1.Id = "RevoWorkFlow-" + FichierXML
                                     ribButton1.Size = RibbonItemSize.Standard
                                     ribButton1.Image = Images.getBitmap(My.Resources.ribbon_plug16)
                                     ribButton1.LargeImage = Images.getBitmap(My.Resources.ribbon_plug32)
@@ -613,11 +618,8 @@ Namespace Revo
                 BtnREVO.LargeImage = Images.getBitmap(My.Resources.ribbon_plug32)
                 BtnREVO.CommandParameter = "REVO "
                 BtnREVO.CommandHandler = New AdskCommandHandler()
+
                 ribBtnRevo.Items.Add(BtnREVO)
-
-
-
-
 
 
             Catch 'ex As System.Exception
@@ -1494,15 +1496,18 @@ Namespace Revo
             Dim ribCntrl As Autodesk.Windows.RibbonControl = Autodesk.AutoCAD.Ribbon.RibbonServices.RibbonPaletteSet.RibbonControl
             'find the custom tab using the Id
             Dim NbreTab As Double = ribCntrl.Tabs.Count - 1
+            Try
+                For i As Double = 0 To NbreTab
+                    If ribCntrl.Tabs(i).Id.Equals(MY_TAB_ID) Then
+                        ribCntrl.Tabs.Remove(ribCntrl.Tabs(i))
+                        'Exit Sub
+                        Exit For
+                        'NbreTab = NbreTab - 1
+                    End If
+                Next
+            Catch
+            End Try
 
-            For i As Double = 0 To NbreTab
-                If ribCntrl.Tabs(i).Id.Equals(MY_TAB_ID) Then
-                    ribCntrl.Tabs.Remove(ribCntrl.Tabs(i))
-                    'Exit Sub
-                    Exit For
-                    'NbreTab = NbreTab - 1
-                End If
-            Next
 
 
             'Quick Access Toolbar
@@ -1510,10 +1515,9 @@ Namespace Revo
                 Dim qat As Autodesk.Windows.ToolBars.QuickAccessToolBarSource = ComponentManager.QuickAccessToolBar
                 If qat IsNot Nothing Then
                     For i As Integer = 0 To qat.Items.Count() - 1
-                        If qat.Items(i).Id = MY_QUICKSTART_ID Then
+                        If qat.Items(i).Id = MY_QUICKSTART_ID Or qat.Items(i).Id = "" Then
                             qat.RemoveStandardItem(qat.Items(i))
-                            ribBtnRevo.Items.Clear()
-                            CreateBtnRevo()
+
                         End If
                     Next
                 Else
