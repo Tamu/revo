@@ -464,6 +464,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\R00\Revo\VB\frmMySQLconnect.resx">
       <Link>VB\frmMySQLconnect.resx</Link>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="..\..\R00\Revo\VB\frmOptions.resx">
       <Link>VB\frmOptions.resx</Link>
