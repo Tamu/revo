@@ -1332,21 +1332,21 @@ Namespace Revo
             Dim ribListBtnOption As Autodesk.Windows.RibbonSplitButton = New RibbonSplitButton()
             ribListBtnOption.ListImageSize = RibbonImageSize.Standard
 
-
+            ''' Update must be tested before deployement -> deactivation of user ability to update
             'Bouton Create Update
-            Dim ribExpButton1 As Autodesk.Windows.RibbonButton = New RibbonButton()
-            ribExpButton1.Text = "Mise à jour"
-            ribExpButton1.Description = "Contrôler si le plugin est à jour"
-            ribExpButton1.ShowText = True
-            ribExpButton1.ShowImage = True
-            ribExpButton1.Size = RibbonItemSize.Standard
-            ribExpButton1.Orientation = Windows.Controls.Orientation.Horizontal
-            ribExpButton1.Image = Images.getBitmap(My.Resources.ribbon_feedback16)
-            ribExpButton1.LargeImage = Images.getBitmap(My.Resources.ribbon_feedback32)
-            ribExpButton1.CommandParameter = MyCommands.NomCmd & "Update "
-            ribExpButton1.CommandHandler = New AdskCommandHandler()
+            'Dim ribExpButton1 As Autodesk.Windows.RibbonButton = New RibbonButton()
+            'ribExpButton1.Text = "Mise à jour"
+            'ribExpButton1.Description = "Contrôler si le plugin est à jour"
+            'ribExpButton1.ShowText = True
+            'ribExpButton1.ShowImage = True
+            'ribExpButton1.Size = RibbonItemSize.Standard
+            'ribExpButton1.Orientation = Windows.Controls.Orientation.Horizontal
+            'ribExpButton1.Image = Images.getBitmap(My.Resources.ribbon_feedback16)
+            'ribExpButton1.LargeImage = Images.getBitmap(My.Resources.ribbon_feedback32)
+            'ribExpButton1.CommandParameter = MyCommands.NomCmd & "Update "
+            'ribExpButton1.CommandHandler = New AdskCommandHandler()
             'ribInfo.Items.Add(ribExpButton1)
-            ribListBtnOption.Items.Add(ribExpButton1)
+            'ribListBtnOption.Items.Add(ribExpButton1)
 
 
             'ribInfo.Items.Add(ribCustomBrk)
