@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "acad", "C:\Program Files\Autodesk\AutoCAD 2018 - French\acad.exe", "{DAFB8302-DF6A-41ED-9BB1-18D62108A164}"
 	ProjectSection(DebuggerProjectSystem) = preProject
@@ -9,8 +9,8 @@ Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "acad", "C:\Program Files\Au
 		Executable = C:\Program Files\Autodesk\AutoCAD 2019\acad.exe
 		RemoteMachine = WIN10
 		StartingDirectory = C:\Program Files\Autodesk\AutoCAD 2019
-		Environment = Par défaut
-		LaunchingEngine = 5fff7536-0c87-462d-8fd2-7971d948e6dc
+		Environment = Default
+		LaunchingEngine = 00000000-0000-0000-0000-000000000000
 		UseLegacyDebugEngines = Yes
 		LaunchSQLEngine = No
 		AttachLaunchAction = No
@@ -34,18 +34,18 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Any CPU.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Mixed Platforms.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x64.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x86.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|Any CPU.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|Mixed Platforms.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|x64.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|x86.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Any CPU.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Mixed Platforms.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x64.ActiveCfg = Release
-		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x86.ActiveCfg = Release
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Any CPU.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Mixed Platforms.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x64.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x86.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|Any CPU.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|Mixed Platforms.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|x64.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|x86.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Any CPU.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x64.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x86.ActiveCfg = Release|x64
 		{2C2195F8-BCB0-4DB6-A26C-892ED5F610A6}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{2C2195F8-BCB0-4DB6-A26C-892ED5F610A6}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{2C2195F8-BCB0-4DB6-A26C-892ED5F610A6}.Debug|Mixed Platforms.Build.0 = Debug|x86
@@ -72,6 +72,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {5A72C07A-C3A7-471C-91A7-57CA9D4E4BD7}
+		SolutionGuid = {020BF945-38EE-48F2-ACB1-336129A4A00C}
 	EndGlobalSection
 EndGlobal

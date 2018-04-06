@@ -65,4 +65,12 @@
       </Commands>
     </ComponentEntry>
   </Components>
+  <Components>
+    <RuntimeRequirements OS="Win64" Platform="AutoCAD*|AutoCAD" SeriesMin="R23.0" SeriesMax="R23.0" />
+    <ComponentEntry AppName="REVO" ModuleName="./Contents/Windows-x64/plugin19.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
+      <Commands GroupName="REVO">
+        <Command Local="REVOMENU" Global="REVOMENU" Description="Lancer un flux de travail multfichier" />
+      </Commands>
+    </ComponentEntry>
+  </Components>
 </ApplicationPackage>

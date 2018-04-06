@@ -50,7 +50,7 @@
     <DefineConstants>_AcadVer_ = 22.0</DefineConstants>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42353,42354,42355</NoWarn>
     <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
     <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
     <CodeAnalysisFailOnMissingRules>true</CodeAnalysisFailOnMissingRules>
@@ -179,16 +179,14 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Autodesk.AutoCAD.Interop, Version=22.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\..\..\ObjectARX 2011\inc-x64\Autodesk.AutoCAD.Interop.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Autodesk\Autodesk_ObjectARX_2019_Win_64_and_32_Bit\inc-x64\Autodesk.AutoCAD.Interop.dll</HintPath>
     </Reference>
     <Reference Include="Autodesk.AutoCAD.Interop.Common, Version=22.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\..\..\..\ObjectARX 2011\inc-x64\Autodesk.AutoCAD.Interop.Common.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Autodesk\Autodesk_ObjectARX_2019_Win_64_and_32_Bit\inc-x64\Autodesk.AutoCAD.Interop.Common.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=1.0.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d">
       <SpecificVersion>False</SpecificVersion>
