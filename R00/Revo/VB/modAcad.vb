@@ -117,6 +117,48 @@ Module modAcad
     End Sub
 
     ''' <summary>
+    ''' Sets the required layer to the required lock state ' MIGRATION TH 2018
+    ''' </summary>
+    ''' <param name="strLayer">Lock layer (with jocker * all)</param>
+    ''' <param name="unLock">If you want unlock layer.</param>
+    ''' <remarks></remarks>
+    Public Sub LockLayer(ByVal strLayer As String, unLock As Boolean)
+        'Get the active document
+        Dim doc As Document = Application.DocumentManager.MdiActiveDocument
+        'Get the ative document's database
+        Dim db As Database = doc.Database
+        'Lock the document
+        Using docLock As DocumentLock = doc.LockDocument
+            'Start a transaction with the database
+            Using trans As Transaction = db.TransactionManager.StartTransaction()
+
+                Dim acLyrTbl As LayerTable
+                acLyrTbl = trans.GetObject(db.LayerTableId,
+                                   OpenMode.ForRead)
+
+                '' Step through the Layer table and print each layer name
+                For Each acObjId As ObjectId In acLyrTbl
+                    Dim acLyrTblRec As LayerTableRecord
+                    acLyrTblRec = trans.GetObject(acObjId, OpenMode.ForRead)
+                    If acLyrTblRec.Name.ToLower Like strLayer.ToLower Then
+                        If unLock = True Then
+                            acLyrTblRec.IsLocked = False
+                        Else
+                            acLyrTblRec.IsLocked = True
+                        End If
+                    End If
+
+                Next
+
+                'Commit the transaction to save any changes to the database
+                trans.Commit()
+            End Using
+        End Using
+        'Regen the drawing
+        doc.Editor.Regen()
+    End Sub
+
+    ''' <summary>
     ''' Sets the visibility of the required layer to the required state
     ''' </summary>
     ''' <param name="strLayer">The name of the layer</param>
