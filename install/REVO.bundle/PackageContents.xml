@@ -3,7 +3,7 @@
   <CompanyDetails Name="platform5 RD" Url="http://platform5rd.com" Email="rd@platform5.ch" />
   <Components>
     <RuntimeRequirements OS="Win32" Platform="AutoCAD*|AutoCAD" SeriesMin="R20.0" SeriesMax="R20.0" />
-    <ComponentEntry AppName="REVO" ModuleName="./Contents/Windows-x86/plugin15.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
+    <ComponentEntry AppName="REVO" ModuleName="/Contents/Windows-x86/plugin15.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
       <Commands GroupName="REVO">
         <Command Local="REVOMENU" Global="REVOMENU" Description="Lancer un flux de travail multfichier" />
       </Commands>
@@ -11,7 +11,7 @@
   </Components>
   <Components>
     <RuntimeRequirements OS="Win64" Platform="AutoCAD*|AutoCAD" SeriesMin="R20.0" SeriesMax="R20.0" />
-    <ComponentEntry AppName="REVO" ModuleName="./Contents/Windows-x64/plugin15.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
+    <ComponentEntry AppName="REVO" ModuleName="/Contents/Windows-x64/plugin15.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
       <Commands GroupName="REVO">
         <Command Local="REVOMENU" Global="REVOMENU" Description="Lancer un flux de travail multfichier" />
       </Commands>
@@ -19,7 +19,7 @@
   </Components>
     <Components>
     <RuntimeRequirements OS="Win32" Platform="AutoCAD*|AutoCAD" SeriesMin="R20.1" SeriesMax="R20.1" />
-    <ComponentEntry AppName="REVO" ModuleName="./Contents/Windows-x86/plugin16.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
+    <ComponentEntry AppName="REVO" ModuleName="/Contents/Windows-x86/plugin16.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
       <Commands GroupName="REVO">
         <Command Local="REVOMENU" Global="REVOMENU" Description="Lancer un flux de travail multfichier" />
       </Commands>
@@ -27,7 +27,7 @@
   </Components>
   <Components>
     <RuntimeRequirements OS="Win64" Platform="AutoCAD*|AutoCAD" SeriesMin="R20.1" SeriesMax="R20.1" />
-    <ComponentEntry AppName="REVO" ModuleName="./Contents/Windows-x64/plugin16.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
+    <ComponentEntry AppName="REVO" ModuleName="/Contents/Windows-x64/plugin16.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
       <Commands GroupName="REVO">
         <Command Local="REVOMENU" Global="REVOMENU" Description="Lancer un flux de travail multfichier" />
       </Commands>
@@ -35,7 +35,7 @@
   </Components>
     <Components>
     <RuntimeRequirements OS="Win32" Platform="AutoCAD*|AutoCAD" SeriesMin="R21.0" SeriesMax="R21.0" />
-    <ComponentEntry AppName="REVO" ModuleName="./Contents/Windows-x86/plugin17.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
+    <ComponentEntry AppName="REVO" ModuleName="/Contents/Windows-x86/plugin17.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
       <Commands GroupName="REVO">
         <Command Local="REVOMENU" Global="REVOMENU" Description="Lancer un flux de travail multfichier" />
       </Commands>
@@ -43,7 +43,7 @@
   </Components>
   <Components>
     <RuntimeRequirements OS="Win64" Platform="AutoCAD*|AutoCAD" SeriesMin="R21.0" SeriesMax="R21.0" />
-    <ComponentEntry AppName="REVO" ModuleName="./Contents/Windows-x64/plugin17.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
+    <ComponentEntry AppName="REVO" ModuleName="/Contents/Windows-x64/plugin17.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
       <Commands GroupName="REVO">
         <Command Local="REVOMENU" Global="REVOMENU" Description="Lancer un flux de travail multfichier" />
       </Commands>
@@ -51,7 +51,7 @@
   </Components>
   <Components>
     <RuntimeRequirements OS="Win32" Platform="AutoCAD*|AutoCAD" SeriesMin="R22.0" SeriesMax="R22.0" />
-    <ComponentEntry AppName="REVO" ModuleName="./Contents/Windows-x86/plugin18.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
+    <ComponentEntry AppName="REVO" ModuleName="/Contents/Windows-x86/plugin18.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
       <Commands GroupName="REVO">
         <Command Local="REVOMENU" Global="REVOMENU" Description="Lancer un flux de travail multfichier" />
       </Commands>
@@ -59,7 +59,7 @@
   </Components>
   <Components>
     <RuntimeRequirements OS="Win64" Platform="AutoCAD*|AutoCAD" SeriesMin="R22.0" SeriesMax="R22.0" />
-    <ComponentEntry AppName="REVO" ModuleName="./Contents/Windows-x64/plugin18.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
+    <ComponentEntry AppName="REVO" ModuleName="/Contents/Windows-x64/plugin18.dll" LoadOnAutoCADStartup="True" LoadOnCommandInvocation="True" LoadOnRequest="True">
       <Commands GroupName="REVO">
         <Command Local="REVOMENU" Global="REVOMENU" Description="Lancer un flux de travail multfichier" />
       </Commands>
