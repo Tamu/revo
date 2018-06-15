@@ -3869,15 +3869,17 @@ Namespace Revo
                     End Try
 
                     ' Start a transaction
-                    Dim LA As AcadLayer
+                    '  Dim LA As AcadLayer
 #If _AcadVer_ < 19 Then ' Ancienne Version 2010-2011-2012
                     Dim acDwg As AcadDocument = Application.DocumentManager.MdiActiveDocument.AcadDocument
 #Else 'Versio AutoCAD 2013 et +
                     Dim acDwg As Autodesk.AutoCAD.Interop.AcadDocument = DocumentExtension.GetAcadDocument(Autodesk.AutoCAD.ApplicationServices.Application.DocumentManager.MdiActiveDocument)
 #End If
-                    For Each LA In acDwg.Layers
-                        LA.Lock = False
-                    Next
+                    'For Each LA In acDwg.Layers ' MIGRATION TH 2018
+                    '    LA.Lock = False
+                    'Next
+
+                    LockLayer("*", True) ' MIGRATION TH 2018
 
                     'Filtre les Spaces  -----------------------
                     Dim CurSpaceName As String = ""
