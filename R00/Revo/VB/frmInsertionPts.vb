@@ -44,7 +44,7 @@ Friend Class frmInsertionPts
         Me.txtPrecPlan.Text = strInsPtPrecPlan : Me.txtPrecAlt.Text = strInsPtPrecAlt
 
         'Orientation des blocs selon fonction rotation des blocs
-        Me.txtOri.Text = Format(GetCurrentRotation, "0.0")
+        'Me.txtOri.Text = Format(GetCurrentRotation, "0.0") --> Current rotation not used anymore as of https://github.com/Tamu/revo/issues/16
 
         'Dernier numéro de point + 1 (si numérique)
         Dim strNr As String : strNr = strInsPtNum

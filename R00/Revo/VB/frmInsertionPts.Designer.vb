@@ -191,7 +191,7 @@
         Me.txtOri.TabIndex = 4
         Me.txtOri.Text = "100.0"
         Me.txtOri.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtOri.Visible = False
+        Me.txtOri.Visible = True
         '
         'Label75
         '
@@ -204,8 +204,8 @@
         Me.Label75.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.Label75.Size = New System.Drawing.Size(176, 17)
         Me.Label75.TabIndex = 3
-        Me.Label75.Text = "Orientation du symbole [g]:"
-        Me.Label75.Visible = False
+        Me.Label75.Text = "Rotation du symbole [g]:"
+        Me.Label75.Visible = True
         '
         'txtBlockID
         '

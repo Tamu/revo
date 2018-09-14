@@ -1368,9 +1368,6 @@ Namespace Revo
             'ribInfo.Items.Add(ribCustomBrk)
 
 
-
-
-
             Dim item As New RibbonButton()
             item.IsCheckable = True
             item.CommandParameter = MyCommands.NomCmd & "Options "

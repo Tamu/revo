@@ -4959,7 +4959,6 @@ Namespace Revo
 
                                     Dim ValideTopic As Boolean = False
                                     Dim TopicValue As String = docXML.SelectNodes(Xroot & "/topic[" & NumTopic & "]").ItemOf(0).Attributes.ItemOf(0).InnerText
-
                                     'Test les /topic
                                     If TopicValue = "" Then 'Sans code Topic
                                         ValideTopic = True
@@ -5168,13 +5167,11 @@ Namespace Revo
                                                         If Left(PtsFormat, 1) = System.Convert.ToChar(34) And Right(PtsFormat, 1) = System.Convert.ToChar(34) Then
                                                             Dim FormX As String = Mid(PtsFormat, 2, Len(PtsFormat) - 2)
 
-                                                            'MsgBox(NumPts.ToString)
                                                             If Len((NumPts + 1).ToString) < 5 Then FormX = Replace(FormX, "####", Replace(Space(4 - Len((NumPts + 1).ToString)), " ", "0") & (NumPts + 1).ToString)
                                                             If Len((NumPts + 1).ToString) < 4 Then FormX = Replace(FormX, "###", Replace(Space(3 - Len((NumPts + 1).ToString)), " ", "0") & (NumPts + 1).ToString)
                                                             If Len((NumPts + 1).ToString) < 3 Then FormX = Replace(FormX, "##", Replace(Space(2 - Len((NumPts + 1).ToString)), " ", "0") & (NumPts + 1).ToString)
 
                                                             ' MsgBox(Replace(Space(4 - Len(LinePts.Length + 1)), " ", "0") & LinePts.Length + 1)
-                                                            ' MsgBox(LinePts.Length)
 
                                                             'Correction du signe - (>0)
                                                             If IsNumeric(AttValue) Then If CDbl(AttValue) < 0 Then FormX = Replace(FormX, "+", "-") : AttValue = CDbl(AttValue * (-1))
@@ -5190,10 +5187,12 @@ Namespace Revo
                                                             Dim AttValueNew As String = ""
                                                             For i = 1 To Len(PtsFormat)
                                                                 If Mid(PtsFormat, i, 1) = "?" Then   'ajoute le caractère ?
-                                                                    If ActiveBloc = 0 Then ActiveBloc = 1
-                                                                    If ActiveBloc = 1 And Mid(AttValue, i, 1) = "0" Then
+                                                                    If ActiveBloc = 0 Then
                                                                         Replace0Space = True
-                                                                    ElseIf ActiveBloc = 1 And Mid(AttValue, i, 1) <> "0" Then
+                                                                    End If
+                                                                    If ActiveBloc = 1 Then 'And Mid(AttValue, i, 1) = "0" Then
+                                                                        Replace0Space = True
+                                                                    ElseIf ActiveBloc = 1 Then 'And Mid(AttValue, i, 1) <> "0" Then
                                                                         ActiveBloc = 2
                                                                         Replace0Space = False
                                                                     Else
