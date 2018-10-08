@@ -157,7 +157,7 @@ Partial Class frmImportExport
         Me.BtnSelectObj.Name = "BtnSelectObj"
         Me.BtnSelectObj.Size = New System.Drawing.Size(34, 18)
         Me.BtnSelectObj.TabIndex = 7
-        Me.BtnSelectObj.Tag = "Par défault : tout le dessin"
+        Me.BtnSelectObj.Tag = "Par défaut : tout le dessin"
         Me.BtnSelectObj.UseVisualStyleBackColor = False
         '
         'LblSelect
@@ -169,7 +169,7 @@ Partial Class frmImportExport
         Me.LblSelect.Name = "LblSelect"
         Me.LblSelect.Size = New System.Drawing.Size(137, 13)
         Me.LblSelect.TabIndex = 8
-        Me.LblSelect.Tag = "Par défault : tout le dessin"
+        Me.LblSelect.Tag = "Par défaut : tout le dessin"
         Me.LblSelect.Text = "Sélection manuelle (0 objet)"
         '
         'LayoutDoublon
@@ -303,7 +303,7 @@ Partial Class frmImportExport
         '
         Me.Ck3D.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Ck3D.AutoSize = True
-        Me.Ck3D.Checked = True
+        Me.Ck3D.Checked = False
         Me.Ck3D.CheckState = System.Windows.Forms.CheckState.Checked
         Me.Ck3D.ForeColor = System.Drawing.Color.White
         Me.Ck3D.Location = New System.Drawing.Point(6, 10)

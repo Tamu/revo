@@ -2231,7 +2231,7 @@ Module modMOVD
                         Next
                         'End If
 
-                        If StrOperation = "MOVE" Then ' Operation par défault : MOVE
+                        If StrOperation = "MOVE" Then ' Operation par défaut : MOVE
                             'Déplacement du calque MUT dans le calque MO (POLYLINE + LINE + BLOCKREFERENCE)
 
                             AcObj.Layer = Replace(AcObj.Layer, "MUT_", "MO_")      'Nouveau calque pour les objets déplacés
@@ -2243,7 +2243,7 @@ Module modMOVD
                                 CollBL.Add(BLObj)
                             End If
 
-                        ElseIf StrOperation = "DELETE" Then ' Operation par défault : MOVE
+                        ElseIf StrOperation = "DELETE" Then ' Operation par défaut : MOVE
                             AcObj.Erase() 'supprimé
                             ObjDeleted += 1 ' OBjet Déplacé + supprimé
                         Else

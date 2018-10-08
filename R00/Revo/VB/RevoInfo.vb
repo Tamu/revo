@@ -500,17 +500,17 @@ Namespace Revo
 
         Public ReadOnly Property Icon16() As System.Drawing.Bitmap '-- locked --
             Get
-                Return My.Resources.ribbon_plug16 ' icon par défault des menus
+                Return My.Resources.ribbon_plug16 ' icon par défaut des menus
             End Get
         End Property
         Public ReadOnly Property Icon32() As System.Drawing.Bitmap '-- locked --
             Get
-                Return My.Resources.ribbon_plug32 ' icon par défault des menus
+                Return My.Resources.ribbon_plug32 ' icon par défaut des menus
             End Get
         End Property
         Public ReadOnly Property Icon() As System.Drawing.Icon '-- locked --
             Get
-                Return My.Resources.plug ' icon par défault des menus
+                Return My.Resources.plug ' icon par défaut des menus
             End Get
         End Property
 

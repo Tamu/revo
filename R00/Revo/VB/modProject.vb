@@ -56,7 +56,7 @@ Module modProject
 
         ' Recherche du facteur  "1:1000" (1/1000 ou  1/1)
         If EchPS = "" And IsNumeric(EchPS) = False Then 'Si pas de facteur
-            EchPS = 1  'Par défault
+            EchPS = 1  'Par défaut
             Try
                 Dim cm As ObjectContextManager = db.ObjectContextManager
                 If cm IsNot Nothing Then  ' Now get the Annotation Scaling context collection
