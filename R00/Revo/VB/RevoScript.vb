@@ -5104,6 +5104,9 @@ Namespace Revo
                                                     'End If
 
                                                     'Test des Property  (écrase l'ancienne valeur)
+                                                    If (TypeTag = "PRECALT" Or TypeTag = "FIABALT") And Check3D = False Then
+                                                        AttValue = ""
+                                                    End If
                                                     If PropertyPts = "positionx" Then
                                                         AttValue = PositionX
                                                     ElseIf PropertyPts = "positiony" Then
@@ -5127,7 +5130,12 @@ Namespace Revo
                                                                     ValAlt = AttValue
                                                                 End If
                                                             End If
+
                                                             AttValue = ValAlt
+
+                                                            If AttValue = 0 Then
+                                                                AttValue = ""
+                                                            End If
                                                         Else
                                                             AttValue = ""
                                                         End If

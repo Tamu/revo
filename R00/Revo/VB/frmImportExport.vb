@@ -26,7 +26,7 @@ Public Class frmImportExport
 
             'Sélection du fichier + Chargement des formats
 
-            'Sélection des objets manuelle (défault tout le fichiers)
+            'Sélection des objets manuelle (défaut tout le fichiers)
 
             'Points du thèmes
             With Me.cboTheme
@@ -379,7 +379,7 @@ Public Class frmImportExport
             ' ParamFile   
             ParamFile.Add("") 'Sélection du fichier + Chargement des formats
             ParamFile.Add(-1) 'Filter Index,
-            ParamFile.Add(Nothing) 'Sélection des objets manuelle (défault tout le fichiers)
+            ParamFile.Add(Nothing) 'Sélection des objets manuelle (défaut tout le fichiers)
             ParamFile.Add(cboTheme.SelectedIndex) '4 Points du thèmes
             ParamFile.Add("") 'Points des communes/plans
             ParamFile.Add(cboxDoublons.CheckState) '6 Détection des doublons
@@ -411,7 +411,7 @@ Public Class frmImportExport
                 ' ParamFile   
                 ParamFile.Add(TBNameFile.Text) 'Sélection du fichier + Chargement des formats
                 ParamFile.Add(NumFormat) 'Filter Index,
-                ParamFile.Add(NewColl) 'Sélection des objets manuelle (défault tout le fichiers)
+                ParamFile.Add(NewColl) 'Sélection des objets manuelle (défaut tout le fichiers)
                 ParamFile.Add(cboTheme.SelectedIndex) 'index du Points du thèmes
                 ParamFile.Add(ListPlans) 'Points des communes/plans
                 ParamFile.Add(cboxDoublons.CheckState) 'Détection des doublons

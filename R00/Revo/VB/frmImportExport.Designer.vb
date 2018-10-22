@@ -304,7 +304,7 @@ Partial Class frmImportExport
         Me.Ck3D.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Ck3D.AutoSize = True
         Me.Ck3D.Checked = False
-        Me.Ck3D.CheckState = System.Windows.Forms.CheckState.Checked
+        'Me.Ck3D.CheckState = System.Windows.Forms.CheckState.Checked
         Me.Ck3D.ForeColor = System.Drawing.Color.White
         Me.Ck3D.Location = New System.Drawing.Point(6, 10)
         Me.Ck3D.Margin = New System.Windows.Forms.Padding(6, 6, 3, 8)

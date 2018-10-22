@@ -2413,7 +2413,7 @@ Module modAcad
     ''' Adds Hatch to surface object
     ''' </summary>
     ''' <param name="acObjIdColl">The object Collection to add</param>
-    ''' <param name="TypeHatch">The style Hatch (ANSI31) défault SOLID</param>
+    ''' <param name="TypeHatch">The style Hatch (ANSI31) défaut SOLID</param>
     ''' <returns>The objectid of the added object</returns>
     ''' <remarks>obj is an entity that has already been added to the database.</remarks>
     Public Function AddHatch(ObjIDColl As Collection, ObjOutLayers As String, HatchType As String, HatchScale As Double, acLayer As String, acLayerHa As String, Annotatif As Boolean)
