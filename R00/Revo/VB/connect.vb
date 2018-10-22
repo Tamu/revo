@@ -270,7 +270,7 @@ Namespace Revo
         Public Function RevoUpdateProfile()
             Dim info As New Revo.RevoInfo
 
-            'Remplacement uniquement SI la valeur est pas par défault
+            'Remplacement uniquement SI la valeur est pas par défaut
             Dim PrinterConfigPath As String = ""
             If info.Plotters <> info.Plotters(True) Then PrinterConfigPath = info.Plotters ' plotters
 
