@@ -1,5 +1,5 @@
 # Plugin Revo
-Plugin Revo for AutoCAD
+Plugin Revo for AutoCAD 2014 / 2015
 
 La première application métier pour l'importation de données Interlis MD.01-MO-VD directement dans AutoCAD.
 
