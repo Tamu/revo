@@ -273,10 +273,10 @@
 
 '4) Hachures des bâtiments
 #LA;>CV_Bâtiment_Hach;[[TrueColor]];253;[[Lineweight]];0.2;
-#HA;CV_Bâtiment;[[Layer]];>CV_Bâtiment_Hach;[[StyleName]];SOLID;
+#HA;CV_Bâtiment;[[Layer]];<CV_Bâtiment_Hach;[[StyleName]];SOLID;
 
 #LA;>CV_Bâtiment_sout_couvert_Hach;[[TrueColor]];7;[[Lineweight]];0.2;
-#HA;CV_Bâtiment_sout_couvert;[[Layer]];>CV_Bâtiment_sout_couvert_Hach;[[StyleName]];DOTS;[[ScaleFactor]];3;
+#HA;CV_Bâtiment_sout_couvert;[[Layer]];<CV_Bâtiment_sout_couvert_Hach;[[StyleName]];DOTS;[[ScaleFactor]];3;
 
 '5) Purger tout les éléments du dessin
 #Purge;all

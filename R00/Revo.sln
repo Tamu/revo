@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Revo", "Revo\Revo.vbproj", "{24AC2492-D966-401F-9533-D176FE922C67}"
+EndProject
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "acad", "C:\Program Files\Autodesk\AutoCAD 2012 - French\acad.exe", "{DAFB8302-DF6A-41ED-9BB1-18D62108A164}"
+	ProjectSection(DebuggerProjectSystem) = preProject
+		PortSupplier = 00000000-0000-0000-0000-000000000000
+		Executable = C:\Program Files\Autodesk\AutoCAD 2012 - French\acad.exe
+		RemoteMachine = WINXP2
+		StartingDirectory = C:\Program Files\Autodesk\AutoCAD 2012 - French
+		Environment = Par défaut
+		LaunchingEngine = 5fff7536-0c87-462d-8fd2-7971d948e6dc
+		LaunchSQLEngine = No
+		AttachLaunchAction = No
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24AC2492-D966-401F-9533-D176FE922C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Release|x64.ActiveCfg = Release|Any CPU
+		{24AC2492-D966-401F-9533-D176FE922C67}.Release|x86.ActiveCfg = Release|Any CPU
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x64.ActiveCfg = Debug|x86
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x86.ActiveCfg = Debug|x86
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Any CPU.ActiveCfg = Debug|x86
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Mixed Platforms.ActiveCfg = Debug|x86
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x64.ActiveCfg = Debug|x86
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x86.ActiveCfg = Debug|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

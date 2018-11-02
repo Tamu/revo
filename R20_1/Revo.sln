@@ -1,0 +1,74 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.15
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{911E67C6-3D85-4FCE-B560-20A9C3E3FF48}") = "acad", "C:\Program Files\Autodesk\AutoCAD 2016 - French\acad.exe", "{DAFB8302-DF6A-41ED-9BB1-18D62108A164}"
+	ProjectSection(DebuggerProjectSystem) = preProject
+		PortSupplier = 00000000-0000-0000-0000-000000000000
+		Executable = C:\Program Files\Autodesk\AutoCAD 2016\acad.exe
+		RemoteMachine = WIN10
+		StartingDirectory = C:\Program Files\Autodesk\AutoCAD 2016
+		Environment = Par défaut
+		LaunchingEngine = 5fff7536-0c87-462d-8fd2-7971d948e6dc
+		UseLegacyDebugEngines = Yes
+		LaunchSQLEngine = No
+		AttachLaunchAction = No
+	EndProjectSection
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Revo-20_1", "Revo\Revo-20_1.vbproj", "{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release x64|Any CPU = Release x64|Any CPU
+		Release x64|Mixed Platforms = Release x64|Mixed Platforms
+		Release x64|x64 = Release x64|x64
+		Release x64|x86 = Release x64|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Any CPU.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|Mixed Platforms.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x64.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Debug|x86.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|Any CPU.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|Mixed Platforms.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|x64.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release x64|x86.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Any CPU.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|Mixed Platforms.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x64.ActiveCfg = Release|x64
+		{DAFB8302-DF6A-41ED-9BB1-18D62108A164}.Release|x86.ActiveCfg = Release|x64
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Debug|x64.ActiveCfg = Debug|x64
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Debug|x64.Build.0 = Debug|x64
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Debug|x86.ActiveCfg = Debug|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Debug|x86.Build.0 = Debug|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release x64|Any CPU.ActiveCfg = Release x64|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release x64|Mixed Platforms.ActiveCfg = Release x64|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release x64|Mixed Platforms.Build.0 = Release x64|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release x64|x64.ActiveCfg = Release x64|x64
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release x64|x64.Build.0 = Release x64|x64
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release x64|x86.ActiveCfg = Release x64|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release x64|x86.Build.0 = Release x64|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release|Any CPU.ActiveCfg = Release|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release|Mixed Platforms.Build.0 = Release|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release|x64.ActiveCfg = Release|x64
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release|x64.Build.0 = Release|x64
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release|x86.ActiveCfg = Release|x86
+		{23D8DDAC-38AF-4C91-BEE7-D96B9C4120A7}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

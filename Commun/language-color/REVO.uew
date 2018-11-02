@@ -1,0 +1,172 @@
+/L1"REVO" REVO_LANG Line Comment = ' File Extensions = CSV
+/Colors = 0,8421504,4210816,8421504,0,
+/Colors Back = 16777215,16777215,16777215,16777215,16777215,
+/Colors Auto Back = 1,1,1,1,1,
+/Font Style = 0,0,0,0,0,
+/ColorAltComment Colors = 6779777
+/ColorNumber Colors = 0
+/ColorString Colors = 65793
+/ColorComment Colors = 8750469
+
+/Delimiters = ;|<>
+
+
+/C1"Action REVO" Colors = 16748879 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 1
+#Title #Description #Groupe #Version #Var #LoadFlow #Loop #Import #Export 
+#PS #LA #BL #OBJ #STY #File #Cmd #Purge #Zoom #HA #XREF
+
+/C2"Split REVO" Colors = 544511 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+;
+|
+
+
+/C3"Propriete REVO" Colors = 2392340 Colors Back = 16777215 Colors Auto Back = 0 Font Style = -1
+[[If]]
+[[Val]]
+[[Find]]
+[[ToDay]]
+[[File]]
+[[Split]]
+[[Case]]
+[[Replace]]
+[[Mid]]
+[[Format]]
+[[Math]]
+[[SQL]]
+[[SQLurl]]
+[[SQLuser]]
+[[SQLpass]]
+[[SQLdb]]
+[[Url]]
+[[FindV]]
+[[Sheet]]
+[[Wurl]]
+[[Wfind]]
+[[WsetName]]
+[[WsetValue]]
+[[WclickName]]
+[[Wtable]]
+[[WfindT]]
+[[Var]]
+[[Select]]
+[[Name]]
+[[Url]]
+[[WinCenter]]
+[[WinScale]]
+[[Name]]
+[[LayerOn]]
+[[Freeze]]
+[[Lock]]
+[[TrueColor]]
+[[Linetype]]
+[[Lineweight]]
+[[Plottable]]
+[[Description]]
+[[Space]]
+[[Name]]
+[[Space]]
+[[XInsertionPoint]]
+[[YInsertionPoint]]
+[[ZInsertionPoint]]
+[[XYZInsertionPoint]]
+[[Rotation]]
+[[XScaleFactor]]
+[[YScaleFactor]]
+[[ZScaleFactor]]
+[[TrueColor]]
+[[Layer]]
+[[!]]
+[[LineType]]
+[[LinetypeScale]]
+[[Lineweight]]
+[[Rotation]]
+[[Text]]
+[[Attribute]]
+[[StyleName]]
+[[Alignment]]
+[[Height]]
+[[ScaleFactor]]
+[[Fonts]]
+[[Height]]
+[[ObjFilter]]
+[[Version]]
+[[ReadOnly]]
+[[Annotative]]
+[[PaperOrientation]]
+[[PaperScale]]
+[[WinRotation]]
+[[Filter]]
+[[Uniformly]]
+[[Xplode]]
+[[StyleFilter]]
+
+
+/C4"Option REVO" Colors = 3276796 Colors Back = 16777215 Colors Auto Back = 1 Font Style = -1
+
+
+
+/C5"Value REVO" Colors = 13776127 Colors Back = 16777215 Colors Auto Back = 1 Font Style = -1
+Acad
+MySQL
+DataReader
+XLS
+http
+current
+paper
+model
+ByLayer
+ByBlock
+|=|
+|<|
+|>|
+|<>|
+\P
+lastObjID
+file
+folder
+library
+lower
+upper
+capitalize
+topcenter
+1
+0
+all
+AlignedDimension
+Arc
+ArcDimension
+Attribute
+BlockReference
+Circle
+DBPoint
+DBText
+DiametricDimension
+Ellipse
+Hatch
+Helix
+LineAngularDimension2
+Line
+MText
+Polyline3d
+Polyline2d
+Polyline
+RadialDimension
+Ray
+RotatedDimension
+spline
+xline
+Others
+DWG2007
+DWG2010
+DXF2007
+DXF2010
+block 
+extents
+scale
+
+
+/C6"Nouv et Supp REVO" Colors = 16746513 Colors Back = 16777215 Colors Auto Back = 1 Font Style = 0
+<
+>
+
+
