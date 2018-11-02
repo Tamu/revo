@@ -5025,6 +5025,9 @@ Namespace Revo
                                                     Dim SymbolOK As Boolean = False
 
                                                     For Each Prop As System.Xml.XmlNode In NodeType
+
+
+
                                                         Dim Var As String = Prop.InnerText
                                                         Dim PropName As String = Prop.Name.ToLower
                                                         'Chargement des paramètres
@@ -5072,6 +5075,7 @@ Namespace Revo
                                                             End If
                                                         End If
                                                     Next ' fin de la boucle des propriétés dans un type
+
 
 
                                                     If dynBtr.IsDynamicBlock Then
@@ -5156,6 +5160,7 @@ Namespace Revo
 
 
 
+
                                                     'Format : Scale  export multiply (only num) => *1000
                                                     If PtsScale <> "" And IsNumeric(PtsScale) And IsNumeric(AttValue) Then
                                                         AttValue = CDbl(AttValue) * CDbl(PtsScale)
@@ -5183,6 +5188,8 @@ Namespace Revo
 
                                                             'Correction du signe - (>0)
                                                             If IsNumeric(AttValue) Then If CDbl(AttValue) < 0 Then FormX = Replace(FormX, "+", "-") : AttValue = CDbl(AttValue * (-1))
+
+
 
                                                             'Encolonnement avec Alignement
                                                             If xAlign.ToLower = "right" Then
@@ -5289,6 +5296,7 @@ Namespace Revo
 
                                                     'Statue bar
                                                     If Right(NumPts.ToString, 2) = "50" Or Right(NumPts.ToString, 2) = "00" Then Connect.Message("Exportation de points", "Ecriture des points en cours ... " & vbCrLf & "Nombre de point(s) : " & NumPts & "/" & CollBlock.Count, False, 70, 100)
+
 
                                                 Next 'Fin de la boucle des types
 
